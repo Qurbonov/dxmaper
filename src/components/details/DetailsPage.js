@@ -21,6 +21,7 @@ const DetailsPage = () => {
   return (
     <>
       <div className='container mt-4'>
+        {/* {data.contractInfo[0].PAYLOAD.ID} */}
         <div className='row '>
           <div className='col-10'>
             {' '}
@@ -42,6 +43,17 @@ const DetailsPage = () => {
           <li className='list-group-item'>
             <b>sharnoma imzolagan sanasi:</b>{' '}
             {data?.resultat?.PAYLOAD.CONTRACTDAT}
+          </li>{' '}
+          <li className='list-group-item'>
+            <b>Shartnoma boshlanishi:</b> {data?.resultat?.PAYLOAD.CONTRACTBEG}
+          </li>
+          <li className='list-group-item'>
+            <b>Shartnoma tugashi:</b> {data?.resultat?.PAYLOAD.CONTRACTEND}
+          </li>
+          <li className='list-group-item'>
+            {/* {console.log('data', data?.contractInfo[0])} */}
+            {/* <b>Kazna ID:</b> {data.contractInfo[0].METHOD_NAME} */}
+            {/* <b>Kazna ID:</b> {data.contractInfo[0].PAYLOAD.ID} */}
           </li>
           <li className='list-group-item'>
             <b>etkazib beruvchi:</b> {data?.resultat?.PAYLOAD.VENDORNAME}
@@ -58,7 +70,11 @@ const DetailsPage = () => {
           </li>
           <li className='list-group-item'>
             <b>Tashkiot:</b> {data?.resultat?.PAYLOAD.organ_name}
-          </li>
+          </li>{' '}
+          <li className='list-group-item'>
+            <b>Tashkiot:</b>{' '}
+            {data?.resultat?.PAYLOAD.SPECIFICATIONS[0].NOTE[0].TECHSPEC}
+          </li>{' '}
         </ul>
       </div>
     </>

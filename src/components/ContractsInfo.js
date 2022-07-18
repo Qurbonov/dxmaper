@@ -2,45 +2,40 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import Accordion from 'react-bootstrap/Accordion';
+
 const ContractsInfo = () => {
   const [rabbitData, setRbtData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const getResultats = async () => {
+  const [query, setQuery] = useState({});
+  const [etp, setEtp] = useState();
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date('2014/02/10'));
+  useEffect(() => {
     setLoading(true);
-    try {
-      const response = await axios.get(
-        // 'http://192.168.254.145:8585/v1/atm/getResultats',
-        'http://192.168.7.54:8585/v1/atm/getResultats',
-        {
-          params: {
-            limit: 100,
-            offset: 1,
-          },
-        }
-      );
-      setRbtData(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const onChange = async (e) => {
-    var searchData = rabbitData.filter((item) => {
-      if (
-        item.vendor_name
-          .toString()
-          .toLowerCase()
-          .includes(e.target.value.toLowerCase())
-      ) {
-        return item;
-      }
-    });
-    setRbtData(searchData);
-  };
+    axios
+      .get('http://192.168.7.54:8585/v1/atm/getResultats', {
+        params: {
+          limit: 100,
+          offset: 1,
+          ...query,
+        },
+      })
+      .then((response) => {
+        setRbtData(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [query]);
+
   const columns = React.useMemo(() => [
     {
       name: 'ETP',
-
       selector: (row) => {
         // eslint-disable-next-line default-case
         switch (row.etp_id) {
@@ -62,6 +57,15 @@ const ContractsInfo = () => {
       name: 'Savdo turi',
       selector: (row) => {
         // eslint-disable-next-line default-case
+        // 22.04.2021 йилдаги ЎРҚ-684-сон
+        // 30-модда. Харид қилиш тартиб-таомилларини амалга ошириш турлари
+        // Харид қилиш тартиб-таомилларини амалга ошириш турлари қуйидагилардан иборат:
+        // электрон дўкон;
+        // бошланғич нархни пасайтириш учун ўтказиладиган аукцион;
+        // энг яхши таклифларни танлаш;
+        // тендер;
+        // тўғридан-тўғри шартномалар бўйича амалга ошириладиган давлат харидлари;
+        // eslint-disable-next-line default-case
         switch (row.proc_id) {
           case 6:
             return 'Elektron katalog';
@@ -76,24 +80,13 @@ const ContractsInfo = () => {
         }
       },
       sortable: true,
-      width: '7%',
+      width: '17%',
     },
     {
       name: 'Lot raqami1',
       selector: (row) => (
         <div>
-          {/* {row.lot_id} */}
           <Link to={`/details/${row.id}`}>{row.lot_id}</Link>
-
-          {/* <Link
-            href={{
-              pathname: '/t/' + `${row.id}`,
-              params: { id: `${row.id}` },
-            }}
-            as={`/t/${row.id}`}
-          >
-            <a>{row.lot_id}</a>
-          </Link> */}
         </div>
       ),
       sortable: true,
@@ -194,62 +187,116 @@ const ContractsInfo = () => {
       reorder: true,
     },
   ]);
-
-  useEffect(() => {
-    getResultats();
-  }, []);
-
+  const onChange = (e, type) => {
+    const mQuery = {};
+    mQuery[type] = e.target.value;
+    setQuery({
+      ...query,
+      ...mQuery,
+    });
+    // setEtp(e.target.value);
+    // getResultats(e.target.value);
+  };
   return (
     <>
-      <div>
-        <div className='container mt-3'>
-          <h5>Filter</h5>
-          <div className='row'>
-            <div className='col-sm'>
-              ETP:
-              <select id='lang' className='form-control form-control-sm'>
-                <option value='select'>Select</option>
-                <option value='Java'>Java</option>
-                <option value='C++'>C++</option>
-              </select>
-            </div>
-            <div className='col-sm'>
-              Lot raqami
-              <input
-                type='text'
-                onChange={onChange}
-                className='form-control  form-control-sm'
-              />
-            </div>{' '}
-          </div>
-          <div className='row mt-3'>
-            <div className='col-sm'>
-              Etkazib beruvchi tashkilot nomi:
-              <input
-                type='text'
-                onChange={onChange}
-                className='form-control  form-control-sm'
-              />
-            </div>{' '}
-            <div className='col-sm'>
-              Etkazib beruvchi tashkilot STIR raqami:
-              <input
-                type='text'
-                onChange={onChange}
-                className='form-control  form-control-sm'
-              />
-            </div>{' '}
-            <div className='col-sm'>
-              Etkazib beruvchi tashkilot:
-              <input
-                type='text'
-                onChange={onChange}
-                className='form-control  form-control-sm'
-              />
-            </div>
-          </div>
-        </div>
-        <div className='m-4'></div>
+      <div className='container mt-3 rounded rounded-top'>
+        <Accordion>
+          <Accordion.Item eventKey='0' className='bg-light'>
+            <Accordion.Header>Filter</Accordion.Header>
+            <Accordion.Body>
+              <div className='border px-3 py-3'>
+                <div className='row'>
+                  <div className='col-sm'>
+                    ETP:
+                    <select
+                      className='form-control form-control-sm'
+                      value={etp}
+                      onChange={(e) => onChange(e, 'etpId')}
+                    >
+                      <option value='1'>UZEX</option>
+                      <option value='2'>XT-Xarid</option>
+                      <option value='3'>Coopiration</option>
+                      <option value='4'>Shaffof qurilish</option>
+                    </select>
+                  </div>
+                  <div className='col-sm'>
+                    Lot raqami
+                    <input
+                      type='text'
+                      onChange={(e) => onChange(e, 'lotId')}
+                      className='form-control  form-control-sm'
+                    />
+                  </div>{' '}
+                  <div className='col-sm'>
+                    Shartnoma raqami
+                    <input
+                      type='text'
+                      className='form-control  form-control-sm'
+                    />
+                  </div>
+                  <div className='col-sm'>
+                    Shartnoma sanasi
+                    <DatePicker
+                      dateFormat='dd.MM.yyyy'
+                      selected={startDate}
+                      onChange={(date) => setStartDate(date)}
+                      className='red-border'
+                    />
+                  </div>
+                  <div className='col-sm'>
+                    {/* Sanalar orasi:
+              <input type='checkbox' name='' id='' className='ms-2' />
+              <br /> */}
+                    &nbsp;
+                    <DatePicker
+                      selected={endDate}
+                      onChange={(date) => setEndDate(date)}
+                      selectsEnd
+                      startDate={startDate}
+                      endDate={endDate}
+                      minDate={startDate}
+                    />
+                  </div>
+                </div>
+                <div className='row mt-3'>
+                  <div className='col-sm'>
+                    Xaridor STIR raqami:
+                    <input
+                      type='text'
+                      className='form-control  form-control-sm'
+                    />
+                  </div>{' '}
+                  <div className='col-sm'>
+                    Xaridor tashkilot:
+                    <input
+                      type='text'
+                      className='form-control  form-control-sm'
+                    />
+                  </div>
+                  <div className='col-sm'>
+                    Etkazib beruvchi tashkilot STIR raqami:
+                    <input
+                      type='text'
+                      className='form-control  form-control-sm'
+                    />
+                  </div>{' '}
+                  <div className='col-sm'>
+                    Etkazib beruvchi tashkilot:
+                    <input
+                      type='text'
+                      className='form-control  form-control-sm'
+                    />
+                  </div>
+                </div>
+                <div className='row mt-3'>
+                  <div className='col-sm'>
+                    <input type='submit' value='yubor' />
+                  </div>
+                </div>
+              </div>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </div>
       <div className='w-100 min-vh-100 m-3'>
         <div className='shadow rounded-0'>
