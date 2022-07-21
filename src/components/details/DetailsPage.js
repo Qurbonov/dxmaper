@@ -31,7 +31,7 @@ const DetailsPage = () => {
   const TypeOfProcedure = (parameter) => {
     switch (parameter) {
       case 3:
-        return 'Akuksion (Amalga oshirilgan savdo)';
+        return 'Auksion (Amalga oshirilgan savdo)';
       case 6:
         return ' Elektron do`kon (Elektron katalog)';
       case 17:

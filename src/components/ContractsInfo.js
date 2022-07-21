@@ -71,7 +71,7 @@ const ContractsInfo = () => {
           case 6:
             return 'Elektron katalog';
           case 3:
-            return 'kelishuv amalga oshdi';
+            return 'Auksion (Amalga oshirilgan savdo)';
           case 17:
             return 'Tender';
           case 18:
@@ -263,6 +263,7 @@ const ContractsInfo = () => {
                     Xaridor STIR raqami:
                     <input
                       type='text'
+                      onChange={(e) => onChange(e, 'organInn')}
                       className='form-control  form-control-sm'
                     />
                   </div>{' '}
@@ -270,6 +271,7 @@ const ContractsInfo = () => {
                     Xaridor tashkilot:
                     <input
                       type='text'
+                      onChange={(e) => onChange(e, 'organName')}
                       className='form-control  form-control-sm'
                     />
                   </div>
@@ -277,6 +279,7 @@ const ContractsInfo = () => {
                     Etkazib beruvchi tashkilot STIR raqami:
                     <input
                       type='text'
+                      onChange={(e) => onChange(e, 'vendorInn')}
                       className='form-control  form-control-sm'
                     />
                   </div>{' '}
@@ -284,6 +287,7 @@ const ContractsInfo = () => {
                     Etkazib beruvchi tashkilot:
                     <input
                       type='text'
+                      onChange={(e) => onChange(e, 'vendorName')}
                       className='form-control  form-control-sm'
                     />
                   </div>
