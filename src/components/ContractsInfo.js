@@ -23,6 +23,7 @@ const ContractsInfo = () => {
         },
       })
       .then((response) => {
+        console.log(response.data);
         setRbtData(response.data);
       })
       .catch((err) => {
@@ -60,11 +61,11 @@ const ContractsInfo = () => {
         // 22.04.2021 йилдаги ЎРҚ-684-сон
         // 30-модда. Харид қилиш тартиб-таомилларини амалга ошириш турлари
         // Харид қилиш тартиб-таомилларини амалга ошириш турлари қуйидагилардан иборат:
-        // электрон дўкон;
-        // бошланғич нархни пасайтириш учун ўтказиладиган аукцион;
-        // энг яхши таклифларни танлаш;
-        // тендер;
-        // тўғридан-тўғри шартномалар бўйича амалга ошириладиган давлат харидлари;
+        // 1.электрон дўкон;
+        // 2.бошланғич нархни пасайтириш учун ўтказиладиган аукцион;
+        // 3.энг яхши таклифларни танлаш;
+        // 4.тендер;
+        // 5.тўғридан-тўғри шартномалар бўйича амалга ошириладиган давлат харидлари;
         // eslint-disable-next-line default-case
         switch (row.proc_id) {
           case 6:
@@ -76,11 +77,11 @@ const ContractsInfo = () => {
           case 18:
             return 'Konkurs';
           case 19:
-            return "To'g'ridan to'g'ri shartnomalar";
+            return "To'g'ridan to'g'ri shartnoma";
         }
       },
       sortable: true,
-      width: '17%',
+      width: '9%',
     },
     {
       name: 'Lot raqami1',
@@ -187,6 +188,7 @@ const ContractsInfo = () => {
       reorder: true,
     },
   ]);
+
   const onChange = (e, type) => {
     const mQuery = {};
     mQuery[type] = e.target.value;
@@ -197,6 +199,7 @@ const ContractsInfo = () => {
     // setEtp(e.target.value);
     // getResultats(e.target.value);
   };
+
   return (
     <>
       <div className='container mt-3 rounded rounded-top'>
@@ -231,10 +234,11 @@ const ContractsInfo = () => {
                     Shartnoma raqami
                     <input
                       type='text'
+                      onChange={(e) => onChange(e, 'contractNum')}
                       className='form-control  form-control-sm'
                     />
                   </div>
-                  <div className='col-sm'>
+                  {/* <div className='col-sm'>
                     Shartnoma sanasi
                     <DatePicker
                       dateFormat='dd.MM.yyyy'
@@ -244,10 +248,6 @@ const ContractsInfo = () => {
                     />
                   </div>
                   <div className='col-sm'>
-                    {/* Sanalar orasi:
-              <input type='checkbox' name='' id='' className='ms-2' />
-              <br /> */}
-                    &nbsp;
                     <DatePicker
                       selected={endDate}
                       onChange={(date) => setEndDate(date)}
@@ -256,7 +256,7 @@ const ContractsInfo = () => {
                       endDate={endDate}
                       minDate={startDate}
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <div className='row mt-3'>
                   <div className='col-sm'>
@@ -288,11 +288,11 @@ const ContractsInfo = () => {
                     />
                   </div>
                 </div>
-                <div className='row mt-3'>
+                {/* <div className='row mt-3'>
                   <div className='col-sm'>
                     <input type='submit' value='yubor' />
                   </div>
-                </div>
+                </div> */}
               </div>
             </Accordion.Body>
           </Accordion.Item>

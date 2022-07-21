@@ -114,7 +114,7 @@ const Trades = () => {
     },
     {
       name: 'Shartnoma sanasi',
-      selector: (row) => row.contract_dat,
+      selector: (row) => row.contract_date,
       sortable: true,
       reorder: true,
     },
