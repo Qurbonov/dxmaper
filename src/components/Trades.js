@@ -5,8 +5,9 @@ import DataTable from 'react-data-table-component';
 const Trades = () => {
   const [rabbitData, setRbtData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [btnName, setBtnName] = useState('Tender');
   const getAllTenders = async () => {
-    console.log('getAllTenders');
+    setBtnName('Tender');
     try {
       const response = await axios.get(
         'http://192.168.7.54:8585/v1/atm/getAllTenders'
@@ -17,7 +18,7 @@ const Trades = () => {
     }
   };
   const getAuctions = async () => {
-    console.log('getAuctions');
+    setBtnName('Auksion');
     try {
       const response = await axios.get(
         'http://192.168.7.54:8585/v1/atm/getAuctions'
@@ -28,7 +29,7 @@ const Trades = () => {
     }
   };
   const getAllKonkurs = async () => {
-    console.log('getAllKonkurs');
+    setBtnName('Konkurs');
     try {
       const response = await axios.get(
         'http://192.168.7.54:8585/v1/atm/getAllKonkurs'
@@ -39,7 +40,7 @@ const Trades = () => {
     }
   };
   const getEMagazins = async () => {
-    console.log('getEMagazins');
+    setBtnName('Elektron do`kon');
     setLoading(true);
     try {
       const response = await axios.get(
@@ -166,7 +167,23 @@ const Trades = () => {
 
   return (
     <div className='w-100 min-vh-100'>
-      <div className='pb-4 border-bottom  border-light'>
+      <div className='text-start ps-5 mt-3 pb-2 pe-5 border-bottom'>
+        <div role='group'>
+          <button type='button' className='btn px-3' onClick={getAllTenders}>
+            Tender
+          </button>
+          <button type='button' className='btn px-3' onClick={getAuctions}>
+            Auksion
+          </button>
+          <button type='button' className='btn px-3' onClick={getEMagazins}>
+            Elektron do'kon
+          </button>
+          <button type='button' className='btn px-3' onClick={getAllKonkurs}>
+            Konkurs
+          </button>
+        </div>
+      </div>
+      {/* <div className='pb-4 border-bottom  border-light'>
         <button className='btn btn-link m-2' onClick={getAllTenders}>
           Tender
         </button>
@@ -179,10 +196,18 @@ const Trades = () => {
         <button className='btn btn-link m-2' onClick={getAllKonkurs}>
           Konkurs
         </button>
-      </div>
+      </div> */}
       <div className='shadow rounded-0 m-2'>
+        <div
+          className='px-3 pt-2 rounded-top'
+          style={{
+            borderBottom: '1px solid #9FCAE5',
+            backgroundColor: '#9BD0E5',
+          }}
+        >
+          <h5> {btnName}</h5>
+        </div>
         <DataTable
-          title='Savdolar'
           columns={columns}
           data={rabbitData}
           pagination

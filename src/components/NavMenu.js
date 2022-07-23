@@ -6,7 +6,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 function NavMenu() {
   return (
     <>
-      <Navbar bg='dark' variant='dark'>
+      <Navbar
+        className='navbar navbar-light bg-light border-bottom '
+        style={{ backgroundColor: '#E1E3DE' }}
+      >
         <Container>
           <Navbar.Brand href='/'>DXMAP</Navbar.Brand>
           <Nav className='me-auto'>

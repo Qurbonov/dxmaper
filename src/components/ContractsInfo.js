@@ -4,7 +4,8 @@ import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import Accordion from 'react-bootstrap/Accordion';
-
+import { FcTodoList } from 'react-icons/fc';
+import { FcEmptyFilter } from 'react-icons/fc';
 const ContractsInfo = () => {
   const [rabbitData, setRbtData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,13 +18,12 @@ const ContractsInfo = () => {
     axios
       .get('http://192.168.7.54:8585/v1/atm/getResultats', {
         params: {
-          limit: 100,
+          limit: 1000,
           offset: 1,
           ...query,
         },
       })
       .then((response) => {
-        console.log(response.data);
         setRbtData(response.data);
       })
       .catch((err) => {
@@ -52,7 +52,7 @@ const ContractsInfo = () => {
       },
       sortable: true,
       reorder: true,
-      width: '6%',
+      width: '10%',
     },
     {
       name: 'Savdo turi',
@@ -81,10 +81,10 @@ const ContractsInfo = () => {
         }
       },
       sortable: true,
-      width: '9%',
+      width: '18%',
     },
     {
-      name: 'Lot raqami1',
+      name: 'Lot raqami',
       selector: (row) => (
         <div>
           <Link to={`/details/${row.id}`}>{row.lot_id}</Link>
@@ -92,38 +92,38 @@ const ContractsInfo = () => {
       ),
       sortable: true,
       reorder: true,
-      width: '7%',
+      width: '10%',
     },
-    {
-      name: 'Tashkilot nomi (xaridor)',
+    // {
+    //   name: 'Tashkilot nomi (xaridor)',
 
-      selector: (row) => row.organ_name,
-      sortable: true,
-      reorder: true,
-      wrap: true,
-      width: '8%',
-    },
-    {
-      name: 'Tashkilot STIRi (xaridor)',
-      selector: (row) => row.inn,
-      sortable: true,
-      reorder: true,
-    },
+    //   selector: (row) => row.organ_name,
+    //   sortable: true,
+    //   reorder: true,
+    //   wrap: true,
+    //   width: '8%',
+    // },
+    // {
+    //   name: 'Tashkilot STIRi (xaridor)',
+    //   selector: (row) => row.inn,
+    //   sortable: true,
+    //   reorder: true,
+    // },
 
-    {
-      name: 'Etkazib beruvchi tashkilot',
-      selector: (row) => row.vendor_name,
-      sortable: true,
-      reorder: true,
-      wrap: true,
-      width: '8%',
-    },
-    {
-      name: 'Etkazib beruvchi STIR raqami',
-      selector: (row) => row.vendor_inn,
-      sortable: true,
-      reorder: true,
-    },
+    // {
+    //   name: 'Etkazib beruvchi tashkilot',
+    //   selector: (row) => row.vendor_name,
+    //   sortable: true,
+    //   reorder: true,
+    //   wrap: true,
+    //   width: '8%',
+    // },
+    // {
+    //   name: 'Etkazib beruvchi STIR raqami',
+    //   selector: (row) => row.vendor_inn,
+    //   sortable: true,
+    //   reorder: true,
+    // },
     {
       name: 'Ma`lumot',
       selector: (row) => row.purpose,
@@ -132,61 +132,63 @@ const ContractsInfo = () => {
       wrap: true,
       width: '30%',
     },
-    {
-      name: 'Beneficiar',
-      selector: (row) => row.beneficiar,
-      sortable: true,
-      reorder: true,
-    },
+    // {
+    //   name: 'Beneficiar',
+    //   selector: (row) => row.beneficiar,
+    //   sortable: true,
+    //   reorder: true,
+    // },
 
     {
       name: 'Shartnoma raqami',
       selector: (row) => row.contract_num,
       sortable: true,
       reorder: true,
+      width: '12%',
     },
-    {
-      name: 'Shartnoma sanasi',
-      selector: (row) => row.contract_dat,
-      sortable: true,
-      reorder: true,
-    },
-    {
-      name: 'Shartnoma boshlanish sanasi',
-      selector: (row) => row.contract_beg,
-      sortable: true,
-      reorder: true,
-    },
-    {
-      name: 'Shartnoma tugatish sanasi',
-      selector: (row) => row.contract_end,
-      sortable: true,
-      reorder: true,
-    },
+    // {
+    //   name: 'Shartnoma sanasi',
+    //   selector: (row) => row.contract_dat,
+    //   sortable: true,
+    //   reorder: true,
+    // },
+    // {
+    //   name: 'Shartnoma boshlanish sanasi',
+    //   selector: (row) => row.contract_beg,
+    //   sortable: true,
+    //   reorder: true,
+    // },
+    // {
+    //   name: 'Shartnoma tugatish sanasi',
+    //   selector: (row) => row.contract_end,
+    //   sortable: true,
+    //   reorder: true,
+    // },
     {
       name: 'Umumiy summa',
       selector: (row) => row.summa,
       sortable: true,
       reorder: true,
+      width: '10%',
     },
-    {
-      name: 'Avans',
-      selector: (row) => row.p_avans,
-      sortable: true,
-      reorder: true,
-    },
-    {
-      name: 'Avans kuni',
-      selector: (row) => row.avans_day,
-      sortable: true,
-      reorder: true,
-    },
-    {
-      name: 'Tashkilot turi',
-      selector: (row) => (row.maloy === 'Y' ? 'Kichik bizness' : 'Tashkilot'),
-      sortable: true,
-      reorder: true,
-    },
+    // {
+    //   name: 'Avans',
+    //   selector: (row) => row.p_avans,
+    //   sortable: true,
+    //   reorder: true,
+    // },
+    // {
+    //   name: 'Avans kuni',
+    //   selector: (row) => row.avans_day,
+    //   sortable: true,
+    //   reorder: true,
+    // },
+    // {
+    //   name: 'Tashkilot turi',
+    //   selector: (row) => (row.maloy === 'Y' ? 'Kichik bizness' : 'Tashkilot'),
+    //   sortable: true,
+    //   reorder: true,
+    // },
   ]);
 
   const onChange = (e, type) => {
@@ -203,9 +205,17 @@ const ContractsInfo = () => {
   return (
     <>
       <div className='container mt-3 rounded rounded-top'>
-        <Accordion>
+        <Accordion className=' rounded'>
           <Accordion.Item eventKey='0' className='bg-light'>
-            <Accordion.Header>Filter</Accordion.Header>
+            <Accordion.Header>
+              <FcEmptyFilter />
+              <span
+                className='ms-2 text-secondary'
+                style={{ fontSize: '1.1em' }}
+              >
+                Filter
+              </span>
+            </Accordion.Header>
             <Accordion.Body>
               <div className='border px-3 py-3'>
                 <div className='row'>
@@ -216,12 +226,35 @@ const ContractsInfo = () => {
                       value={etp}
                       onChange={(e) => onChange(e, 'etpId')}
                     >
+                      <option value=''>Barchasi</option>
                       <option value='1'>UZEX</option>
                       <option value='2'>XT-Xarid</option>
                       <option value='3'>Coopiration</option>
                       <option value='4'>Shaffof qurilish</option>
                     </select>
                   </div>
+                  <div className='col-sm'>
+                    Savro turi
+                    {/* <input
+                      type='text'
+                      onChange={(e) => onChange(e, 'procId')}
+                      className='form-control  form-control-sm'
+                    /> */}
+                    <select
+                      className='form-control form-control-sm'
+                      value={etp}
+                      onChange={(e) => onChange(e, 'procId')}
+                    >
+                      <option value=''>Barchasi</option>
+                      <option value='6'>Elektron katalog</option>
+                      <option value='3'>
+                        Auksion (Amalga oshirilgan savdo)
+                      </option>
+                      <option value='17'>Tender</option>
+                      <option value='18'>Konkurs</option>
+                      <option value='19'>To'g'ridan to'g'ri shartnoma</option>
+                    </select>
+                  </div>{' '}
                   <div className='col-sm'>
                     Lot raqami
                     <input
@@ -276,7 +309,7 @@ const ContractsInfo = () => {
                     />
                   </div>
                   <div className='col-sm'>
-                    Etkazib beruvchi tashkilot STIR raqami:
+                    Etkazib beruvchi STIR raqami:
                     <input
                       type='text'
                       onChange={(e) => onChange(e, 'vendorInn')}
@@ -284,7 +317,7 @@ const ContractsInfo = () => {
                     />
                   </div>{' '}
                   <div className='col-sm'>
-                    Etkazib beruvchi tashkilot:
+                    Etkazib beruvchi tashkilot nomi:
                     <input
                       type='text'
                       onChange={(e) => onChange(e, 'vendorName')}
@@ -302,10 +335,24 @@ const ContractsInfo = () => {
           </Accordion.Item>
         </Accordion>
       </div>
-      <div className='w-100 min-vh-100 m-3'>
-        <div className='shadow rounded-0'>
+      <div className='m-4'>
+        <div className='shadow'>
+          {/* <div
+            className='p-2  rounded-top text-center'
+            style={{ backgroundColor: '#9FCAE5' }}
+          >
+            <h6 className='pt-2'> Shartnoma ma`lumotlari</h6>
+          </div> */}
+          <div
+            className='px-3 pt-2 rounded-top'
+            style={{
+              borderBottom: '1px solid #9FCAE5',
+              backgroundColor: '#9BD0E5',
+            }}
+          >
+            <h5> Shartnoma ma`lumotlari</h5>
+          </div>
           <DataTable
-            title='Sharnoma ma`lumotlari'
             columns={columns}
             data={rabbitData}
             pagination

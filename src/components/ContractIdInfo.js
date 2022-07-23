@@ -3,11 +3,7 @@ import { useState, useEffect } from 'react';
 import Navbar from '/components/navbar/navbar';
 
 export default function complateData() {
-    
-    let { id } = useParams<"id">();
-
-
-
+  let { id } = useParams<"id">();
   if (isLoading) return <p>Loading...</p>;
   // if (!data) return <p>No profile data</p>;
   return (
