@@ -16,9 +16,9 @@ const ContractsInfo = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get('http://192.168.7.54:8585/v1/atm/getResultats', {
+      .get('/v1/atm/getResultats', {
         params: {
-          limit: 1000,
+          limit: 500,
           offset: 1,
           ...query,
         },

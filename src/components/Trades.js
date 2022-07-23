@@ -10,7 +10,7 @@ const Trades = () => {
     setBtnName('Tender');
     try {
       const response = await axios.get(
-        'http://192.168.7.54:8585/v1/atm/getAllTenders'
+        '/v1/atm/getAllTenders'
       );
       setRbtData(response.data);
     } catch (error) {
@@ -21,7 +21,7 @@ const Trades = () => {
     setBtnName('Auksion');
     try {
       const response = await axios.get(
-        'http://192.168.7.54:8585/v1/atm/getAuctions'
+        '/v1/atm/getAuctions'
       );
       setRbtData(response.data);
     } catch (error) {
@@ -32,7 +32,7 @@ const Trades = () => {
     setBtnName('Konkurs');
     try {
       const response = await axios.get(
-        'http://192.168.7.54:8585/v1/atm/getAllKonkurs'
+        '/v1/atm/getAllKonkurs'
       );
       setRbtData(response.data);
     } catch (error) {
@@ -44,7 +44,7 @@ const Trades = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        'http://192.168.7.54:8585/v1/atm/getEMagazins'
+        '/v1/atm/getEMagazins'
       );
       setRbtData(response.data);
       setLoading(false);

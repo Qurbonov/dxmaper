@@ -17,7 +17,7 @@ export default function complateData() {
           </div>
           <div className='col-2 text-right'>
             {' '}
-            <a href='http://localhost:3085/contrats'>Ro`yhat</a>
+            <a href='/contrats'>Ro`yhat</a>
           </div>
         </div>
 
