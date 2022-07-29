@@ -1,18 +1,24 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { LinkContainer } from 'react-router-bootstrap';
-
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { LinkContainer } from "react-router-bootstrap";
+import logo from "./img/logo1.png";
 function NavMenu() {
   return (
     <>
       <Navbar
-        className='navbar navbar-light bg-light border-bottom '
-        style={{ backgroundColor: '#E1E3DE' }}
+        className='navbar py-4'
+        style={{ backgroundColor: "#FFF", borderBottom: "1px solid #EAECF1" }}
       >
+        {/* <Navbar
+        className='navbar navbar-light bg-light border-bottom '
+        style={{ backgroundColor: '#d1E3DE' }}
+      > */}
         <Container>
-          <Navbar.Brand href='/'>DXMAP</Navbar.Brand>
-          <Nav className='me-auto'>
+          <Navbar.Brand href='/'>
+            <img src={logo} width='200' height='50' />
+          </Navbar.Brand>
+          <Nav className='mr-auto'>
             <LinkContainer to='/home'>
               <Nav.Link href='#home'>Bosh sahifa</Nav.Link>
             </LinkContainer>

@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import DataTable from 'react-data-table-component';
-import { Link } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import Accordion from 'react-bootstrap/Accordion';
-import { FcTodoList } from 'react-icons/fc';
-import { FcEmptyFilter } from 'react-icons/fc';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import DataTable from "react-data-table-component";
+import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import Accordion from "react-bootstrap/Accordion";
+import { FcTodoList } from "react-icons/fc";
+import { FcEmptyFilter } from "react-icons/fc";
 const ContractsInfo = () => {
   const [rabbitData, setRbtData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState({});
   const [etp, setEtp] = useState();
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date('2014/02/10'));
+  const [endDate, setEndDate] = useState(new Date("2014/02/10"));
+
   useEffect(() => {
     setLoading(true);
+    console.log(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS);
+
     axios
-      .get('/v1/atm/getResultats', {
+      .get(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS, {
         params: {
           limit: 500,
           offset: 1,
@@ -36,26 +39,32 @@ const ContractsInfo = () => {
 
   const columns = React.useMemo(() => [
     {
-      name: 'ETP',
+      name: "ETP",
       selector: (row) => {
         // eslint-disable-next-line default-case
         switch (row.etp_id) {
           case 1:
-            return 'UZEX';
+            return <div className='rounded px-3 py-1 bg-light'>UZEX</div>;
           case 2:
-            return 'XT-Xarid';
+            return <div className=' rounded px-3 py-1 bg-light '>XT-Xarid</div>;
           case 3:
-            return 'Coopiration';
+            return (
+              <div className=' rounded px-3 py-1 bg-light '>Coopiration</div>
+            );
           case 4:
-            return 'Shaffof qurilish';
+            return (
+              <div className=' rounded px-3 py-1 bg-light '>
+                Shaffof qurilish
+              </div>
+            );
         }
       },
       sortable: true,
       reorder: true,
-      width: '10%',
+      width: "12%",
     },
     {
-      name: 'Savdo turi',
+      name: "Savdo turi",
       selector: (row) => {
         // eslint-disable-next-line default-case
         // 22.04.2021 йилдаги ЎРҚ-684-сон
@@ -69,30 +78,33 @@ const ContractsInfo = () => {
         // eslint-disable-next-line default-case
         switch (row.proc_id) {
           case 6:
-            return 'Elektron katalog';
+            return "Elektron katalog";
           case 3:
-            return 'Auksion (Amalga oshirilgan savdo)';
+            return "Auksion (Amalga oshirilgan savdo)";
           case 17:
-            return 'Tender';
+            return "Tender";
           case 18:
-            return 'Konkurs';
+            return "Konkurs";
           case 19:
             return "To'g'ridan to'g'ri shartnoma";
         }
       },
       sortable: true,
-      width: '18%',
+      width: "18%",
     },
     {
-      name: 'Lot raqami',
-      selector: (row) => (
-        <div>
-          <Link to={`/details/${row.id}`}>{row.lot_id}</Link>
-        </div>
-      ),
+      name: "Lot raqami",
+      selector: (row) => <Link to={`/details/${row.id}`}>{row.lot_id}</Link>,
       sortable: true,
       reorder: true,
-      width: '10%',
+      width: "10%",
+    },
+    {
+      name: "Hudud (etkazib beruvchi)",
+      selector: (row) => row.v_terr,
+      sortable: true,
+      reorder: true,
+      width: "10%",
     },
     // {
     //   name: 'Tashkilot nomi (xaridor)',
@@ -125,12 +137,12 @@ const ContractsInfo = () => {
     //   reorder: true,
     // },
     {
-      name: 'Ma`lumot',
+      name: "Ma`lumot",
       selector: (row) => row.purpose,
       sortable: true,
       reorder: true,
       wrap: true,
-      width: '30%',
+      width: "30%",
     },
     // {
     //   name: 'Beneficiar',
@@ -140,11 +152,11 @@ const ContractsInfo = () => {
     // },
 
     {
-      name: 'Shartnoma raqami',
+      name: "Shartnoma raqami",
       selector: (row) => row.contract_num,
       sortable: true,
       reorder: true,
-      width: '12%',
+      width: "12%",
     },
     // {
     //   name: 'Shartnoma sanasi',
@@ -165,11 +177,11 @@ const ContractsInfo = () => {
     //   reorder: true,
     // },
     {
-      name: 'Umumiy summa',
+      name: "Umumiy summa",
       selector: (row) => row.summa,
       sortable: true,
       reorder: true,
-      width: '10%',
+      width: "10%",
     },
     // {
     //   name: 'Avans',
@@ -201,7 +213,12 @@ const ContractsInfo = () => {
     // setEtp(e.target.value);
     // getResultats(e.target.value);
   };
-
+  const paginationOptions = {
+    rowsPerPageText: "Sahifada:",
+    rangeSeparatorText: "->",
+    selectAllRowsItem: false,
+    // selectAllRowsItemText: "Barchasi",
+  };
   return (
     <>
       <div className='container mt-3 rounded rounded-top'>
@@ -211,7 +228,7 @@ const ContractsInfo = () => {
               <FcEmptyFilter />
               <span
                 className='ms-2 text-secondary'
-                style={{ fontSize: '1.1em' }}
+                style={{ fontSize: "1.1em" }}
               >
                 Filter
               </span>
@@ -224,7 +241,7 @@ const ContractsInfo = () => {
                     <select
                       className='form-control form-control-sm'
                       value={etp}
-                      onChange={(e) => onChange(e, 'etpId')}
+                      onChange={(e) => onChange(e, "etpId")}
                     >
                       <option value=''>Barchasi</option>
                       <option value='1'>UZEX</option>
@@ -243,7 +260,7 @@ const ContractsInfo = () => {
                     <select
                       className='form-control form-control-sm'
                       value={etp}
-                      onChange={(e) => onChange(e, 'procId')}
+                      onChange={(e) => onChange(e, "procId")}
                     >
                       <option value=''>Barchasi</option>
                       <option value='6'>Elektron katalog</option>
@@ -254,20 +271,20 @@ const ContractsInfo = () => {
                       <option value='18'>Konkurs</option>
                       <option value='19'>To'g'ridan to'g'ri shartnoma</option>
                     </select>
-                  </div>{' '}
+                  </div>{" "}
                   <div className='col-sm'>
                     Lot raqami
                     <input
                       type='text'
-                      onChange={(e) => onChange(e, 'lotId')}
+                      onChange={(e) => onChange(e, "lotId")}
                       className='form-control  form-control-sm'
                     />
-                  </div>{' '}
+                  </div>{" "}
                   <div className='col-sm'>
                     Shartnoma raqami
                     <input
                       type='text'
-                      onChange={(e) => onChange(e, 'contractNum')}
+                      onChange={(e) => onChange(e, "contractNum")}
                       className='form-control  form-control-sm'
                     />
                   </div>
@@ -296,15 +313,15 @@ const ContractsInfo = () => {
                     Xaridor STIR raqami:
                     <input
                       type='text'
-                      onChange={(e) => onChange(e, 'organInn')}
+                      onChange={(e) => onChange(e, "organInn")}
                       className='form-control  form-control-sm'
                     />
-                  </div>{' '}
+                  </div>{" "}
                   <div className='col-sm'>
                     Xaridor tashkilot:
                     <input
                       type='text'
-                      onChange={(e) => onChange(e, 'organName')}
+                      onChange={(e) => onChange(e, "organName")}
                       className='form-control  form-control-sm'
                     />
                   </div>
@@ -312,15 +329,15 @@ const ContractsInfo = () => {
                     Etkazib beruvchi STIR raqami:
                     <input
                       type='text'
-                      onChange={(e) => onChange(e, 'vendorInn')}
+                      onChange={(e) => onChange(e, "vendorInn")}
                       className='form-control  form-control-sm'
                     />
-                  </div>{' '}
+                  </div>{" "}
                   <div className='col-sm'>
                     Etkazib beruvchi tashkilot nomi:
                     <input
                       type='text'
-                      onChange={(e) => onChange(e, 'vendorName')}
+                      onChange={(e) => onChange(e, "vendorName")}
                       className='form-control  form-control-sm'
                     />
                   </div>
@@ -336,7 +353,7 @@ const ContractsInfo = () => {
         </Accordion>
       </div>
       <div className='m-4'>
-        <div className='shadow'>
+        <div className=''>
           {/* <div
             className='p-2  rounded-top text-center'
             style={{ backgroundColor: '#9FCAE5' }}
@@ -346,8 +363,8 @@ const ContractsInfo = () => {
           <div
             className='px-3 pt-2 rounded-top'
             style={{
-              borderBottom: '1px solid #9FCAE5',
-              backgroundColor: '#9BD0E5',
+              borderBottom: "1px solid #9FCAE5",
+              backgroundColor: "#fff",
             }}
           >
             <h5> Shartnoma ma`lumotlari</h5>
@@ -356,7 +373,8 @@ const ContractsInfo = () => {
             columns={columns}
             data={rabbitData}
             pagination
-            dense
+            paginationComponentOptions={paginationOptions}
+            // dense
             responsive
             highlightOnHover
             striped

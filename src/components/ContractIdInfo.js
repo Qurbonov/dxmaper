@@ -9,6 +9,7 @@ export default function complateData() {
   return (
     <>
       <Navbar />
+  
       <div className='container mt-4'>
         <div className='row '>
           <div className='col-10'>

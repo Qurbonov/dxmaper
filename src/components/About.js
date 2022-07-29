@@ -1,9 +1,9 @@
 function About() {
   return (
     <>
-      <div className='text-justify mt-4 container'>
+      <div className='mt-1 container'>
         <h2>Davlat xaridlari bo‘yicha markaziy axborot portali</h2>
-        <p>
+        <p className='text-justify'>
           Portal O‘zbekiston Respublikasining “Davlat xaridlari to‘g‘risida”gi
           Qonuni va O‘zbekiston Respublikasi Vazirlar Mahkamasining “Davlat
           xaridlarini amalga oshirishda xarid qilish tartib-taomillarini tashkil
