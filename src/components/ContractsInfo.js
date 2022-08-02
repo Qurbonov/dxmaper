@@ -17,18 +17,17 @@ const ContractsInfo = () => {
   useEffect(() => {
     setLoading(true);
     console.log(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS);
-
     axios
-      .get(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS, {
-        params: {
-          limit: 10,
-          offset: 1,
-          ...query,
-        },
-      })
-      .then((response) => {
-        setRbtData(response.data);
-      })
+        .get(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS, {
+          params: {
+            limit: 100,
+            offset: 1,
+            ...query,
+          },
+        })
+        .then((response) => {
+          setRbtData(response.data);
+        })
       .catch((err) => {
         console.log(err);
       })

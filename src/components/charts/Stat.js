@@ -32,13 +32,16 @@ function Stat() {
             />
           </div>
         </div>
-        <div className='p-4 border '>
-          <table className='table table-hover w-100'>
+        <div className='p-4 border shadow rounded '>
+          <table className='table table-hover w-100 '>
             <thead className='thead-dark'>
               <tr className='bg-light py-2'>
-                <th colSpan={4}>Arizalar</th>
-                <th className='text-end'>
-                  {stats.responseClaim.total + stats.responseRequest.total} ta
+                <th colSpan={5}>
+                  Arizalar soni:
+                  <span className='text-primary mx-1'>
+                    {stats.responseClaim.total + stats.responseRequest.total}
+                  </span>
+                  ta
                 </th>
               </tr>
               <tr>
@@ -95,15 +98,35 @@ function Stat() {
                   {stats.responseClaim.competition.cancelled}
                 </td>
               </tr>
+              <tr className='bg-light py-2'>
+                <th>JAMI</th>
+                <th className='text-center'>
+                  {stats.responseClaim.tender.total}
+                </th>
+                <th className='text-center'>
+                  {stats.responseRequest.auction.total}
+                </th>
+                <th className='text-center'>
+                  {stats.responseRequest.electronicShop.total}
+                </th>
+                <th className='text-center'>
+                  {stats.responseClaim.competition.total}
+                </th>
+              </tr>
             </tbody>
           </table>
         </div>
-        <div className='p-4 border'>
+        <div className='p-4 border mt-4 shadow rounded'>
           <table className='table table-hover w-100  '>
             <thead className='thead-dark'>
               <tr className='bg-light py-2'>
-                <th colSpan={5}>Shartnomalar</th>
-                <th className='text-end'>{stats.contractResult.total} ta</th>
+                <th colSpan={6}>
+                  Shartnomalar soni:
+                  <span className='text-primary mx-1'>
+                    {stats.contractResult.total}
+                  </span>
+                  ta
+                </th>
               </tr>
               <tr>
                 <th>Holati</th>
@@ -168,6 +191,24 @@ function Stat() {
                 <td className='text-center'>
                   {stats.contractResult.directContracts.cancelled}
                 </td>
+              </tr>
+              <tr className='bg-light py-2'>
+                <th>JAMI</th>
+                <th className='text-center'>
+                  {stats.contractResult.tender.total}
+                </th>
+                <th className='text-center'>
+                  {stats.contractResult.auction.total}
+                </th>
+                <th className='text-center'>
+                  {stats.contractResult.electronicShop.total}
+                </th>
+                <th className='text-center'>
+                  {stats.contractResult.competition.total}
+                </th>
+                <th className='text-center'>
+                  {stats.contractResult.directContracts.total}
+                </th>
               </tr>
             </tbody>
           </table>
