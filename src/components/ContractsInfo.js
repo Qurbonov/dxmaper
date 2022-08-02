@@ -21,7 +21,7 @@ const ContractsInfo = () => {
     axios
       .get(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS, {
         params: {
-          limit: 500,
+          limit: 10,
           offset: 1,
           ...query,
         },
@@ -46,7 +46,7 @@ const ContractsInfo = () => {
           case 1:
             return <div className='rounded px-3 py-1 bg-light'>UZEX</div>;
           case 2:
-            return <div className=' rounded px-3 py-1 bg-light '>XT-Xarid</div>;
+            return <div className=' rounded px-3 py-1 bg-light'>XT-Xarid</div>;
           case 3:
             return (
               <div className=' rounded px-3 py-1 bg-light '>Coopiration</div>
@@ -70,6 +70,7 @@ const ContractsInfo = () => {
         // 22.04.2021 йилдаги ЎРҚ-684-сон
         // 30-модда. Харид қилиш тартиб-таомилларини амалга ошириш турлари
         // Харид қилиш тартиб-таомилларини амалга ошириш турлари қуйидагилардан иборат:
+
         // 1.электрон дўкон;
         // 2.бошланғич нархни пасайтириш учун ўтказиладиган аукцион;
         // 3.энг яхши таклифларни танлаш;
@@ -179,6 +180,13 @@ const ContractsInfo = () => {
     {
       name: "Umumiy summa",
       selector: (row) => row.summa,
+      sortable: true,
+      reorder: true,
+      width: "10%",
+    },
+    {
+      name: "Holati",
+      selector: (row) => row.state,
       sortable: true,
       reorder: true,
       width: "10%",

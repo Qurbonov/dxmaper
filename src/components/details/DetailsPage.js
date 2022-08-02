@@ -111,7 +111,9 @@ const DetailsPage = () => {
         </div>
 
         <ul className='list-group mb-5'>
-          <li className='list-group-item bg-light' style={{ color: "#8198B2", letterSpacing:1}}
+          <li
+            className='list-group-item bg-light'
+            style={{ color: "#8198B2", letterSpacing: 1 }}
           >
             <h6 className='mt-1'>
               Umumiy ma'lumot
@@ -134,7 +136,10 @@ const DetailsPage = () => {
           <li className='list-group-item'>
             <b>Reestr ID:</b> {data?.resultat?.PAYLOAD.REESTR_ID}
           </li>
-          <li className='list-group-item bg-light' style={{ color: "#8198B2", letterSpacing:1 }}>
+          <li
+            className='list-group-item bg-light'
+            style={{ color: "#8198B2", letterSpacing: 1 }}
+          >
             <h6 className='mt-1'>
               {/* <FaFileContract
                 size={35}
@@ -166,7 +171,10 @@ const DetailsPage = () => {
             <b>Shartnoma tugash vaqti:</b>{" "}
             {data?.resultat?.PAYLOAD.CONTRACTENDS}
           </li>
-          <li className='list-group-item bg-light' style={{ color: "#8198B2", letterSpacing:1 }}>
+          <li
+            className='list-group-item bg-light'
+            style={{ color: "#8198B2", letterSpacing: 1 }}
+          >
             <h6 className='mt-1'>
               {/* <FcManager
                 size={35}
@@ -184,7 +192,10 @@ const DetailsPage = () => {
           <li className='list-group-item '>
             <b>Xaridor g'azna hisob raqami:</b> {data?.resultat?.PAYLOAD.LS}
           </li>
-          <li className='list-group-item bg-light' style={{ color: "#8198B2", letterSpacing:1 }}>
+          <li
+            className='list-group-item bg-light'
+            style={{ color: "#8198B2", letterSpacing: 1 }}
+          >
             <h6 className='mt-1'>
               {/* <FcBusinessman
                 size={35}
@@ -197,10 +208,17 @@ const DetailsPage = () => {
             <b>Etkazib beruvchi:</b> {data?.resultat?.PAYLOAD.VENDORNAME}
           </li>
           <li className='list-group-item '>
+            <b>Etkazib beruvchi hududi:</b>{" "}
+            {data?.resultat?.PAYLOAD.vendor_terr_name}
+          </li>
+          <li className='list-group-item '>
             <b>Etkazib beruvchi STIR raqami:</b>{" "}
             {data?.resultat?.PAYLOAD.VENDORINN}
           </li>
-          <li className='list-group-item bg-light' style={{ color: "#8198B2", letterSpacing:1 }}>
+          <li
+            className='list-group-item bg-light'
+            style={{ color: "#8198B2", letterSpacing: 1 }}
+          >
             <h6 className='mt-1'>
               {/* <FcMultipleInputs
                 size={35}

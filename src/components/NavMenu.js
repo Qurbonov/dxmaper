@@ -8,7 +8,7 @@ function NavMenu() {
     <>
       <Navbar
         className='navbar py-4'
-        style={{ backgroundColor: "#FFF", borderBottom: "1px solid #EAECF1" }}
+        style={{ borderBottom: "1px solid #EAECF1" }}
       >
         {/* <Navbar
         className='navbar navbar-light bg-light border-bottom '
