@@ -13,7 +13,7 @@ class LineWithData extends Component {
         },
         {
           name: 'Low - 2013',
-          data: [12, 11, 14, 18, 17, 13, 13],
+          data: [12, 11, 14, 12, 17, 13, 13],
         },
       ],
       options: {

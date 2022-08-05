@@ -1,7 +1,7 @@
 function About() {
   return (
     <>
-      <div className='mt-1 container'>
+      <div className='mt-1 '>
         <h2>Davlat xaridlari bo‘yicha markaziy axborot portali</h2>
         <p className='text-justify'>
           Portal O‘zbekiston Respublikasining “Davlat xaridlari to‘g‘risida”gi

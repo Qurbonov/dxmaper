@@ -10,7 +10,7 @@ export default function complateData() {
     <>
       <Navbar />
   
-      <div className='container mt-4'>
+      <div className='mt-4'>
         <div className='row '>
           <div className='col-10'>
             {' '}

@@ -10,6 +10,32 @@ class Line extends Component {
         stroke: {
           curve: 'smooth',
         },
+        fill: {
+          type: "gradient",
+          gradient: {
+            type: 'vertical',
+            shadeIntensity: 1,
+            opacityFrom: 1,
+            opacityTo: 1,
+            colorStops: [
+              {
+                offset: 40,
+                color: "#0ACEF9",
+                opacity: 1
+              },
+              {
+                offset: 50,
+                color: "#FFE663",
+                opacity: 1
+              },
+              {
+                offset: 60,
+                color: "#F9440A",
+                opacity: 1
+              }
+            ]
+          }
+        },
         markers: {
           size: 0,
         },

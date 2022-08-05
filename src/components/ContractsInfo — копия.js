@@ -8,37 +8,26 @@ import { FcTodoList } from "react-icons/fc";
 import { FcEmptyFilter } from "react-icons/fc";
 const ContractsInfo = () => {
   const [rabbitData, setRbtData] = useState([]);
-  const [rabbitTotal, setRbtTotal] = useState();
   const [loading, setLoading] = useState(false);
-  const dLen = rabbitData.length;
-  // console.log(dLen);
   const [query, setQuery] = useState({});
   const [etp, setEtp] = useState();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date("2014/02/10"));
   const [page, setPage] = useState(1);
   const countPerPage = 10;
-  const getResultsData = () => {
+  useEffect(() => {
     setLoading(true);
-    // console.log(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS);
+    console.log(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS);
     axios
-      .get(
-        process.env.REACT_APP_LOCAL_URL_GET_RESULTATS +
-          `?offset=${page}&limit=${countPerPage}`,
-        {
-          params: {
-            // page: page,
-            // per_page: countPerPage,
-            // delay: 1,
-            // limit: 10,
-            // offset: 1,
-            ...query,
-          },
-        }
-      )
+      .get(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS+`?page=${page}&per_page=${countPerPage}&delay=1`, {
+        params: {
+          limit: 100,
+          offset: 1,
+          ...query,
+        },
+      })
       .then((response) => {
-        setRbtData(response.data.body);
-        setRbtTotal(response.data.total);
+        setRbtData(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -46,10 +35,7 @@ const ContractsInfo = () => {
       .finally(() => {
         setLoading(false);
       });
-  };
-  useEffect(() => {
-    getResultsData();
-  }, [query, page]);
+  }, [query]);
 
   const columns = React.useMemo(() => [
     {
@@ -60,14 +46,16 @@ const ContractsInfo = () => {
           case 1:
             return <div className='rounded px-3 py-1 bg-light'>UZEX</div>;
           case 2:
-            return <div className='rounded px-3 py-1 bg-light'>XT-Xarid</div>;
+            return <div className=' rounded px-3 py-1 bg-light'>XT-Xarid</div>;
           case 3:
             return (
-              <div className='rounded px-3 py-1 bg-light'>Coopiration</div>
+              <div className=' rounded px-3 py-1 bg-light '>Coopiration</div>
             );
           case 4:
             return (
-              <div className='rounded px-3 py-1 bg-light'>Shaffof qurilish</div>
+              <div className=' rounded px-3 py-1 bg-light '>
+                Shaffof qurilish
+              </div>
             );
         }
       },
@@ -114,7 +102,7 @@ const ContractsInfo = () => {
     },
     {
       name: "Hudud (etkazib beruvchi)",
-      selector: (row) => (row.v_terr == null ? "-" : row.v_terr),
+      selector: (row) => row.v_terr,
       sortable: true,
       reorder: true,
       width: "10%",
@@ -241,7 +229,7 @@ const ContractsInfo = () => {
   };
   return (
     <>
-      <div className=' mt-3 rounded rounded-top'>
+      <div className='container mt-3 rounded rounded-top'>
         <Accordion className=' rounded'>
           <Accordion.Item eventKey='0' className='bg-light'>
             <Accordion.Header>
@@ -393,18 +381,9 @@ const ContractsInfo = () => {
             columns={columns}
             data={rabbitData}
             pagination
-            // paginationComponentOptions={paginationOptions}
-            paginationServer
-            paginationTotalRows={12152}
-            paginationPerPage={countPerPage}
-            paginationComponentOptions={{
-              noRowsPerPage: true,
-            }}
-            onChangePage={(page) => setPage(page)}
+            paginationComponentOptions={paginationOptions}
             // dense
             responsive
-            paginationIconFirstPage={false}
-            paginationIconLastPage={false}
             highlightOnHover
             striped
             progressPending={loading}

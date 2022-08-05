@@ -7,6 +7,15 @@ class Bar extends Component {
 
     this.state = {
       options: {
+        colors: [
+          function({ value, seriesIndex, w }) {
+            if (value < 50) {
+              return '#FF0000'
+            } else {
+              return '#02DFDE'
+            }
+          }
+        ],
         chart: {
           id: 'apexchart-example',
         },
@@ -14,10 +23,11 @@ class Bar extends Component {
           categories: [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008],
         },
       },
+      
       series: [
         {
           name: 'series-1',
-          data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+          data: [32, 40, 35, 50, 49, 64, 70, 91, 125],
         },
       ],
     };

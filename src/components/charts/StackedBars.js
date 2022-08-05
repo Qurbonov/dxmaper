@@ -1,67 +1,129 @@
-import React, { Component } from "react";
-import Chart from "react-apexcharts";
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import axios from "axios";
+class ApexChart extends React.Component {
+  // state = {
+  //   chartData: [],
+  // };
+  componentDidMount() {
+    axios
+      .get(`http://localhost:8585/v1/atm/getChartInfos?year=2022`)
+      .then((res) => {
+        const cData = res.data;
+        // this.setState({ series });
+        this.setState({
+          series: [
+            {
+              name: "UZEX",
+              data: [
+                cData.tender_info[0].count,
+                cData.konkurs_info[0].count,
+                cData.digital_catalogue_info[0].count,
+                cData.direct_contracts_info[0].count,
+                cData.transaction_completed_info[0].count,
+              ],
+            },
+            {
+              name: "XT-XARID",
+              data: [
+                cData.tender_info[1].count,
+                cData.konkurs_info[1].count,
+                cData.digital_catalogue_info[1].count,
+                cData.direct_contracts_info[1].count,
+                cData.transaction_completed_info[1].count,
+              ],
+            },
+            {
+              name: "Cooperation",
+              data: [
+                cData.tender_info[2].count,
+                cData.konkurs_info[2].count,
+                cData.digital_catalogue_info[2].count,
+                cData.direct_contracts_info[2].count,
+                cData.transaction_completed_info[2].count,
+              ],
+            },
+            {
+              name: "Shaffof qurilish",
+              data: [
+                cData.tender_info[3].count,
+                cData.konkurs_info[3].count,
+                cData.digital_catalogue_info[3].count,
+                cData.direct_contracts_info[3].count,
+                cData.transaction_completed_info[3].count,
+              ],
+            },
+          ],
+        });
+        // console.log("->", series);
+      });
+  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      series: [],
+      options: {
+        chart: {
+          type: "bar",
+          height: 350,
+          stacked: true,
+          // stackType: "100%",
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          },
+        },
+        stroke: {
+          width: 0,
+          colors: ["#f3e52d"],
+        },
+        title: {
+          text: "ETPlar ishtiroki",
+        },
 
-function
-var options = {
-  series: [
-    {
-      name: "Marine Sprite",
-      data: [44, 55, 41, 37, 22, 43, 21],
-    },
-    {
-      name: "Striking Calf",
-      data: [53, 32, 33, 52, 13, 43, 32],
-    },
-    {
-      name: "Tank Picture",
-      data: [12, 17, 11, 9, 15, 11, 20],
-    },
-    {
-      name: "Bucket Slope",
-      data: [9, 7, 5, 8, 6, 9, 4],
-    },
-    {
-      name: "Reborn Kid",
-      data: [25, 12, 19, 32, 25, 24, 10],
-    },
-  ],
-  chart: {
-    type: "bar",
-    height: 350,
-    stacked: true,
-    stackType: "100%",
-  },
-  plotOptions: {
-    bar: {
-      horizontal: true,
-    },
-  },
-  stroke: {
-    width: 1,
-    colors: ["#fff"],
-  },
-  title: {
-    text: "100% Stacked Bar",
-  },
-  xaxis: {
-    categories: [2008, 2009, 2010, 2011, 2012, 2013, 2014],
-  },
-  tooltip: {
-    y: {
-      formatter: function (val) {
-        return val + "K";
+        xaxis: {
+          categories: [
+            "Tender",
+            "Konkurs",
+            "Elektron katalog",
+            "To'g'ridan to'g'ri shartnoma",
+            "Auksion (Amalga oshirilgan savdo)",
+          ],
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "ta";
+            },
+          },
+        },
+        fill: {
+          opacity: 1,
+        },
+        legend: {
+          position: "top",
+          horizontalAlign: "right",
+          // offsetX: 135,
+        },
       },
-    },
-  },
-  fill: {
-    opacity: 1,
-  },
-  legend: {
-    position: "top",
-    horizontalAlign: "left",
-    offsetX: 40,
-  },
-};
+    };
+  }
 
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
+  render() {
+    return (
+      <div id='chart'>
+        <ReactApexChart
+          options={this.state.options}
+          series={this.state.series}
+          type='bar'
+          height={350}
+        />
+      </div>
+    );
+  }
+}
+export default ApexChart;
+
+// const domContainer = document.querySelector("#app");
+// ReactDOM.render(React.createElement(ApexChart), domContainer);

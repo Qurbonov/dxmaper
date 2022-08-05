@@ -12,7 +12,7 @@ const Trades = () => {
       const response = await axios.get(
         process.env.REACT_APP_LOCAL_URL_GET_TENDERS
       );
-      setRbtData(response.data);
+      setRbtData(response.data.body);
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +23,7 @@ const Trades = () => {
       const response = await axios.get(
         process.env.REACT_APP_LOCAL_URL_GET_AUCTIONS
       );
-      setRbtData(response.data);
+      setRbtData(response.data.body);
     } catch (error) {
       console.log(error);
     }
@@ -34,7 +34,7 @@ const Trades = () => {
       const response = await axios.get(
         process.env.REACT_APP_LOCAL_URL_GET_KONKURS
       );
-      setRbtData(response.data);
+      setRbtData(response.data.body);
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +46,7 @@ const Trades = () => {
       const response = await axios.get(
         process.env.REACT_APP_LOCAL_URL_GET_EMAGAZINE
       );
-      setRbtData(response.data);
+      setRbtData(response.data.body);
       setLoading(false);
     } catch (error) {
       console.log(error);

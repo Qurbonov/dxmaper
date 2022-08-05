@@ -7,7 +7,7 @@ function Stat() {
   useEffect(() => {
     axios.get(process.env.REACT_APP_LOCAL_URL_GET_STAT).then((response) => {
       setStats(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     });
   }, []);
   if (!stats) return null;
@@ -18,7 +18,7 @@ function Stat() {
       code: {stats.contract_info.proc[0].state[0].code}
       <br />
       count: {stats.contract_info.proc[0].state[0].count} */}
-      <div className='container'>
+      <div className=''>
         <div className='d-flex justify-content-between my-4 border-bottom'>
           <div>
             <h2>Statistika</h2>
@@ -32,7 +32,7 @@ function Stat() {
             />
           </div>
         </div>
-        <div className='p-4 border shadow rounded '>
+        <div className='p-4 border  rounded '>
           <table className='table table-hover w-100 '>
             <thead className='thead-dark'>
               <tr className='bg-light py-2'>
@@ -116,7 +116,7 @@ function Stat() {
             </tbody>
           </table>
         </div>
-        <div className='p-4 border mt-4 shadow rounded'>
+        <div className='p-4 border mt-4  rounded'>
           <table className='table table-hover w-100  '>
             <thead className='thead-dark'>
               <tr className='bg-light py-2'>
