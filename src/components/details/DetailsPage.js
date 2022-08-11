@@ -18,6 +18,7 @@ const DetailsPage = () => {
       .then((res) => res.json())
       .then((data) => {
         setLotInfo(data);
+        console.log(data);
         if (data.resultat.PAYLOAD.SPECIFICATIONS[0].NOTE[0] == undefined) {
           data.resultat.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
         } else {
@@ -70,6 +71,13 @@ const DetailsPage = () => {
         return "Shaffof qurilish";
       default:
         return "neutral";
+    }
+  };
+
+  const docs = (l) => {
+    for (let index = 0; index < 4; index++) {
+      // const element = l[index];
+      console.log(index);
     }
   };
 
@@ -150,6 +158,12 @@ const DetailsPage = () => {
           </li>
           <li className='list-group-item '>
             <b>Shartnoma raqami:</b> # {data?.resultat?.PAYLOAD.CONTRACTNUM}
+          </li>
+          <li className='list-group-item '>
+            <b>Summasi:</b>{" "}
+            <span style={{ letterSpacing: 1 }}>
+              {data?.resultat?.PAYLOAD.SUMMA}
+            </span>
           </li>
           {/* <li className='list-group-item '>
             <b>Sharnoma imzolagan sanasi:</b>{' '}
@@ -234,13 +248,10 @@ const DetailsPage = () => {
           <li className='list-group-item '>
             <b>Xizmat (mahsulot) qo`shimcha ma`lumot:</b>{" "}
             {/*  note tekshirish ---------------------------------------------------------------------------------------------------------------------------*/}
-            {data?.resultat?.PAYLOAD.SPECIFICATIONS[0].NOTE[0].TECHSPEC}
+            {data?.resultat?.PAYLOAD.SPECIFICATIONS[0].NOTE[0]?.TECHSPEC}
           </li>
           <li className='list-group-item '>
             <b>Izoh:</b> {data?.resultat?.PAYLOAD.PURPOSE}
-          </li>
-          <li className='list-group-item '>
-            <b>Summasi:</b> {data?.resultat?.PAYLOAD.SUMMA}
           </li>
           <li className='list-group-item '>
             <b>Oylar soni:</b>{" "}
@@ -253,7 +264,39 @@ const DetailsPage = () => {
           <li className='list-group-item '>
             <b>Xizmat (mahsulot) soni:</b>{" "}
             {data?.resultat?.PAYLOAD.SPECIFICATIONS[0].SPLIT[0].TOVARAMOUNT}
-          </li>{" "}
+          </li>
+          {/* {console.log(data.resultat.PAYLOAD.LINKS.length)} */}
+          {/* {docs()} */}
+          <li className='list-group-item '>
+            <b>
+              {data?.resultat?.PAYLOAD.LINKS.length > 0 ? (
+                <b className='text-dark'>Lot xujjatlari:</b>
+              ) : (
+                <b className='text-danger'>Lot xujjatlari mavjud emas</b>
+              )}
+            </b>
+          </li>
+          <li className='list-group-item'>
+            {data?.resultat?.PAYLOAD.LINKS.map(function (n) {
+              return (
+                <>
+                  <ul className='list-group'>
+                    <li className='list-group-item'>
+                      {n.id}. &nbsp;
+                      <a
+                        className='link-primary text-decoration-none'
+                        // className='btn btn-outline-secondary'
+                        key={n.id}
+                        href={n.LINK}
+                      >
+                        {n.FILENAME}
+                      </a>
+                    </li>
+                  </ul>
+                </>
+              );
+            })}
+          </li>
           {/* <li className='list-group-item '>
             <b>Tashkiot:</b> {data?.resultat?.PAYLOAD.organ_name}
           </li>{' '} */}

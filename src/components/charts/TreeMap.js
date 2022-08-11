@@ -10,7 +10,7 @@ class ApexChart extends React.Component {
       .get(`http://localhost:8585/v1/atm/getResultatStatisticsOnRegions`)
       .then((res) => {
         const cData = res.data;
-        console.log(cData);
+        // console.log(cData);
         this.setState({
           series: [
             {

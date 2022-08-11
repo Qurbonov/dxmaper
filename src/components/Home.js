@@ -1,9 +1,13 @@
 import About from "./About";
 
-import Area from "./charts/Area";
+import Area from "./charts/AreaEK";
+import AreaTT from "./charts/AreaTT";
+import AreaAuc from "./charts/AreaAuc";
+import AreaEShop from "./charts/AreaEShop";
+import AreaComp from "./charts/AreaComp";
 import Donut from "./charts/Donut";
 import LineWithData from "./charts/LineWithData";
-
+import Accordion from "react-bootstrap/Accordion";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -30,18 +34,38 @@ function Home() {
           <Col>
             <StackedBars />
           </Col>
-        </Row>{" "}
+        </Row>
         <Row>
           <Col>
             <TreeMap />
           </Col>
         </Row>
+        <Row>
+          <Col>
+            <Accordion className=' rounded'>
+              <Accordion.Item eventKey='0' className='bg-light'>
+                <Accordion.Header>
+                  <span
+                    className='ms-2 text-secondary'
+                    style={{ fontSize: "1.1em" }}
+                  >
+                    Savdo turlari bo'yicha hisobot (2022 yil)
+                  </span>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Area />
+                  <AreaEShop />
+                  <AreaAuc />
+                  <AreaTT />
+                  <AreaComp />
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </Col>
+        </Row>
         <Row className='pt-5'>
           <Col>
             <Donut />
-          </Col>
-          <Col>
-            <Area />
           </Col>
         </Row>
         <Row className='pt-5'>
