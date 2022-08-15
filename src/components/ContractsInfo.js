@@ -395,7 +395,7 @@ const ContractsInfo = () => {
             pagination
             // paginationComponentOptions={paginationOptions}
             paginationServer
-            paginationTotalRows={12152}
+            paginationTotalRows={rabbitTotal}
             paginationPerPage={countPerPage}
             paginationComponentOptions={{
               noRowsPerPage: true,
@@ -403,8 +403,8 @@ const ContractsInfo = () => {
             onChangePage={(page) => setPage(page)}
             // dense
             responsive
-            paginationIconFirstPage={false}
-            paginationIconLastPage={false}
+            // paginationIconFirstPage={false}
+            // paginationIconLastPage={false}
             highlightOnHover
             striped
             progressPending={loading}

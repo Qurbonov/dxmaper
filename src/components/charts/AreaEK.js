@@ -5,7 +5,6 @@ class Bar extends Component {
   componentDidMount() {
     axios.get(`http://localhost:8585/v1/atm/getProcMonthly`).then((res) => {
       const cData = res.data;
-      console.log(cData);
       this.setState({
         series: [
           {
