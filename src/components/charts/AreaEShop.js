@@ -104,7 +104,6 @@ class Bar extends Component {
         options={this.state.options}
         series={this.state.series}
         type='bar'
-        width={700}
         height={320}
       />
     );

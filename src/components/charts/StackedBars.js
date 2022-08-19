@@ -2,15 +2,11 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 class ApexChart extends React.Component {
-  // state = {
-  //   chartData: [],
-  // };
   componentDidMount() {
     axios
       .get(`http://localhost:8585/v1/atm/getChartInfos?year=2022`)
       .then((res) => {
         const cData = res.data;
-        // this.setState({ series });
         this.setState({
           series: [
             {
@@ -124,6 +120,3 @@ class ApexChart extends React.Component {
   }
 }
 export default ApexChart;
-
-// const domContainer = document.querySelector("#app");
-// ReactDOM.render(React.createElement(ApexChart), domContainer);

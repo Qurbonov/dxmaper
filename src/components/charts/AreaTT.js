@@ -65,7 +65,8 @@ class Bar extends Component {
             fontSize: "14px",
             fontWeight: "bold",
             fontFamily: undefined,
-            color: "#263238",
+            borderBottom: "1 solid red",
+            
           },
         },
         colors: [
@@ -105,7 +106,6 @@ class Bar extends Component {
         options={this.state.options}
         series={this.state.series}
         type='bar'
-        width={700}
         height={320}
       />
     );

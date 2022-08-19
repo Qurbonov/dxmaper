@@ -78,6 +78,7 @@ class Bar extends Component {
         ],
         chart: {
           id: "apexchart-example",
+          width: "0%",
         },
         xaxis: {
           categories: [
@@ -104,7 +105,6 @@ class Bar extends Component {
         options={this.state.options}
         series={this.state.series}
         type='bar'
-        width={700}
         height={320}
       />
     );

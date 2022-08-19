@@ -2,15 +2,11 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 class ApexChart extends React.Component {
-  // state = {
-  //   chartData: [],
-  // };
   componentDidMount() {
     axios
       .get(`http://localhost:8585/v1/atm/getResultatStatisticsOnRegions`)
       .then((res) => {
         const cData = res.data;
-        // console.log(cData);
         this.setState({
           series: [
             {
@@ -301,20 +297,20 @@ class ApexChart extends React.Component {
           },
         },
         colors: [
-          "#3B93A5",
-          "#F7B844",
-          "#ADD8C7",
-          "#EC3C65",
-          "#CDD7B6",
-          "#C1F666",
-          "#D43F97",
+          "#34447e",
+          "#5158ad",
+          "#0e2f44",
+          "#001280",
+          "#007f0e",
+          "#e08033",
+          "#be4d21",
           "#1E5D8C",
           "#421243",
           "#7F94B0",
           "#EF6537",
-          "#C0ADDB",
-          "#7dACCB",
-          "#5dd888",
+          "#1e453e",
+          "#39006b",
+          "#bbab39",
         ],
         plotOptions: {
           treemap: {
@@ -346,6 +342,3 @@ class ApexChart extends React.Component {
   }
 }
 export default ApexChart;
-
-// const domContainer = document.querySelector("#app");
-// ReactDOM.render(React.createElement(ApexChart), domContainer);

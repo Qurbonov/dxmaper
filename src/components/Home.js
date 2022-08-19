@@ -1,20 +1,21 @@
 import About from "./About";
 
-import Area from "./charts/AreaEK";
-import AreaTT from "./charts/AreaTT";
-import AreaAuc from "./charts/AreaAuc";
-import AreaEShop from "./charts/AreaEShop";
-import AreaComp from "./charts/AreaComp";
-import Donut from "./charts/Donut";
-import LineWithData from "./charts/LineWithData";
-import Accordion from "react-bootstrap/Accordion";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Line from "./charts/Line";
 import Stat from "./charts/Stat";
-import StackedBars from "./charts/StackedBars";
+import Area from "./charts/AreaEK";
+import Donut from "./charts/Donut";
+import AreaTT from "./charts/AreaTT";
 import TreeMap from "./charts/TreeMap";
+import AreaAuc from "./charts/AreaAuc";
+import AreaComp from "./charts/AreaComp";
+import AreaEShop from "./charts/AreaEShop";
+import StackedBars from "./charts/StackedBars";
+import LineWithData from "./charts/LineWithData";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Accordion from "react-bootstrap/Accordion";
+import Container from "react-bootstrap/Container";
 
 function Home() {
   return (
@@ -30,20 +31,10 @@ function Home() {
             <Stat />
           </Col>
         </Row>
-        <Row>
+        <Row className='my-5 '>
           <Col>
-            <StackedBars />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <TreeMap />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Accordion className=' rounded'>
-              <Accordion.Item eventKey='0' className='bg-light'>
+            <Accordion className='shadow rounded'>
+              <Accordion.Item eventKey='0'>
                 <Accordion.Header>
                   <span
                     className='ms-2 text-secondary'
@@ -56,6 +47,7 @@ function Home() {
                   <Area />
                   <AreaEShop />
                   <AreaAuc />
+
                   <AreaTT />
                   <AreaComp />
                 </Accordion.Body>
@@ -63,17 +55,14 @@ function Home() {
             </Accordion>
           </Col>
         </Row>
-        <Row className='pt-5'>
+        <Row>
           <Col>
-            <Donut />
+            <StackedBars />
           </Col>
         </Row>
-        <Row className='pt-5'>
+        <Row className="my-5">
           <Col>
-            <Line />
-          </Col>
-          <Col>
-            <LineWithData />
+            <TreeMap />
           </Col>
         </Row>
       </Container>

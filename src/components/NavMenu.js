@@ -10,10 +10,6 @@ function NavMenu() {
         className='navbar py-4 shadow'
         style={{ borderBottom: "8px outset #C3E3FF" }}
       >
-        {/* <Navbar
-        className='navbar navbar-light bg-light border-bottom '
-        style={{ backgroundColor: '#d1E3DE' }}
-      > */}
         <Container>
           <Navbar.Brand href='/'>
             <img src={logo} width='200' height='50' />
@@ -31,9 +27,9 @@ function NavMenu() {
             <LinkContainer to='/about'>
               <Nav.Link href='#features'>Portal haqida</Nav.Link>
             </LinkContainer>
-            <LinkContainer to='/service'>
+            {/* <LinkContainer to='/service'>
               <Nav.Link href='#pricing'>Boshqalar</Nav.Link>
-            </LinkContainer>
+            </LinkContainer> */}
           </Nav>
         </Container>
       </Navbar>

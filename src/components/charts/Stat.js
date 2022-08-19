@@ -7,17 +7,11 @@ function Stat() {
   useEffect(() => {
     axios.get(process.env.REACT_APP_LOCAL_URL_GET_STAT).then((response) => {
       setStats(response.data);
-      // console.log(response.data);
     });
   }, []);
   if (!stats) return null;
   return (
     <>
-      {/* Total:{stats.contract_info.total} <br />
-      id: {stats.contract_info.proc[0].id} <br />
-      code: {stats.contract_info.proc[0].state[0].code}
-      <br />
-      count: {stats.contract_info.proc[0].state[0].count} */}
       <div className=''>
         <div className='d-flex justify-content-between my-4 border-bottom'>
           <div>

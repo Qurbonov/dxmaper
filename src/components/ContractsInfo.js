@@ -2,25 +2,21 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
-import DatePicker from "react-datepicker";
 import Accordion from "react-bootstrap/Accordion";
-import { FcTodoList } from "react-icons/fc";
 import { FcEmptyFilter } from "react-icons/fc";
 const ContractsInfo = () => {
   const [rabbitData, setRbtData] = useState([]);
   const [rabbitTotal, setRbtTotal] = useState();
+  const countPerPage = 10;
   const [loading, setLoading] = useState(false);
-  const dLen = rabbitData.length;
-  // console.log(dLen);
   const [query, setQuery] = useState({});
   const [etp, setEtp] = useState();
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date("2014/02/10"));
+  // const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(new Date("2014/02/10"));
   const [page, setPage] = useState(1);
-  const countPerPage = 10;
+
   const getResultsData = () => {
     setLoading(true);
-    // console.log(process.env.REACT_APP_LOCAL_URL_GET_RESULTATS);
     axios
       .get(
         process.env.REACT_APP_LOCAL_URL_GET_RESULTATS +
@@ -39,6 +35,7 @@ const ContractsInfo = () => {
       .then((response) => {
         setRbtData(response.data.body);
         setRbtTotal(response.data.total);
+        console.log(response.data.total);
       })
       .catch((err) => {
         console.log(err);
@@ -233,15 +230,10 @@ const ContractsInfo = () => {
     // setEtp(e.target.value);
     // getResultats(e.target.value);
   };
-  const paginationOptions = {
-    rowsPerPageText: "Sahifada:",
-    rangeSeparatorText: "->",
-    selectAllRowsItem: false,
-    // selectAllRowsItemText: "Barchasi",
-  };
+
   return (
     <>
-      <div className=' mt-3 rounded rounded-top'>
+      <div className=' mx-5 mt-3 rounded rounded-top'>
         <Accordion className=' rounded'>
           <Accordion.Item eventKey='0' className='bg-light'>
             <Accordion.Header>
@@ -372,14 +364,8 @@ const ContractsInfo = () => {
           </Accordion.Item>
         </Accordion>
       </div>
-      <div className='m-4'>
+      <div className='mx-5 my-3'>
         <div className=''>
-          {/* <div
-            className='p-2  rounded-top text-center'
-            style={{ backgroundColor: '#9FCAE5' }}
-          >
-            <h6 className='pt-2'> Shartnoma ma`lumotlari</h6>
-          </div> */}
           <div
             className='px-3 pt-2 rounded-top'
             style={{

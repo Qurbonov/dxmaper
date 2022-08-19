@@ -5,11 +5,9 @@ import Navbar from '/components/navbar/navbar';
 export default function complateData() {
   let { id } = useParams<"id">();
   if (isLoading) return <p>Loading...</p>;
-  // if (!data) return <p>No profile data</p>;
   return (
     <>
       <Navbar />
-  
       <div className='mt-4'>
         <div className='row '>
           <div className='col-10'>

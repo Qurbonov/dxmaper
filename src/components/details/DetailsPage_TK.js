@@ -1,21 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IoReturnUpBackOutline } from "react-icons/io5";
+import Moment from "moment";
 
 const DetailsPage = () => {
   const param = useParams();
+  console.log(param);
   const [data, setLotInfo] = useState({});
-
   useEffect(() => {
-    fetch(`http://192.168.7.54:8585/v1/atm/getResultatById/${param.lot_id}`)
+    fetch(`http://localhost:8585/v1/atm/getTenderOrKonkursById/${param.lot_id}`)
       .then((res) => res.json())
       .then((data) => {
         setLotInfo(data);
         console.log(data);
-        if (data.resultat.PAYLOAD.SPECIFICATIONS[0].NOTE[0] === undefined) {
-          data.resultat.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
+        if (data.claimInfoEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] === undefined) {
+          data.claimInfoEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
         } else {
         }
+        // var t = data.responseAuctions;
+        // console.log("t,", t);
+        // if (data.responseAuctions === null) {
+        //   data.responseAuctions = 1;
+        //   console.log(data.responseAuctions);
+        //   // data.responseAuctions[0] = "-";
+        //   // data?.responseAuctions[0]?.PAYLOAD?.STATE
+        //   // data.claimInfoEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
+        // } else {
+        // }
       })
       .finally(() => {
         // setLoading(false);
@@ -33,16 +44,10 @@ const DetailsPage = () => {
 
   const TypeOfProcedure = (parameter) => {
     switch (parameter) {
-      case 3:
-        return "";
-      case 6:
-        return "Elektron do`kon (Elektron katalog)";
-      case 17:
+      case 1:
         return "Tender";
-      case 18:
-        return "Eng yahshi takliflarni tanlash (konkurs)";
-      case 19:
-        return "To`g`ridan-to`g`ri shartnoma";
+      case 2:
+        return "Konkurs";
       default:
         return "neutral";
     }
@@ -69,6 +74,15 @@ const DetailsPage = () => {
     }
   };
 
+  const linkTo = () => {
+    console.log(data?.claimInfoEtp?.PAYLOAD.PROC_ID);
+    if (data?.claimInfoEtp?.PAYLOAD.PROC_ID === 1) {
+      return "tender";
+    } else if (data?.claimInfoEtp?.PAYLOAD.PROC_ID === 2) {
+      return "konkurs";
+    }
+  };
+
   return (
     <>
       <div className='container mt-4'>
@@ -83,13 +97,13 @@ const DetailsPage = () => {
                   letterSpacing: "0.1em",
                 }}
               >
-                # {data?.resultat?.PAYLOAD.LOTID}
+                # {data?.claimInfoEtp?.PAYLOAD?.LOTID}
               </span>
             </h5>
           </div>
           <div className='col-2 text-right'>
             <a
-              href='http://localhost:3085/contracts'
+              href={`http://localhost:3085/trades/${linkTo()}`}
               className='link-secondary px-3 py-1 rounded float-md-end text-decoration-none'
             >
               <IoReturnUpBackOutline
@@ -112,44 +126,45 @@ const DetailsPage = () => {
             <h6 className='mt-1'>Umumiy ma'lumot</h6>
           </li>
           <li className='list-group-item'>
-            <b>ETP:</b> {EtpName(data?.resultat?.ETP_ID)}
+            <b>ETP:</b> {EtpName(data?.claimInfoEtp?.ETP_ID)}
           </li>
           <li className='list-group-item'>
             <b className='me-2'>Savdo turi:</b>
-            {TypeOfProcedure(data?.resultat?.PAYLOAD.PROC_ID)}
+            {TypeOfProcedure(data?.claimInfoEtp?.PAYLOAD.PROC_ID)}
           </li>
           <li className='list-group-item'>
-            <b>Beneficiar:</b> {data?.resultat?.PAYLOAD.BENEFICIAR}
-          </li>
-          <li className='list-group-item'>
-            <b>Reestr ID:</b> {data?.resultat?.PAYLOAD.REESTR_ID}
+            <b className='me-2'>G'aznachilik hisob raqami:</b>
+            {data?.claimInfoEtp?.PAYLOAD.KLS}
           </li>
           <li
             className='list-group-item bg-light'
             style={{ color: "#8198B2", letterSpacing: 1 }}
           >
-            <h6 className='mt-1'>Shartnoma</h6>
+            <h6 className='mt-1'>Ariza</h6>
           </li>
           <li className='list-group-item '>
-            <b>Shartnoma raqami:</b> # {data?.resultat?.PAYLOAD.CONTRACTNUM}
+            <b>Boshlanish sanasi: </b>
+            {Moment(data?.claimInfoEtp?.PAYLOAD.DATE1PATTERNED).format(
+              "DD.MM.YYYY"
+            ) + " y."}
+          </li>
+          <li className='list-group-item '>
+            <b>Tugash sanasi: </b>
+            {Moment(data?.claimInfoEtp?.PAYLOAD.DATE2PATTERNED).format(
+              "DD.MM.YYYY"
+            ) + " y."}
           </li>
           <li className='list-group-item '>
             <b>Summasi:</b>{" "}
             <span style={{ letterSpacing: 1 }}>
-              {data?.resultat?.PAYLOAD.SUMMA}
+              {data?.claimInfoEtp?.PAYLOAD.SUMMA}
             </span>
           </li>
           <li className='list-group-item '>
-            <b>Sharnoma imzolagan sanasi:</b>{" "}
-            {data?.resultat?.PAYLOAD.CONTRACTDATS}
-          </li>{" "}
-          <li className='list-group-item '>
-            <b>Shartnoma boshlanish vaqti:</b>{" "}
-            {data?.resultat?.PAYLOAD.CONTRACTBEGS}
-          </li>
-          <li className='list-group-item '>
-            <b>Shartnoma tugash vaqti:</b>{" "}
-            {data?.resultat?.PAYLOAD.CONTRACTENDS}
+            <b>Etkazib berish muddati:</b>{" "}
+            <span style={{ letterSpacing: 1 }}>
+              {data?.claimInfoEtp?.PAYLOAD.SROK}
+            </span>
           </li>
           <li
             className='list-group-item bg-light'
@@ -158,85 +173,71 @@ const DetailsPage = () => {
             <h6 className='mt-1'>Xaridor</h6>
           </li>
           <li className='list-group-item '>
-            <b>Xaridor:</b> {data?.resultat?.PAYLOAD.ORGAN_NAME}
-          </li>{" "}
-          <li className='list-group-item '>
-            <b>Xaridor STIR raqami:</b> {data?.resultat?.PAYLOAD.INN}
-          </li>{" "}
-          <li className='list-group-item '>
-            <b>Xaridor g'azna hisob raqami:</b> {data?.resultat?.PAYLOAD.LS}
-          </li>
-          <li
-            className='list-group-item bg-light'
-            style={{ color: "#8198B2", letterSpacing: 1 }}
-          >
-            <h6 className='mt-1'>Etkazib beruvchi tashkilot</h6>
+            <b>Tashkilot:</b> {data?.claimInfoEtp?.PAYLOAD.ORGANNAME}
           </li>
           <li className='list-group-item '>
-            <b>Etkazib beruvchi:</b> {data?.resultat?.PAYLOAD.VENDORNAME}
+            <b>Xizmat (mahsulot) qo`shimcha ma`lumot: </b>
+            {data?.claimInfoEtp?.PAYLOAD.PURPOSE}
+            {/* {data?.claimInfoEtp?.PAYLOAD.SPECIFICATIONS[0].NOTE[0]?.TECHSPEC} */}
           </li>
-          <li className='list-group-item '>
-            <b>Etkazib beruvchi hududi:</b>{" "}
-            {data?.resultat?.PAYLOAD.vendor_terr_name}
-          </li>
-          <li className='list-group-item '>
-            <b>Etkazib beruvchi STIR raqami:</b>{" "}
-            {data?.resultat?.PAYLOAD.VENDORINN}
-          </li>
+
           <li
             className='list-group-item bg-light'
             style={{ color: "#8198B2", letterSpacing: 1 }}
           >
             <h6 className='mt-1'>Xizmat (mahsulot) ma'lumotlari</h6>
           </li>
-          <li className='list-group-item '>
-            <b>Xizmat (mahsulot) nomi: </b>{" "}
-            {data?.resultat?.PAYLOAD.SPECIFICATIONS[0].TOVARNAME}
+
+          <li className='list-group-item'>
+            <table className='table table-hovered'>
+              <thead>
+                <tr>
+                  <th>Nomi</th>
+                  <th className='text-center'>TYMK</th>
+                  <th className='text-center'>Soni </th>
+                  <th className='text-center'>Narxi</th>
+                  <th className='text-center'>Umumniy narxi</th>
+                </tr>
+              </thead>
+              {data?.claimInfoEtp?.PAYLOAD.SPECIFICATIONS.map(function (n) {
+                return (
+                  <>
+                    <tbody>
+                      <tr>
+                        <td>{n.TOVARNAME}</td>
+                        <td className='text-center text-info'>{n.TOVAR}</td>
+                        <td className='text-center'>{n.TOVARAMOUNT}</td>
+                        <td className='text-center'>{n.TOVARPRICE}</td>
+                        <td className='text-center'>{n.TOVARSUMMA}</td>
+                      </tr>
+                    </tbody>
+                  </>
+                );
+              })}
+            </table>
           </li>
-          <li className='list-group-item '>
-            <b>Xizmat (mahsulot) qo`shimcha ma`lumot:</b>{" "}
-            {data?.resultat?.PAYLOAD.SPECIFICATIONS[0].NOTE[0]?.TECHSPEC}
-          </li>
-          <li className='list-group-item '>
-            <b>Izoh:</b> {data?.resultat?.PAYLOAD.PURPOSE}
-          </li>
-          <li className='list-group-item '>
-            <b>Oylar soni:</b>{" "}
-            {data?.resultat?.PAYLOAD.SPECIFICATIONS[0].SPLIT[0].MONTH}
-          </li>
-          <li className='list-group-item '>
-            <b>O`lchov birligi:</b>{" "}
-            {data?.resultat?.PAYLOAD.SPECIFICATIONS[0].PROPERTIES[0].VAL_NAME}
-          </li>
-          <li className='list-group-item '>
-            <b>Xizmat (mahsulot) soni:</b>{" "}
-            {data?.resultat?.PAYLOAD.SPECIFICATIONS[0].SPLIT[0].TOVARAMOUNT}
-          </li>
-          <li className='list-group-item '>
-            <b>
-              {data?.resultat?.PAYLOAD.LINKS.length > 0 ? (
-                <b className='text-dark'>Lot xujjatlari:</b>
-              ) : (
-                <b className='text-danger'>Lot xujjatlari mavjud emas</b>
-              )}
-            </b>
+          <li
+            className='list-group-item bg-light'
+            style={{ color: "#8198B2", letterSpacing: 1 }}
+          >
+            <h6 className='mt-1'>Oylar bo'yicha</h6>
           </li>
           <li className='list-group-item'>
-            {data?.resultat?.PAYLOAD.LINKS.map(function (n) {
+            {data?.claimInfoEtp?.PAYLOAD.SPECIFICATIONS[0].SPLIT.map(function (
+              n
+            ) {
               return (
                 <>
-                  <ul className='list-group'>
-                    <li className='list-group-item'>
-                      {n.id}. &nbsp;
-                      <a
-                        className='link-primary text-decoration-none'
-                        key={n.id}
-                        href={n.LINK}
-                      >
-                        {n.FILENAME}
-                      </a>
-                    </li>
-                  </ul>
+                  <table className='table table-hovered'>
+                    <tr className='text-center'>
+                      <th>Oy</th>
+                      <th>Soni</th>
+                    </tr>
+                    <tr className='text-center'>
+                      <td>{n.MONTH}</td>
+                      <td>{n.TOVARAMOUNT}</td>
+                    </tr>
+                  </table>
                 </>
               );
             })}

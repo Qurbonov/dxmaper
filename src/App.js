@@ -3,9 +3,15 @@ import NavMenu from "./components/NavMenu";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import ContractsInfo from "./components/ContractsInfo";
-import Trades from "./components/Trades";
+import Trades from "./components/TradesTK";
 import About from "./components/About";
 import DetailsPage from "./components/details/DetailsPage";
+import DetailsPage_trades from "./components/details/DetailsPage_trades";
+import DetailsPage_TK from "./components/details/DetailsPage_TK";
+import Trades_tender from "./components/Trades_tender";
+import Trades_ED from "./components/Trades_ED";
+import Trades_auction from "./components/Trades_auction";
+import Trades_konkurs from "./components/Trades_konkurs";
 
 function App() {
   return (
@@ -13,11 +19,6 @@ function App() {
       <NavMenu />
       <div
         style={{
-          // backgroundImage: `url("https://loveshayariimages.in/wp-content/uploads/2022/05/Beautiful-White-Background-Images-pics-for-download-4.jpg")`,
-          // background: `url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed`,  backgroundSize: "cover"
-          // background: `url('https://img.freepik.com/free-vector/digital-technology-background-with-abstract-wave-border_53876-117508.jpg?w=2000') no-repeat center center fixed`,
-          // backgroundSize: "cover",
-          // backgroundRepeat: "repeat-x",
           background: "linear-gradient(#F8FBFE, #fff)",
         }}
       >
@@ -25,9 +26,21 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='home' element={<Home />} />
           <Route path='contracts' element={<ContractsInfo />} />
-          <Route path='trades' element={<Trades />} />
+          <Route path='trades' element={<Trades />}>
+            <Route index element={<Trades_tender />} />
+            <Route path='tender' element={<Trades_tender />} />
+            <Route path='ed' element={<Trades_ED />} />
+            <Route path='auction' element={<Trades_auction />} />
+            <Route path='konkurs' element={<Trades_konkurs />} />
+          </Route>
           <Route path='about' element={<About />} />
           <Route path='/details/:lot_id' element={<DetailsPage />} />
+          <Route
+            path='/details_trade/:lot_id'
+            // eslint-disable-next-line react/jsx-pascal-case
+            element={<DetailsPage_trades />}
+          />
+          <Route path='/details_tk/:lot_id' element={<DetailsPage_TK />} />
         </Routes>
       </div>
     </>
