@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IoReturnUpBackOutline } from "react-icons/io5";
+import ClipLoader from "react-spinners/ClipLoader";
 import Moment from "moment";
 
 const DetailsPage = () => {
   const param = useParams();
-  console.log(param);
   const [data, setLotInfo] = useState({});
+  const [loading, setLoading] = useState(false);
   var t = 0;
   useEffect(() => {
     fetch(`http://localhost:8585/v1/atm/getTenderOrKonkursById/${param.lot_id}`)
       .then((res) => res.json())
       .then((data) => {
         setLotInfo(data);
-        console.log(data);
+
         if (data.claimInfoEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] === undefined) {
           data.claimInfoEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
         } else {
         }
       })
       .finally(() => {
-        // setLoading(false);
+        setLoading(false);
       });
   }, [param]);
 
@@ -189,16 +190,24 @@ const DetailsPage = () => {
               {data?.claimInfoEtp?.PAYLOAD.SPECIFICATIONS.map(function (n) {
                 return (
                   <>
-                    <tbody>
-                      <tr>
-                        <td className='text-center'>{++t}.</td>
-                        <td>{n.TOVARNAME}</td>
-                        <td className='text-center text-info'>{n.TOVAR}</td>
-                        <td className='text-center'>{n.TOVARAMOUNT}</td>
-                        <td className='text-center'>{n.TOVARPRICE}</td>
-                        <td className='text-center'>{n.TOVARSUMMA}</td>
-                      </tr>
-                    </tbody>
+                    {loading ? (
+                      <ClipLoader
+                        color={"#dedede"}
+                        loading={loading}
+                        size={150}
+                      />
+                    ) : (
+                      <tbody>
+                        <tr>
+                          <td className='text-center'>{++t}.</td>
+                          <td>{n.TOVARNAME}</td>
+                          <td className='text-center text-info'>{n.TOVAR}</td>
+                          <td className='text-center'>{n.TOVARAMOUNT}</td>
+                          <td className='text-center'>{n.TOVARPRICE}</td>
+                          <td className='text-center'>{n.TOVARSUMMA}</td>
+                        </tr>
+                      </tbody>
+                    )}
                   </>
                 );
               })}
