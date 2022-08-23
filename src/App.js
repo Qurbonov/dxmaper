@@ -12,36 +12,61 @@ import Trades_tender from "./components/Trades_tender";
 import Trades_ED from "./components/Trades_ED";
 import Trades_auction from "./components/Trades_auction";
 import Trades_konkurs from "./components/Trades_konkurs";
-
+import logo from "./logo-bottom.png";
 function App() {
   return (
     <>
       <NavMenu />
+      <main>
+        <div
+          style={{
+            background: "linear-gradient(#F8FBFE, #fff)",
+          }}
+        >
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='home' element={<Home />} />
+            <Route path='contracts' element={<ContractsInfo />} />
+            <Route path='trades' element={<Trades />}>
+              <Route index element={<Trades_tender />} />
+              <Route path='tender' element={<Trades_tender />} />
+              <Route path='ed' element={<Trades_ED />} />
+              <Route path='auction' element={<Trades_auction />} />
+              <Route path='konkurs' element={<Trades_konkurs />} />
+            </Route>
+            <Route path='about' element={<About />} />
+            <Route path='/details/:lot_id' element={<DetailsPage />} />
+            <Route
+              path='/details_trade/:lot_id'
+              // eslint-disable-next-line react/jsx-pascal-case
+              element={<DetailsPage_trades />}
+            />
+            <Route path='/details_tk/:lot_id' element={<DetailsPage_TK />} />
+          </Routes>
+        </div>
+      </main>
+
       <div
+        className='text-center text-light p-3'
         style={{
-          background: "linear-gradient(#F8FBFE, #fff)",
+          backgroundColor: "#3F5669",
+          borderTop: "3px double #D4E0E9",
+          position: "fixed",
+          left: 0,
+          bottom: 0,
+          right: 0,
         }}
       >
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='home' element={<Home />} />
-          <Route path='contracts' element={<ContractsInfo />} />
-          <Route path='trades' element={<Trades />}>
-            <Route index element={<Trades_tender />} />
-            <Route path='tender' element={<Trades_tender />} />
-            <Route path='ed' element={<Trades_ED />} />
-            <Route path='auction' element={<Trades_auction />} />
-            <Route path='konkurs' element={<Trades_konkurs />} />
-          </Route>
-          <Route path='about' element={<About />} />
-          <Route path='/details/:lot_id' element={<DetailsPage />} />
-          <Route
-            path='/details_trade/:lot_id'
-            // eslint-disable-next-line react/jsx-pascal-case
-            element={<DetailsPage_trades />}
-          />
-          <Route path='/details_tk/:lot_id' element={<DetailsPage_TK />} />
-        </Routes>
+        <div className='container' style={{}}>
+          <div class='row'>
+            <div class='col-lg-6'>
+              Moliya vazirligi <br /> Axborot texnologiyalari markazi.
+            </div>
+            <div class='col-lg-6 pt-1'>
+              <img src={logo} width='186' height='37' />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

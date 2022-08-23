@@ -3,9 +3,11 @@ import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 class ApexChart extends React.Component {
   componentDidMount() {
-    axios
-      .get(`http://localhost:8585/v1/atm/getChartInfos?year=2022`)
-      .then((res) => {
+    // axios
+    axios.get(process.env.REACT_APP_LOCAL_URL_GET_CHART_INFOS).then((res) => {
+ 
+      // .get(`http://localhost:8585/v1/atm/getChartInfos?year=2022`)
+      // .then((res) => {
         const cData = res.data;
         this.setState({
           series: [

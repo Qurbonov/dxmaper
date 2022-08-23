@@ -10,7 +10,7 @@ const DetailsPage = () => {
   const [loading, setLoading] = useState(false);
   var t = 0;
   useEffect(() => {
-    fetch(`http://localhost:8585/v1/atm/getTenderOrKonkursById/${param.lot_id}`)
+    fetch(process.env.REACT_APP_LOCAL_URL_GET_TK_BY_ID + `/${param.lot_id}`)
       .then((res) => res.json())
       .then((data) => {
         setLotInfo(data);

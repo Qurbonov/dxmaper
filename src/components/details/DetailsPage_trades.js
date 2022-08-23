@@ -10,9 +10,7 @@ const DetailsPage = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(
-      `http://192.168.7.54:8585/v1/atm/getAuksionOrEMagazinById/${param.lot_id}`
-    )
+    fetch(process.env.REACT_APP_LOCAL_URL_GET_AE_BY_ID + `/${param.lot_id}`)
       .then((res) => res.json())
       .then((data) => {
         setLotInfo(data);

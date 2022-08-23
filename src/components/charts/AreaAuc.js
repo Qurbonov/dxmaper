@@ -3,7 +3,9 @@ import Chart from "react-apexcharts";
 import axios from "axios";
 class Bar extends Component {
   componentDidMount() {
-    axios.get(`http://localhost:8585/v1/atm/getProcMonthly`).then((res) => {
+    // fetch(process.env.REACT_APP_LOCAL_URL_GET_AE_BY_ID + `/${param.lot_id}`)
+    axios.get(process.env.REACT_APP_LOCAL_URL_GET_PROC_MONTHLY).then((res) => {
+    // axios.get(`http://localhost:8585/v1/atm/getProcMonthly`).then((res) => {
       const cData = res.data;
       // console.log(cData);
 

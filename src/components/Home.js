@@ -12,6 +12,7 @@ import AreaEShop from "./charts/AreaEShop";
 import StackedBars from "./charts/StackedBars";
 import LineWithData from "./charts/LineWithData";
 import React, { useEffect, useState } from "react";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
@@ -64,9 +65,10 @@ function Home() {
             <StackedBars />
           </Col>
         </Row>
-        <Row className='my-5'>
+        <Row className='my-5' style={{ margin: "0px" }}>
           <Col>
             <TreeMap />
+            <hr />
           </Col>
         </Row>
       </Container>
