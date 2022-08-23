@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import Moment from "moment";
 import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { IoReturnUpBackOutline } from "react-icons/io5";
 
-import Moment from "moment";
 const DetailsPage = () => {
+  var t = 0;
   const param = useParams();
   const [data, setLotInfo] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -14,26 +16,17 @@ const DetailsPage = () => {
       .then((res) => res.json())
       .then((data) => {
         setLotInfo(data);
-        console.log(data);
+        // console.log(data);
         if (data.requestEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] === undefined) {
           data.requestEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
         } else {
         }
-        // var t = data.responseAuctions;
-        // console.log("t,", t);
-        // if (data.responseAuctions === null) {
-        //   data.responseAuctions = 1;
-        //   console.log(data.responseAuctions);
-        //   // data.responseAuctions[0] = "-";
-        //   // data?.responseAuctions[0]?.PAYLOAD?.STATE
-        //   // data.requestEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
-        // } else {
-        // }
       })
       .finally(() => {
-        // setLoading(false);
+        setLoading(false);
       });
   }, [param]);
+
   // 22.04.2021 йилдаги ЎРҚ-684-сон
   // 30-модда. Харид қилиш тартиб-таомилларини амалга ошириш турлари
   // Харид қилиш тартиб-таомилларини амалга ошириш турлари қуйидагилардан иборат:
@@ -144,6 +137,10 @@ const DetailsPage = () => {
               {data?.requestEtp?.PAYLOAD.SUMLOT}
             </span>
           </li>
+          <li className='list-group-item '>
+            <b> Band qilingan muddat: </b>
+            {data?.requestEtp?.PAYLOAD.MONTH} oy.
+          </li>
           <li
             className='list-group-item bg-light'
             style={{ color: "#8198B2", letterSpacing: 1 }}
@@ -162,11 +159,12 @@ const DetailsPage = () => {
           </li>
 
           <li className='list-group-item'>
-            <table className='table table-bordered  table-hover'>
+            <table className='table table-hover'>
               <thead>
                 <tr>
-                  <th>Nomi: </th>
-                  <th className='text-center'>TYMK</th>
+                  <th className='text-center'>№</th>
+                  <th>Nomi</th>
+                  <th className='text-center'>TYMK *</th>
                   <th className='text-center'>Soni</th>
                   <th className='text-center'>Narxi</th>
                   <th className='text-center'>Umumniy narxi</th>
@@ -177,6 +175,7 @@ const DetailsPage = () => {
                   <>
                     <tbody>
                       <tr key={n.id}>
+                        <td className='text-center'>{++t}.</td>
                         <td>{n.TOVARNAME}</td>
                         <td className='text-center text-info'>{n.TOVAR}</td>
                         <td className='text-center'>{n.TOVARAMOUNT}</td>
@@ -189,22 +188,30 @@ const DetailsPage = () => {
               })}
             </table>
           </li>
-
-          <li className='list-group-item '>
+          <li
+            className='list-group-item bg-light text-end pe-5 text-monospace'
+            style={{ color: "#8198B2", letterSpacing: 1, fontSize: 12 }}
+          >
+            * -{" "}
+            <a
+              href='http://tasniflagich.mf.uz/'
+              className='text-decoration-none'
+            >
+              Tovarlarning yagona milliy klassifikatori
+            </a>{" "}
+            raqami
+          </li>
+          {/* <li className='list-group-item '>
             <b>Xizmat (mahsulot) nomi: </b>{" "}
-            {/* {data?.requestEtp?.PAYLOAD.SPECIFICATIONS[0].TOVARNAME} */}
+            {data?.requestEtp?.PAYLOAD.SPECIFICATIONS[0].TOVARNAME}
           </li>
           <li className='list-group-item '>
             <b>Xizmat (mahsulot) qo`shimcha ma`lumot:</b>{" "}
-            {/* {data?.requestEtp?.PAYLOAD.SPECIFICATIONS[0].NOTE[0]?.TECHSPEC} */}
+            {data?.requestEtp?.PAYLOAD.SPECIFICATIONS[0].NOTE[0]?.TECHSPEC}
           </li>
           <li className='list-group-item '>
-            {/* <b>Izoh:</b> {data?.requestEtp?.PAYLOAD.PURPOSE} */}
-          </li>
-          <li className='list-group-item '>
-            <b> Band qilingan muddat (oy): </b>
-            {data?.requestEtp?.PAYLOAD.MONTH}
-          </li>
+            <b>Izoh:</b> {data?.requestEtp?.PAYLOAD.PURPOSE}
+          </li> */}
         </ul>
       </div>
     </>

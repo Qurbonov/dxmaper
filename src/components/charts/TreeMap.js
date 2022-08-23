@@ -7,6 +7,7 @@ class ApexChart extends React.Component {
       .get(`http://localhost:8585/v1/atm/getResultatStatisticsOnRegions`)
       .then((res) => {
         const cData = res.data;
+
         this.setState({
           series: [
             {
@@ -152,7 +153,7 @@ class ApexChart extends React.Component {
                   tts_c: cData[9].proc_id_counts[4].count,
                 },
                 {
-                  x: cData[10].region,
+                  x: cData[10].region + " viloyati",
                   y: cData[10].count,
                   auction: cData[10].proc_id_counts[0].proc_name,
                   auction_c: cData[10].proc_id_counts[0].count,
@@ -194,7 +195,7 @@ class ApexChart extends React.Component {
                   tts_c: cData[12].proc_id_counts[4].count,
                 },
                 {
-                  x: cData[13].region,
+                  x: cData[13].region + " R.",
                   y: cData[13].count,
                   auction: cData[13].proc_id_counts[0].proc_name,
                   auction_c: cData[13].proc_id_counts[0].count,

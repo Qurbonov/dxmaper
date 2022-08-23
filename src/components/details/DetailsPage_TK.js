@@ -7,6 +7,7 @@ const DetailsPage = () => {
   const param = useParams();
   console.log(param);
   const [data, setLotInfo] = useState({});
+  var t = 0;
   useEffect(() => {
     fetch(`http://localhost:8585/v1/atm/getTenderOrKonkursById/${param.lot_id}`)
       .then((res) => res.json())
@@ -17,21 +18,12 @@ const DetailsPage = () => {
           data.claimInfoEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
         } else {
         }
-        // var t = data.responseAuctions;
-        // console.log("t,", t);
-        // if (data.responseAuctions === null) {
-        //   data.responseAuctions = 1;
-        //   console.log(data.responseAuctions);
-        //   // data.responseAuctions[0] = "-";
-        //   // data?.responseAuctions[0]?.PAYLOAD?.STATE
-        //   // data.claimInfoEtp.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
-        // } else {
-        // }
       })
       .finally(() => {
         // setLoading(false);
       });
   }, [param]);
+
   // 22.04.2021 йилдаги ЎРҚ-684-сон
   // 30-модда. Харид қилиш тартиб-таомилларини амалга ошириш турлари
   // Харид қилиш тартиб-таомилларини амалга ошириш турлари қуйидагилардан иборат:
@@ -65,12 +57,6 @@ const DetailsPage = () => {
         return "Shaffof qurilish";
       default:
         return "neutral";
-    }
-  };
-
-  const docs = (l) => {
-    for (let index = 0; index < 4; index++) {
-      console.log(index);
     }
   };
 
@@ -163,7 +149,7 @@ const DetailsPage = () => {
           <li className='list-group-item '>
             <b>Etkazib berish muddati:</b>{" "}
             <span style={{ letterSpacing: 1 }}>
-              {data?.claimInfoEtp?.PAYLOAD.SROK}
+              {data?.claimInfoEtp?.PAYLOAD.SROK} oy.
             </span>
           </li>
           <li
@@ -192,8 +178,9 @@ const DetailsPage = () => {
             <table className='table table-hovered'>
               <thead>
                 <tr>
+                  <th className='text-center'>№</th>
                   <th>Nomi</th>
-                  <th className='text-center'>TYMK</th>
+                  <th className='text-center'>TYMK *</th>
                   <th className='text-center'>Soni </th>
                   <th className='text-center'>Narxi</th>
                   <th className='text-center'>Umumniy narxi</th>
@@ -204,6 +191,7 @@ const DetailsPage = () => {
                   <>
                     <tbody>
                       <tr>
+                        <td className='text-center'>{++t}.</td>
                         <td>{n.TOVARNAME}</td>
                         <td className='text-center text-info'>{n.TOVAR}</td>
                         <td className='text-center'>{n.TOVARAMOUNT}</td>
@@ -216,31 +204,48 @@ const DetailsPage = () => {
               })}
             </table>
           </li>
-          <li
+          {/* <li
             className='list-group-item bg-light'
             style={{ color: "#8198B2", letterSpacing: 1 }}
           >
             <h6 className='mt-1'>Oylar bo'yicha</h6>
           </li>
           <li className='list-group-item'>
-            {data?.claimInfoEtp?.PAYLOAD.SPECIFICATIONS[0].SPLIT.map(function (
-              n
-            ) {
-              return (
-                <>
-                  <table className='table table-hovered'>
-                    <tr className='text-center'>
-                      <th>Oy</th>
-                      <th>Soni</th>
-                    </tr>
-                    <tr className='text-center'>
-                      <td>{n.MONTH}</td>
-                      <td>{n.TOVARAMOUNT}</td>
-                    </tr>
-                  </table>
-                </>
-              );
-            })}
+            <ul>
+              {data?.claimInfoEtp?.PAYLOAD.SPECIFICATIONS[0].SPLIT.map(
+                function (n) {
+                  return (
+                    <>
+                      <li>Oy: {n.MONTH}</li>
+                      <li>Soni: {n.TOVARAMOUNT}</li>
+                      <table className='table table-hovered'>
+                        <tr className='text-center'>
+                          <th>Oy</th>
+                          <th>Soni</th>
+                        </tr>
+                        <tr className='text-center'>
+                          <td>{n.MONTH}</td>
+                          <td>{n.TOVARAMOUNT}</td>
+                        </tr>
+                      </table>
+                    </>
+                  );
+                }
+              )}
+            </ul>
+          </li> */}
+          <li
+            className='list-group-item bg-light text-end pe-5 text-monospace'
+            style={{ color: "#8198B2", letterSpacing: 1, fontSize: 12 }}
+          >
+            * -{" "}
+            <a
+              href='http://tasniflagich.mf.uz/'
+              className='text-decoration-none'
+            >
+              Tovarlarning yagona milliy klassifikatori
+            </a>{" "}
+            raqami
           </li>
         </ul>
       </div>

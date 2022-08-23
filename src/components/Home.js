@@ -11,13 +11,17 @@ import AreaComp from "./charts/AreaComp";
 import AreaEShop from "./charts/AreaEShop";
 import StackedBars from "./charts/StackedBars";
 import LineWithData from "./charts/LineWithData";
-
+import React, { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import Container from "react-bootstrap/Container";
 
 function Home() {
+  useEffect(() => {
+    console.log("first");
+  });
+
   return (
     <div className=' pt-3'>
       <Container>
@@ -60,7 +64,7 @@ function Home() {
             <StackedBars />
           </Col>
         </Row>
-        <Row className="my-5">
+        <Row className='my-5'>
           <Col>
             <TreeMap />
           </Col>

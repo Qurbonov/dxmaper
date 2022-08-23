@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
-import Accordion from "react-bootstrap/Accordion";
 import { FcEmptyFilter } from "react-icons/fc";
+import Accordion from "react-bootstrap/Accordion";
+import React, { useEffect, useState } from "react";
+import DataTable from "react-data-table-component";
+
 const ContractsInfo = () => {
   const [rabbitData, setRbtData] = useState([]);
   const [rabbitTotal, setRbtTotal] = useState();
@@ -11,8 +12,7 @@ const ContractsInfo = () => {
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState({});
   const [etp, setEtp] = useState();
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(new Date("2014/02/10"));
+
   const [page, setPage] = useState(1);
 
   const getResultsData = () => {
@@ -35,7 +35,7 @@ const ContractsInfo = () => {
       .then((response) => {
         setRbtData(response.data.body);
         setRbtTotal(response.data.total);
-        console.log(response.data.total);
+        // console.log(response.data.total);
       })
       .catch((err) => {
         console.log(err);
