@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IoReturnUpBackOutline } from "react-icons/io5";
-import ClipLoader from "react-spinners/ClipLoader";
+import ClipLoader from "react-spinners/BeatLoader";
 import Moment from "moment";
 
 const DetailsPage = () => {
@@ -9,7 +9,9 @@ const DetailsPage = () => {
   const [data, setLotInfo] = useState({});
   const [loading, setLoading] = useState(false);
   var t = 0;
+
   useEffect(() => {
+    setLoading(true);
     fetch(process.env.REACT_APP_LOCAL_URL_GET_TK_BY_ID + `/${param.lot_id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -42,7 +44,7 @@ const DetailsPage = () => {
       case 2:
         return "Konkurs";
       default:
-        return "neutral";
+        return "";
     }
   };
 
@@ -57,7 +59,7 @@ const DetailsPage = () => {
       case 4:
         return "Shaffof qurilish";
       default:
-        return "neutral";
+        return "";
     }
   };
 
@@ -75,18 +77,22 @@ const DetailsPage = () => {
       <div className='container mt-4'>
         <div className='row'>
           <div className='col-10 mb-2'>
-            <h5>
-              LOT raqami:
-              <span
-                className='px-2 ms-1'
-                style={{
-                  borderBottom: "1px solid #DCE3E7",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                # {data?.claimInfoEtp?.PAYLOAD?.LOTID}
-              </span>
-            </h5>
+            {loading ? (
+              <ClipLoader color={"#0a99e0"} loading={loading} size={20} />
+            ) : (
+              <h5>
+                LOT raqami:
+                <span
+                  className='px-2 ms-1'
+                  style={{
+                    borderBottom: "1px solid #DCE3E7",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  # {data?.claimInfoEtp?.PAYLOAD?.LOTID}
+                </span>
+              </h5>
+            )}
           </div>
           <div className='col-2 text-right'>
             <a
@@ -190,29 +196,22 @@ const DetailsPage = () => {
               {data?.claimInfoEtp?.PAYLOAD.SPECIFICATIONS.map(function (n) {
                 return (
                   <>
-                    {loading ? (
-                      <ClipLoader
-                        color={"#dedede"}
-                        loading={loading}
-                        size={150}
-                      />
-                    ) : (
-                      <tbody>
-                        <tr>
-                          <td className='text-center'>{++t}.</td>
-                          <td>{n.TOVARNAME}</td>
-                          <td className='text-center text-info'>{n.TOVAR}</td>
-                          <td className='text-center'>{n.TOVARAMOUNT}</td>
-                          <td className='text-center'>{n.TOVARPRICE}</td>
-                          <td className='text-center'>{n.TOVARSUMMA}</td>
-                        </tr>
-                      </tbody>
-                    )}
+                    <tbody>
+                      <tr>
+                        <td className='text-center'>{++t}.</td>
+                        <td>{n.TOVARNAME}</td>
+                        <td className='text-center text-info'>{n.TOVAR}</td>
+                        <td className='text-center'>{n.TOVARAMOUNT}</td>
+                        <td className='text-center'>{n.TOVARPRICE}</td>
+                        <td className='text-center'>{n.TOVARSUMMA}</td>
+                      </tr>
+                    </tbody>
                   </>
                 );
               })}
             </table>
           </li>
+
           {/* <li
             className='list-group-item bg-light'
             style={{ color: "#8198B2", letterSpacing: 1 }}

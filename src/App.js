@@ -45,29 +45,6 @@ function App() {
           </Routes>
         </div>
       </main>
-
-      <div
-        className='text-center text-light p-3'
-        style={{
-          backgroundColor: "#3F5669",
-          borderTop: "3px double #D4E0E9",
-          position: "fixed",
-          left: 0,
-          bottom: 0,
-          right: 0,
-        }}
-      >
-        <div className='container' style={{}}>
-          <div class='row'>
-            <div class='col-lg-6'>
-              Moliya vazirligi <br /> Axborot texnologiyalari markazi.
-            </div>
-            <div class='col-lg-6 pt-1'>
-              <img src={logo} width='186' height='37' />
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }
