@@ -193,13 +193,13 @@ const ContractsInfo = () => {
       reorder: true,
       width: "10%",
     },
-    {
-      name: "Holati",
-      selector: (row) => row.state,
-      sortable: true,
-      reorder: true,
-      width: "10%",
-    },
+    // {
+    //   name: "Holati",
+    //   selector: (row) => row.state,
+    //   sortable: true,
+    //   reorder: true,
+    //   width: "10%",
+    // },
     // {
     //   name: 'Avans',
     //   selector: (row) => row.p_avans,
@@ -320,7 +320,7 @@ const ContractsInfo = () => {
                     />
                   </div> */}
                 </div>
-                <div className='row mt-3'>
+                {/* <div className='row mt-3'>
                   <div className='col-sm'>
                     Xaridor STIR raqami:
                     <input
@@ -353,7 +353,7 @@ const ContractsInfo = () => {
                       className='form-control  form-control-sm'
                     />
                   </div>
-                </div>
+                </div> */}
                 {/* <div className='row mt-3'>
                   <div className='col-sm'>
                     <input type='submit' value='yubor' />
