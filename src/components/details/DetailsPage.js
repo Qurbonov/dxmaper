@@ -91,7 +91,7 @@ const DetailsPage = () => {
           </div>
           <div className='col-2 text-right'>
             <a
-              href='http://localhost:3085/contracts'
+              href='/contracts'
               className='link-secondary px-3 py-1 rounded float-md-end text-decoration-none'
             >
               <IoReturnUpBackOutline
