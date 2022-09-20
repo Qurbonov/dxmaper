@@ -19,7 +19,10 @@ function NavMenu() {
               <Nav.Link href='#home'>Bosh sahifa</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/contracts'>
-              <Nav.Link href='#features'>Shartnoma ma'lumotlari</Nav.Link>
+              <Nav.Link href='#features'>Byudjet Shartnoma ma'lumotlari</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/contractsCoorp'>
+              <Nav.Link href='#features'>Korporativ Shartnoma ma'lumotlari</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/trades'>
               <Nav.Link href='#features'>Amaldagi e'lonlar</Nav.Link>
