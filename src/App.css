@@ -37,3 +37,7 @@
     transform: rotate(360deg);
   }
 }
+
+.testclass {
+  max-width: 100vw;
+}

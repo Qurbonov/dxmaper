@@ -5,7 +5,7 @@ import Accordion from "react-bootstrap/Accordion";
 import React, {useEffect, useState} from "react";
 import DataTable from "react-data-table-component";
 
-const ContractsCoorpInfo = () => {
+const FailedContractsInfo = () => {
     const [rabbitData, setRbtData] = useState([]);
     const [rabbitTotal, setRbtTotal] = useState();
     const countPerPage = 10;
@@ -19,15 +19,10 @@ const ContractsCoorpInfo = () => {
         setLoading(true);
         axios
             .get(
-                process.env.REACT_APP_LOCAL_URL_GET_COORP +
+                process.env.REACT_APP_LOCAL_URL_GET_RESULTATS_FAILED +
                 `?offset=${page}&limit=${countPerPage}`,
                 {
                     params: {
-                        // page: page,
-                        // per_page: countPerPage,
-                        // delay: 1,
-                        // limit: 10,
-                        // offset: 1,
                         ...query,
                     },
                 }
@@ -50,63 +45,98 @@ const ContractsCoorpInfo = () => {
 
     const columns = React.useMemo(() => [
         {
-            name: "Tovar nomi",
-            selector: (row) => <Link to={`/details/coorp/${row.id}`}>{row.tovarName}</Link>,
-            sortable: true,
-            reorder: true,
-            width: "20%",
+            name: "ETP",
+            selector: (row) => {
+                switch (row.etp_id) {
+                    case 1:
+                        return <div className='rounded px-3 py-1 bg-light'>UZEX</div>;
+                    case 2:
+                        return <div className='rounded px-3 py-1 bg-light'>XT-Xarid</div>;
+                    case 3:
+                        return (
+                            <div className='rounded px-3 py-1 bg-light'>Coopiration</div>
+                        );
+                    case 4:
+                        return (
+                            <div className='rounded px-3 py-1 bg-light'>Shaffof qurilish</div>
+                        );
+                }
+            },
+            width: "10%",
         },
         {
-            name: "Tovar Kodi",
-            selector: (row) => (row.tnCode),
+            name: "Savdo turi",
+            selector: (row) => {
+                switch (row.proc_id) {
+                    case 6:
+                        return "Elektron katalog";
+                    case 3:
+                        return "Auksion (Amalga oshirilgan savdo)";
+                    case 17:
+                        return "Tender";
+                    case 18:
+                        return "Konkurs";
+                    case 19:
+                        return "To'g'ridan to'g'ri shartnoma";
+                }
+            },
+        },
+        {
+            name: "Lot raqami",
+            selector: (row) => <Link to={`/details/${row.id}`}>{row.lot_id}</Link>,
+            width: "12%",
+        },
+        {
+            name: "Hudud (etkazib beruvchi)",
+            selector: (row) => (row.v_terr == null ? "-" : row.v_terr),
             sortable: true,
             reorder: true,
             width: "12%",
         },
         {
             name: "Shartnoma raqami",
-            selector: (row) => (row.contractNum),
-            sortable: true,
-            reorder: true,
-            width: "10%",
+            selector: (row) => row.contract_num,
+            width: "13%",
         },
         {
-            name: "Shartnoma summasi",
-            selector: (row) => (row.summaContract),
+            name: "Umumiy summa",
+            selector: (row) => row.summa,
             sortable: true,
             reorder: true,
             width: "12%",
         },
         {
-            name: "Xaridor ",
-            selector: (row) => (row.customer),
-            sortable: true,
-            reorder: true,
-            width: "18%",
+            name: "Rad etilganlik haqida",
+            selector: (row) => row.errmsg,
+            width: "14%",
         },
         {
-            name: "Hudud (Xaridor)",
-            selector: (row) => (row.areaCustomer),
-            sortable: true,
-            reorder: true,
-            width: "10%",
-        },
-        {
-            name: "Yetkazib beruvchi ",
-            selector: (row) => (row.provider),
-            sortable: true,
-            reorder: true,
-            width: "18%",
-        },
+            name: "Holati",
+            style: {
+                color: 'red'
+            },
+            selector: (row) => {
+                switch (row.state) {
+                    case 3:
+                        return "Rad etilgan";
+                    case 5:
+                        return "G'aznachilik tomonidan rad etilgan";
+                    case 40:
+                        return "G'aznachilik tomonidan rad etilgan";
+                    case 44:
+                        return "Rad etilgan va Arxivdan tiklanadi";
+                }
+            },
+            width: "14%",
+        }
     ]);
-
     columns.map((col) => {
         col.compact = true;
-        // col.center = true;
         col.wrap = true;
+        col.sortable = true;
+        col.reorder = true;
         return col;
     });
-
     const onChange = (e, type) => {
         const mQuery = {};
         mQuery[type] = e.target.value;
@@ -114,8 +144,6 @@ const ContractsCoorpInfo = () => {
             ...query,
             ...mQuery,
         });
-        // setEtp(e.target.value);
-        // getResultats(e.target.value);
     };
 
     return (
@@ -136,19 +164,42 @@ const ContractsCoorpInfo = () => {
                             <div className='border px-3 py-3'>
                                 <div className='row'>
                                     <div className='col-sm'>
-                                        Tovar nomi
-                                        <input
-                                            type='text'
-                                            onChange={(e) => onChange(e, "tovarName")}
-                                            className='form-control  form-control-sm'
-                                        />
+                                        ETP:
+                                        <select
+                                            className='form-control form-control-sm'
+                                            value={etp}
+                                            onChange={(e) => onChange(e, "etpId")}
+                                        >
+                                            <option value=''>Barchasi</option>
+                                            <option value='1'>UZEX</option>
+                                            <option value='2'>XT-Xarid</option>
+                                            <option value='3'>Coopiration</option>
+                                            <option value='4'>Shaffof qurilish</option>
+                                        </select>
+                                    </div>
+                                    <div className='col-sm'>
+                                        Savro turi
+                                        <select
+                                            className='form-control form-control-sm'
+                                            value={etp}
+                                            onChange={(e) => onChange(e, "procId")}
+                                        >
+                                            <option value=''>Barchasi</option>
+                                            <option value='6'>Elektron katalog</option>
+                                            <option value='3'>
+                                                Auksion (Amalga oshirilgan savdo)
+                                            </option>
+                                            <option value='17'>Tender</option>
+                                            <option value='18'>Konkurs</option>
+                                            <option value='19'>To'g'ridan to'g'ri shartnoma</option>
+                                        </select>
                                     </div>
                                     {" "}
                                     <div className='col-sm'>
-                                        Tovar Tn Kodi
+                                        Lot raqami
                                         <input
                                             type='text'
-                                            onChange={(e) => onChange(e, "tnCode")}
+                                            onChange={(e) => onChange(e, "lotId")}
                                             className='form-control  form-control-sm'
                                         />
                                     </div>
@@ -162,25 +213,7 @@ const ContractsCoorpInfo = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='row'>
-                                    <div className='col-sm'>
-                                        Xaridor Nomi
-                                        <input
-                                            type='text'
-                                            onChange={(e) => onChange(e, "customer")}
-                                            className='form-control  form-control-sm'
-                                        />
-                                    </div>
-                                    {" "}
-                                    <div className='col-sm'>
-                                        Yetkazib beruvchi nomi
-                                        <input
-                                            type='text'
-                                            onChange={(e) => onChange(e, "provider")}
-                                            className='form-control  form-control-sm'
-                                        />
-                                    </div>
-                                </div>
+
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
@@ -207,8 +240,8 @@ const ContractsCoorpInfo = () => {
                         paginationComponentOptions={{
                             noRowsPerPage: true,
                         }}
+
                         onChangePage={(page) => setPage(page)}
-                        responsive
                         highlightOnHover
                         striped
                         progressPending={loading}
@@ -219,4 +252,4 @@ const ContractsCoorpInfo = () => {
     );
 };
 
-export default ContractsCoorpInfo;
+export default FailedContractsInfo;

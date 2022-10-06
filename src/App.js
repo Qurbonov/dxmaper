@@ -15,6 +15,7 @@ import Trades_konkurs from "./components/Trades_konkurs";
 import logo from "./logo-bottom.png";
 import ContractsCoorpInfo from "./components/ContractsCoorpInfo";
 import Details_Coorp from "./components/details/Details_Coorp";
+import FailedContractsInfo from "./components/FailedContractsInfo";
 
 function App() {
     return (
@@ -23,13 +24,13 @@ function App() {
             <main>
                 <div
                     style={{
-                        background: "linear-gradient(#F8FBFE, #fff)",
+                        background: "linear-gradient(#F8FBFE, #fff)"
                     }}
                 >
                     <Routes>
                         <Route path='/' element={<Home/>}/>
-                        <Route path='home' element={<Home/>}/>
-                        <Route path='contracts' element={<ContractsInfo/>}/>
+                        <Route path='contractsSuccess' element={<ContractsInfo/>}/>
+                        <Route path='contractsFailed' element={<FailedContractsInfo/>}/>
                         <Route path='contractsCoorp' element={<ContractsCoorpInfo/>}/>
                         <Route path='trades' element={<Trades/>}>
                             <Route index element={<Trades_tender/>}/>
