@@ -16,7 +16,7 @@ const Trades = () => {
             Elektron do'kon
           </Link>{" "}
           <Link to='auction' className='btn px-3' style={{ color: "#264A68" }}>
-            Auction
+            Auksion
           </Link>{" "}
           <Link to='konkurs' className='btn px-3' style={{ color: "#264A68" }}>
             Konkurs
