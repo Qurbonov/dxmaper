@@ -1,0 +1,53 @@
+import React, {useState} from "react";
+import axios from "axios";
+import {setAuthToken} from "../helpers/setAuthToken"
+
+function Cabinet() {
+    const onChangeUsername = (e) => {
+        const username = e.target.value;
+        setUserName(username);
+    };
+
+    const onChangePassword = (e) => {
+        const password = e.target.value;
+        setPassword(password);
+    };
+    const [username, setUserName] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleSubmit = () => {
+        axios.post("http://localhost:8585/v1/atm/auth/login", {
+            username: username,
+            password: password
+        })
+            .then(response => {
+                const token = response.data.token;
+                localStorage.setItem("token", token);
+                setAuthToken(token);
+                window.location.href = '/'
+            })
+            .catch(err => console.log(err));
+    };
+
+    return (
+        <>
+            <form
+                onSubmit={
+                    (event) => {
+                        event.preventDefault()
+                        handleSubmit()
+                    }
+                }
+                className="container form-control mt-4 p-4">
+                <label htmlFor="username">Login</label>
+                <input type="text" id="username" name="username" className="form-control" onChange={onChangeUsername}/>
+                <label htmlFor="password" className="mt-4">Password</label>
+                <input type="password" id="password" name="password" className="form-control"
+                       onChange={onChangePassword}/>
+                <input type="submit" value="Kirish" className="mt-3  btn btn-success"/>
+            </form>
+        </>
+    );
+}
+
+export default Cabinet

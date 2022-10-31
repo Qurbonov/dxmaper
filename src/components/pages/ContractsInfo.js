@@ -19,15 +19,20 @@ const ContractsInfo = () => {
         setLoading(true);
         axios
             .get(
-                process.env.REACT_APP_LOCAL_URL_GET_RESULTATS_SUCCESS +
-                `?offset=${page}&limit=${countPerPage}`,
+                process.env.REACT_APP_LOCAL_URL_GET_RESULTATS_SUCCESS + `?offset=${page}&limit=${countPerPage}`,
                 {
                     params: {
+                        // limit: 100,
+                        // offset: 1,
                         ...query,
                     },
                 }
             )
             .then((response) => {
+                // console.log(response);
+                console.log(response.data);
+                console.log(response.data.body);
+                // setRbtData([1,2,3,4,5]);
                 setRbtData(response.data.body);
                 setRbtTotal(response.data.total);
                 // console.log(response.data.total);
@@ -40,6 +45,7 @@ const ContractsInfo = () => {
             });
     };
     useEffect(() => {
+        console.log(rabbitData)
         getResultsData();
     }, [query, page]);
 
