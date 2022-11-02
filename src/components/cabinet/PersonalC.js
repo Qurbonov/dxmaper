@@ -87,7 +87,7 @@ const PersonalC = () => {
     const dispYuridikData = () => {
         return YuridikData ? (
             <>
-                {YuridikData.success = "true" ? "yes" : "no"}
+                {YuridikData.success ? "yes" : "no"}
                 <table className="table table-hover table-striped">
                     <thead>
                     <th>F.I.O (nomi</th>
