@@ -48,7 +48,7 @@ const PersonalC = () => {
     //         "entrepreneurshipAddress": {
     //         "soatoCode": "1724401",
     //             "regionId": 24,
-    //             "districtId": 10,
+    //             "districtId": 10,ede
     //             "address": "SIRDARYO VILOYATI, GULISTON SHAHRI"
     //     }
     // },
