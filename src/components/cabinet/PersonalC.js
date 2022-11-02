@@ -24,7 +24,7 @@ const PersonalC = () => {
 
                 console.log(dataIn);
             }).catch(
-            (error) =>{
+            (error) => {
                 console.log(error);
             });
     }
@@ -54,72 +54,66 @@ const PersonalC = () => {
     // },
     //     "success": true
     // }
-    const dispData=()=>{
+    const dispData = () => {
         return dataIn ? (
-            <table>
-                <thead>
-                <th>F.I.O. (nomi)</th>
-                <th>dataIn.body.name</th>
-                </thead>
-                <tr>
-                    <td>dataIn.body.</td>
-                    <td>dataIn.body.</td>
-                </tr>
-                <tr>
-                    <td>dataIn.body.</td>
-                    <td>dataIn.body.</td>
-                </tr>
-                <tr>
-                    <td>dataIn.body.</td>
-                    <td>dataIn.body.</td>
-                </tr>
-                <tr>
-                    <td>dataIn.body.</td>
-                    <td>dataIn.body.</td>
-                </tr>
-                <tr>
-                    <td>dataIn.body.</td>
-                    <td>dataIn.body.</td>
-                </tr>
-                <tr>
-                    <td>dataIn.body.</td>
-                    <td>dataIn.body.</td>
-                </tr>
-                <tr>
-                    <td>dataIn.body.</td>
-                    <td>dataIn.body.</td>
-                </tr>
-                <tr>
-                    <td>dataIn.body.</td>
-                    <td>dataIn.body.</td>
-                </tr>
-            </table>
+            <>
+                <table className="container table table-hover table-striped">
+                    <thead>
+                    <th>F.I.O (nomi</th>
+                    <th>{dataIn.body.name}</th>
+                    </thead>
+                    <tr>
+                        <td>Pinfl</td>
+                        <td>{dataIn.body.pinfl}</td>
+                    </tr>
+                    <tr>
+                        <td>STIR raqami</td>
+                        <td>{dataIn.body.tin ? dataIn.body.tin : "-"}</td>
+                    </tr>
+                    <tr>
+                        <td>Ro'yhatga olingan san</td>
+                        <td>{dataIn.body.registrationDate}</td>
+                    </tr>
+                    <tr>
+                        <td>Ro'yhatga olish ID</td>
+                        <td>{dataIn.body.registrationId}</td>
+                    </tr>
+                    <tr>
+                        <td>Yo'nalish</td>
+                        <td>{dataIn.body.activityTypeName}</td>
+                    </tr>
+                    <tr>
+                        <td>Manzil</td>
+                        <td>{dataIn.body.soatoCode.address}</td>
+                    </tr>
 
-            <b>dataIn.body.pinfl<b> <br/>
+                </table>
 
+                <b>dataIn.body.pinfl</b> <br/>
+            </>
 
-                ): <h2>no data</h2>
-                }
-                return (
-                <>
-                    {dispData()}
-                    <div className="container mt-3">
-                        <h1>
-                            Yuridik shaxslar va YTT lar togrisida malumot
-                        </h1>
+        ) : <div className="container">
+        </div>
+    }
+    return (
+        <>
+            <div className="container mt-3">
+                <h1>
+                    Yuridik shaxslar va YTT lar togrisida malumot
+                </h1>
 
-                        <p>YTT PINFLni kiriting:</p>
-                        <input type="text" name="pinfl" id="" className="form-text" onChange={onChangePinfl}/>
-                        <button className="btn btn-light" onClick={getIndividualInfo}> qidirish</button>
-                    </div>
-                    <div>
-                        pinfl
+                <p>YTT PINFLni kiriting:</p>
+                <input type="text" name="pinfl" id="" className="form-text" onChange={onChangePinfl}/>
+                <button className="btn btn-light" onClick={getIndividualInfo}> qidirish</button>
+            </div>
+            <div>
 
-                    </div>
-                </>
-                );
-                };
+                {dispData()}
+
+            </div>
+        </>
+    );
+};
 
 
-
-                export default PersonalC;
+export default PersonalC;
