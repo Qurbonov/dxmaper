@@ -55,7 +55,7 @@ const PersonalC = () => {
                     </tr>
                     <tr>
                         <td>Manzil</td>
-                        <td>{dataIn.body.soatoCode.address}</td>
+                        <td>{dataIn.body.entrepreneurshipAddress.address}</td>
                     </tr>
 
                 </table>
