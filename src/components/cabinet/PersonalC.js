@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {FcSearch} from 'react-icons/fc';
 
 const PersonalC = () => {
 
@@ -64,14 +65,16 @@ const PersonalC = () => {
     }
     return (
         <>
-            <div className="container mt-3">
-                <h1>
-                    Yuridik shaxslar va YTT lar togrisida malumot
-                </h1>
-
-                <p>YTT PINFLni kiriting:</p>
-                <input type="text" name="pinfl" id="" className="form-text" onChange={onChangePinfl}/>
-                <button className="btn btn-light" onClick={getIndividualInfo}> qidirish</button>
+            <div className="container mt-3 shadow-sm p-4 rounded">
+                <h5>
+                    Yuridik shaxslar va YTT lar to'g'risida ma'lumot
+                </h5>
+                <div className="bg-light border p-3 rounded-3">
+                    PINFL:
+                    <input type="text" name="pinfl" id="" className="form-text ms-2" onChange={onChangePinfl}/>
+                    <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getIndividualInfo}><FcSearch/>
+                    </button>
+                </div>
             </div>
             <div className="container mt-3">
                 {dispData()}
