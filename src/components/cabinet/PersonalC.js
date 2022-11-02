@@ -71,11 +71,11 @@ const PersonalC = () => {
 
     const onChangeStir = (e) => {
         const stir = e.target.value;
-        setPinfl(stir);
+        setYuridikData(stir);
     };
 
     const getYuridikInfo = () => {
-        axios.get(process.env.REACT_APP_LOCAL_URL_GET_GET_YURIDIK_BY_STIR + `?stir=${stir}`, {headers})
+        axios.get(process.env.REACT_APP_LOCAL_URL_GET_GET_YURIDIK_BY_STIR + `?inn=${stir}`, {headers})
             .then((response) => {
                 setYuridikData(response.data);
             }).catch(
@@ -87,6 +87,7 @@ const PersonalC = () => {
     const dispYuridikData = () => {
         return YuridikData ? (
             <>
+                {YuridikData.success = "true" ? "yes" : "no"}
                 <table className="table table-hover table-striped">
                     <thead>
                     <th>F.I.O (nomi</th>
@@ -112,7 +113,7 @@ const PersonalC = () => {
                         <td>Rahbar</td>
                         <td>{YuridikData.body.director.lastName} {YuridikData.body.director.firstName} {YuridikData.body.director.middleName}</td>
                     </tr>
-                    
+
                 </table>
             </>
 
