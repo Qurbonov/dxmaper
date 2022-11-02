@@ -61,7 +61,7 @@ const PersonalC = () => {
                 </table>
             </>
 
-        ) : <div className="container"></div>
+        ) : <div className="container">Ma'lumot topilmadi </div>
     }
     return (
         <>
