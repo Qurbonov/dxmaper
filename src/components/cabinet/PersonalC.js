@@ -24,32 +24,7 @@ const PersonalC = () => {
                 console.log(error);
             });
     }
-    //
-    // {
-    //     "body": {
-    //     "pinfl": 51911046450026,
-    //         "tin": null,
-    //         "name": "ABDULHAMIDOV YUNUS ABDULBOQI O‘G‘LI",
-    //         "isEntrepreneur": 1,
-    //         "registrationDate": "05.07.2022",
-    //         "registrationId": 1338737,
-    //         "activityTypeName": "Компьютер дастурларини ишлаб чикиш хизматлари, компьютер ўйинларини ташкил этиш, шунингдек компьютер ёрдамида матнларни териш ва босиб чикариш хизматлари, матндан нусха олишва кўпайтириш билан боглик хизматлар",
-    //         "status": 1,
-    //         "liquidationDate": null,
-    //         "suspensionDate": null,
-    //         "activityTypeId": "277",
-    //         "vatNumber": null,
-    //         "beginDate": "05.07.2022",
-    //         "endDate": "31.07.2025",
-    //         "entrepreneurshipAddress": {
-    //         "soatoCode": "1724401",
-    //             "regionId": 24,
-    //             "districtId": 10,ede
-    //             "address": "SIRDARYO VILOYATI, GULISTON SHAHRI"
-    //     }
-    // },
-    //     "success": true
-    // }
+
     const dispData = () => {
         return dataIn ? (
             <>
