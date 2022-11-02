@@ -19,10 +19,6 @@ const PersonalC = () => {
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_INDIVIDUAL_BY_PINFL + `?pinfl=${pinfl}`, {headers})
             .then((response) => {
                 setData(response.data);
-                console.log(response.data);
-
-
-                console.log(dataIn);
             }).catch(
             (error) => {
                 console.log(error);
@@ -57,7 +53,7 @@ const PersonalC = () => {
     const dispData = () => {
         return dataIn ? (
             <>
-                <table className="container table table-hover table-striped">
+                <table className="table table-hover table-striped">
                     <thead>
                     <th>F.I.O (nomi</th>
                     <th>{dataIn.body.name}</th>
@@ -88,12 +84,9 @@ const PersonalC = () => {
                     </tr>
 
                 </table>
-
-                <b>dataIn.body.pinfl</b> <br/>
             </>
 
-        ) : <div className="container">
-        </div>
+        ) : <div className="container"></div>
     }
     return (
         <>
@@ -106,10 +99,8 @@ const PersonalC = () => {
                 <input type="text" name="pinfl" id="" className="form-text" onChange={onChangePinfl}/>
                 <button className="btn btn-light" onClick={getIndividualInfo}> qidirish</button>
             </div>
-            <div>
-
+            <div className="container mt-3">
                 {dispData()}
-
             </div>
         </>
     );
