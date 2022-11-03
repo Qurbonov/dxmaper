@@ -1,6 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import {FcSearch} from 'react-icons/fc';
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 const PersonalC = () => {
 
@@ -122,36 +124,53 @@ const PersonalC = () => {
 
     return (
         <>
-            <div className="container mt-3 shadow-sm p-4 rounded">
-                <h5>
-                    Yakka tartibdagi tadbirkor (YTT) to'g'risida ma'lumot
-                </h5>
-                <div className="bg-light border p-3 rounded-3">
-                    PINFL:
-                    <input type="text" name="pinfl" id="" className="form-text ms-2" onChange={onChangePinfl}/>
-                    <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getIndividualInfo}><FcSearch/>
-                    </button>
-                </div>
+            <div className="bg-light rounded-3 shadow-sm p-3 mt-3 container "> Yuridik va yakka tartibdagi tadbirkor
+                bo'yicha
+                ma'lumotlar
             </div>
-            <div className="container mt-3">
-                {dispData()}
-            </div>
+            <Tabs
+                defaultActiveKey="profile"
+                id="fill-tab-example"
+                className="mb-3 mt-3"
+                fill
+            >
+                <Tab eventKey="home" title="Yakka tartibdagi tadbirkor">
+                    <div className="container mt-3 shadow-sm p-4 rounded">
+                        <h5>
+                            Yakka tartibdagi tadbirkor (YTT) to'g'risida ma'lumot
+                        </h5>
+                        <div className="bg-light border p-3 rounded-3">
+                            PINFL:
+                            <input type="text" name="pinfl" id="" className="form-text ms-2" onChange={onChangePinfl}/>
+                            <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getIndividualInfo}>
+                                <FcSearch/>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="container mt-3">
+                        {dispData()}
+                    </div>
+                </Tab>
+                <Tab eventKey="profile" title="Yuridik shaxs">
+                    <div className="container mt-3 shadow-sm p-4 rounded">
+                        <h5>
+                            Yuridik shaxs to'g'risida ma'lumot
+                        </h5>
+                        <div className="bg-light border p-3 rounded-3">
+                            STIR:
+                            <input type="text" name="stir" id="" className="form-text ms-2" onChange={onChangeStir}/>
+                            <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getYuridikInfo}>
+                                <FcSearch/>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="container mt-3">
+                        {dispYuridikData()}
+                    </div>
+                </Tab>
 
+            </Tabs>
 
-            <div className="container mt-3 shadow-sm p-4 rounded">
-                <h5>
-                    Yuridik shaxs to'g'risida ma'lumot
-                </h5>
-                <div className="bg-light border p-3 rounded-3">
-                    STIR:
-                    <input type="text" name="stir" id="" className="form-text ms-2" onChange={onChangeStir}/>
-                    <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getYuridikInfo}><FcSearch/>
-                    </button>
-                </div>
-            </div>
-            <div className="container mt-3">
-                {dispYuridikData()}
-            </div>
 
         </>
     );
