@@ -125,7 +125,7 @@ const PersonalC = () => {
     return (
         <>
             <div className="bg-light rounded-3 shadow-sm p-3 mt-3 container "> Yuridik va yakka tartibdagi tadbirkor
-                bo'yicha ma'lumotlar !
+                bo'yicha ma'lumotlar !!!
             </div>
             <Tabs
                 defaultActiveKey="profile"
