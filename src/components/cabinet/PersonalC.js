@@ -8,7 +8,7 @@ const PersonalC = () => {
         'Authorization': 'Bearer ' + localStorage.getItem("token")
     };
 
-    /* Yakka tartibdagi tadbirkor */
+    /* -------------Yakka tartibdagi tadbirkor ---------------- */
     const [pinfl, setPinfl] = useState();
     const [dataIn, setData] = useState();
 
@@ -64,14 +64,14 @@ const PersonalC = () => {
         ) : <div className="container"></div>
     }
 
-    /* Yuridik shaxs */
+    /* ----------------- Yuridik shaxs ----------------------- */
 
     const [stir, setStir] = useState();
     const [YuridikData, setYuridikData] = useState();
 
     const onChangeStir = (e) => {
         const stir = e.target.value;
-        setYuridikData(stir);
+        setStir(stir);
     };
 
     const getYuridikInfo = () => {
@@ -87,7 +87,7 @@ const PersonalC = () => {
     const dispYuridikData = () => {
         return YuridikData ? (
             <>
-                {YuridikData.success ? "yes" : "no"}
+                {YuridikData.success}
                 <table className="table table-hover table-striped">
                     <thead>
                     <th>F.I.O (nomi</th>
