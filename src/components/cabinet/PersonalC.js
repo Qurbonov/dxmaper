@@ -144,7 +144,7 @@ const PersonalC = () => {
                 className="mb-3 mt-3"
                 fill
             >
-                <Tab eventKey="home" title="Yakka tartibdagi tadbirkor">
+                <Tab eventKey="ytt" title="Yakka tartibdagi tadbirkor">
                     <div className="container mt-3 shadow-sm p-4 rounded">
                         <h5>
                             Yakka tartibdagi tadbirkor (YTT) to'g'risida ma'lumot
@@ -164,7 +164,7 @@ const PersonalC = () => {
                         {dispData()}
                     </div>
                 </Tab>
-                <Tab eventKey="profile" title="Yuridik shaxs">
+                <Tab eventKey="yuridik" title="Yuridik shaxs">
                     <div className="container mt-3 shadow-sm p-4 rounded">
                         <h5>
                             Yuridik shaxs to'g'risida ma'lumot
@@ -184,7 +184,154 @@ const PersonalC = () => {
                         {dispYuridikData()}
                     </div>
                 </Tab>
+                <Tab eventKey="et" title="Umumlashtiruvchi jadval">
+                    <div>
+                        <div className="container bg-light p-3 text-end mb-3 rounded-3">
+                            <span className="text-info me-2">Yil:</span> <select name="" id=""
+                                                                                 className="me-3 form-control-sm">
+                            <option value="">2020</option>
+                            <option value="">2021</option>
+                            <option value="">2022</option>
+                        </select>
+                            <span className="text-info me-2"> Chorak:</span>
+                            <select name="" id="" className="me-4 form-control-sm">
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                            </select>
+                        </div>
 
+                        <table className="table table-hover table-bordered">
+                            <thead>
+                            <tr>
+                                <th colSpan="12" className="text-center bg-light">Davlat ishtirokidagi korxonalarning
+                                    xatarlari
+                                    bo'yicha umumlashtiruvchi jadval
+                                </th>
+                            </tr>
+                            <tr>
+                                <th rowSpan="3" className="w-25 text-center align-middle">Tashkilotlar</th>
+                                <th colSpan="6" className="text-center">Xatarlar darajasi</th>
+                                <th rowSpan="3" colSpan="3" className=" text-center align-middle"> TOTAL</th>
+
+                            </tr>
+                            <tr className="text-center">
+
+                                <th colSpan="2">Joriy likvidlik</th>
+
+                                <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>
+                                <th colSpan="2">Xarajatlarni qoplash</th>
+                            </tr>
+                            <tr className="text-center">
+
+                                <td>Ko'rsatgich</td>
+                                <td>Xatar darajasi</td>
+                                <td>Ko'rsatgich</td>
+                                <td>Xatar darajasi</td>
+                                <td>Ko'rsatgich</td>
+                                <td>Xatar darajasi</td>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+
+                            <tr>
+                                <td>"O`ZTRANSGAZ" AJ</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>"NAVOIY KON-METALLURGIYA KOMBINATI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"OLMALIQ KON-METALLURGIYA KOMBINATI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O`ZBEKISTON METALLURGIYA KOMBINATI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"FARG`ONAAZOT " AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"ISSIQLIK ELEKTR STANSIYALARI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O'ZBEKKO'MIR" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O'ZBEKISTON TEMIR YO'LLARI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"UZBEKISTAN AIRWAYS" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O`ZBEKISTON POCHTASI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"UZBEKGIDROENERGO" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O'ZBEKNEFTGAZ" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O`ZBEKTELEKOM " AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O'ZSUVTA'MINOT" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"UZBEKISTAN AIRPORTS" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O'ZKIMYOSANOAT" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"HUDUDGAZTA`MINOT" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"TOSHSHAHARTRANSXIZMAT" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O'ZAVTOSANOATI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"HUDUDIY ELEKTR TARMOQLARI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O'ZDONMAHSULOT" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"O`ZBEKISTON MILLIY ELEKTR TARMOQLARI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"YANGI ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>
+                            </tr>
+                            <tr>
+                                <td>"MAXSUSTRANS ISHLAB CHIQARISH BOSHQARMASI" DUK</td>
+                            </tr>
+                            <tr>
+                                <td>"O`ZAERONAVIGATSIYA MARKAZI" DUK</td>
+                            </tr>
+                            <tr>
+                                <td>TOSHKENT METROPOLITENI" УК</td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </Tab>
             </Tabs>
 
 
