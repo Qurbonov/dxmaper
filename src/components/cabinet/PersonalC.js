@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import axios from "axios";
 import {FcSearch} from 'react-icons/fc';
 import Tabs from "react-bootstrap/Tabs";
@@ -13,12 +13,16 @@ const PersonalC = () => {
     /* -------------Yakka tartibdagi tadbirkor ---------------- */
     const [pinfl, setPinfl] = useState();
     const [dataIn, setData] = useState();
-
-    const onChangePinfl = (e) => {
-        const pinfl = e.target.value;
-        setPinfl(pinfl);
-    };
+    const inputYtt = useRef(null);
+    // const onChangePinfl = (e) => {
+    //     const pinfl = e.target.value;
+    //     setPinfl(pinfl);
+    // };
     const getIndividualInfo = () => {
+
+        const pinfl = inputYtt.current.value;
+        setPinfl(pinfl)
+        console.log(pinfl);
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_INDIVIDUAL_BY_PINFL + `?pinfl=${pinfl}`, {headers})
             .then((response) => {
                 setData(response.data);
@@ -29,11 +33,14 @@ const PersonalC = () => {
     }
 
     const dispData = () => {
-        return dataIn ? (
+        dataIn ? console.log(dataIn.success) : console.log("n");
+
+        return dataIn && dataIn.success === true ? (
+
             <>
                 <table className="table table-hover table-striped">
                     <thead>
-                    <th>F.I.O (nomi</th>
+                    <th>F.I.O (nomi)</th>
                     <th>{dataIn.body.name}</th>
                     </thead>
                     <tr>
@@ -42,7 +49,7 @@ const PersonalC = () => {
                     </tr>
                     <tr>
                         <td>STIR raqami</td>
-                        <td>{dataIn.body.tin ? dataIn.body.tin : "-"}</td>
+                        <td>{dataIn.body.tin ? dataIn.body.tin : "--"}</td>
                     </tr>
                     <tr>
                         <td>Ro'yhatga olingan san</td>
@@ -62,21 +69,25 @@ const PersonalC = () => {
                     </tr>
                 </table>
             </>
-
-        ) : <div className="container"></div>
+        ) : <div className="container alert alert-warning"> Ushbu pinfl bo'yicha ma'lumot topilmadi. </div>
     }
+//}
 
     /* ----------------- Yuridik shaxs ----------------------- */
 
     const [stir, setStir] = useState();
     const [YuridikData, setYuridikData] = useState();
+    const inputYuridik = useRef(null);
 
-    const onChangeStir = (e) => {
-        const stir = e.target.value;
-        setStir(stir);
-    };
+    // const onChangeStir = (e) => {
+    //     const stir = e.target.value;
+    //     setStir(stir);
+    // };
 
     const getYuridikInfo = () => {
+        const stir = inputYuridik.current.value;
+        setStir(stir)
+        console.log(stir);
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_GET_YURIDIK_BY_STIR + `?inn=${stir}`, {headers})
             .then((response) => {
                 setYuridikData(response.data);
@@ -140,7 +151,10 @@ const PersonalC = () => {
                         </h5>
                         <div className="bg-light border p-3 rounded-3">
                             PINFL:
-                            <input type="text" name="pinfl" id="" className="form-text ms-2" onChange={onChangePinfl}/>
+                            <input type="text" name="pinfl" id="" className="form-text ms-2" ref={inputYtt}/>
+                            {/*<input type="text" name="pinfl" id="" className="form-text ms-2" onChange={e => {*/}
+                            {/*    setPinfl(e.target.value)*/}
+                            {/*}}/>*/}
                             <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getIndividualInfo}>
                                 <FcSearch/>
                             </button>
@@ -157,7 +171,10 @@ const PersonalC = () => {
                         </h5>
                         <div className="bg-light border p-3 rounded-3">
                             STIR:
-                            <input type="text" name="stir" id="" className="form-text ms-2" onChange={onChangeStir}/>
+                            <input type="text" name="stir" id="" className="form-text ms-2" ref={inputYuridik}/>
+                            {/*<input type="text" name="stir" id="" className="form-text ms-2" onChange={e => {*/}
+                            {/*    setStir(e.target.value)*/}
+                            {/*}}/>*/}
                             <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getYuridikInfo}>
                                 <FcSearch/>
                             </button>
