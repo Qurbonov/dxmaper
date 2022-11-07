@@ -121,28 +121,22 @@ const PersonalC = () => {
 
 
     /* -------------- total table ------------------ */
-    const r_year = useRef("2021");
-    const [year, setYear] = useState();
+    // const r_year = useRef("");
     const options = [
+        {value: '', text: '--Choose an option--'},
         {value: 2020, text: 2020},
         {value: 2021, text: 2021},
         {value: 2022, text: 2022}
     ]
-    const handleChange = event => {
-        console.log(event.target.value);
-        setYear(event.target.value);
-    };
-    const get_report_year_quarter = event => {
-        // console.log(event)
-        // setYear(e.target.value)
-        setYear(event.target.value);
-        const rYear = year;
-        console.log(rYear)
-        console.log(r_year)
-        // console.log(r_year_name)
-        console.log(year)
+    const [year, setYear] = useState(options[1].value);
 
-        setPinfl(pinfl)
+    const handleChange = event => {
+        console.log("event.target.value  " + event.target.value);
+        setYear(event.target.value);
+        // get_report_year_quarter();
+    };
+    const get_report_year_quarter = () => {
+        // setYear(event.target.value);
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${year}&quarter=1`, {headers})
             .then((response) => {
                 setData(response.data);
@@ -152,7 +146,7 @@ const PersonalC = () => {
             });
     }
     useEffect(() => {
-        // get_report_year_quarter()
+        get_report_year_quarter()
     })
     return (
         <>
@@ -210,8 +204,9 @@ const PersonalC = () => {
                     <div>
                         <div
                             className="container bg-light p-4 text-end mb-3 rounded-3 shadow-sm">
+                            <div>{year}</div>
                             <span className="text-info me-2">Yil:</span>
-                            <select value={year} onChange={get_report_year_quarter}>
+                            <select value={year} onChange={handleChange}>
                                 {options.map(option => (
                                     <option key={option.value} value={option.value}>
                                         {option.text}
