@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import axios from "axios";
 import {FcSearch} from 'react-icons/fc';
 import Tabs from "react-bootstrap/Tabs";
@@ -14,15 +14,10 @@ const PersonalC = () => {
     const [pinfl, setPinfl] = useState();
     const [dataIn, setData] = useState();
     const inputYtt = useRef(null);
-    // const onChangePinfl = (e) => {
-    //     const pinfl = e.target.value;
-    //     setPinfl(pinfl);
-    // };
-    const getIndividualInfo = () => {
 
+    const getIndividualInfo = () => {
         const pinfl = inputYtt.current.value;
         setPinfl(pinfl)
-        console.log(pinfl);
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_INDIVIDUAL_BY_PINFL + `?pinfl=${pinfl}`, {headers})
             .then((response) => {
                 setData(response.data);
@@ -33,10 +28,7 @@ const PersonalC = () => {
     }
 
     const dispData = () => {
-        dataIn ? console.log(dataIn.success) : console.log("n");
-
         return dataIn && dataIn.success === true ? (
-
             <>
                 <table className="table table-hover table-striped">
                     <thead>
@@ -69,9 +61,8 @@ const PersonalC = () => {
                     </tr>
                 </table>
             </>
-        ) : <div className="container alert alert-warning"> Ushbu pinfl bo'yicha ma'lumot topilmadi. </div>
+        ) : <div className="container alert alert-light"></div>
     }
-//}
 
     /* ----------------- Yuridik shaxs ----------------------- */
 
@@ -79,16 +70,11 @@ const PersonalC = () => {
     const [YuridikData, setYuridikData] = useState();
     const inputYuridik = useRef(null);
 
-    // const onChangeStir = (e) => {
-    //     const stir = e.target.value;
-    //     setStir(stir);
-    // };
-
     const getYuridikInfo = () => {
         const stir = inputYuridik.current.value;
         setStir(stir)
         console.log(stir);
-        axios.get(process.env.REACT_APP_LOCAL_URL_GET_GET_YURIDIK_BY_STIR + `?inn=${stir}`, {headers})
+        axios.get(process.env.REACT_APP_LOCAL_URL_GET_YURIDIK_BY_STIR + `?inn=${stir}`, {headers})
             .then((response) => {
                 setYuridikData(response.data);
             }).catch(
@@ -98,7 +84,7 @@ const PersonalC = () => {
     }
 
     const dispYuridikData = () => {
-        return YuridikData ? (
+        return YuridikData && YuridikData.success === true ? (
             <>
                 {YuridikData.success}
                 <table className="table table-hover table-striped">
@@ -133,15 +119,51 @@ const PersonalC = () => {
         ) : <div className="container"></div>
     }
 
+
+    /* -------------- total table ------------------ */
+    const r_year = useRef("2021");
+    const [year, setYear] = useState();
+    const options = [
+        {value: 2020, text: 2020},
+        {value: 2021, text: 2021},
+        {value: 2022, text: 2022}
+    ]
+    const handleChange = event => {
+        console.log(event.target.value);
+        setYear(event.target.value);
+    };
+    const get_report_year_quarter = event => {
+        // console.log(event)
+        // setYear(e.target.value)
+        setYear(event.target.value);
+        const rYear = year;
+        console.log(rYear)
+        console.log(r_year)
+        // console.log(r_year_name)
+        console.log(year)
+
+        setPinfl(pinfl)
+        axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${year}&quarter=1`, {headers})
+            .then((response) => {
+                setData(response.data);
+            }).catch(
+            (error) => {
+                console.log(error);
+            });
+    }
+    useEffect(() => {
+        // get_report_year_quarter()
+    })
     return (
         <>
-            <div className="bg-light rounded-3 shadow-sm p-3 mt-3 container "> Yuridik va yakka tartibdagi tadbirkor
-                bo'yicha ma'lumotlar !!!
-            </div>
+            {/*<div className="bg-light rounded-3 shadow-sm p-3 mt-3 container ">*/}
+            {/*    /!*Yuridik va yakka tartibdagi tadbirkor*!/*/}
+            {/*    /!*bo'yicha ma'lumotlar !!!*!/*/}
+            {/*</div>*/}
             <Tabs
-                defaultActiveKey="profile"
+                defaultActiveKey="et"
                 id="fill-tab-example"
-                className="mb-3 mt-3"
+                className="mb-3 mt-4"
                 fill
             >
                 <Tab eventKey="ytt" title="Yakka tartibdagi tadbirkor">
@@ -186,15 +208,18 @@ const PersonalC = () => {
                 </Tab>
                 <Tab eventKey="et" title="Umumlashtiruvchi jadval">
                     <div>
-                        <div className="container bg-light p-3 text-end mb-3 rounded-3">
-                            <span className="text-info me-2">Yil:</span> <select name="" id=""
-                                                                                 className="me-3 form-control-sm">
-                            <option value="">2020</option>
-                            <option value="">2021</option>
-                            <option value="">2022</option>
-                        </select>
+                        <div
+                            className="container bg-light p-4 text-end mb-3 rounded-3 shadow-sm">
+                            <span className="text-info me-2">Yil:</span>
+                            <select value={year} onChange={get_report_year_quarter}>
+                                {options.map(option => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.text}
+                                    </option>
+                                ))}
+                            </select>
                             <span className="text-info me-2"> Chorak:</span>
-                            <select name="" id="" className="me-4 form-control-sm">
+                            <select name="r_quarter" id="" className="me-4 form-control-sm">
                                 <option value="">1</option>
                                 <option value="">2</option>
                                 <option value="">3</option>
