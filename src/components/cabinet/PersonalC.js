@@ -140,6 +140,7 @@ const PersonalC = () => {
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${year}&quarter=1`, {headers})
             .then((response) => {
                 setReport(response.data);
+                console.log("response.data")
                 console.log(response.data)
             }).catch(
             (error) => {
