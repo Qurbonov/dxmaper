@@ -129,7 +129,7 @@ const PersonalC = () => {
         {value: 2022, text: 2022}
     ]
     const [year, setYear] = useState(options[1].value);
-
+    const [reports, setReport] = useState();
     const handleChange = event => {
         console.log("event.target.value  " + event.target.value);
         setYear(event.target.value);
@@ -139,7 +139,8 @@ const PersonalC = () => {
         // setYear(event.target.value);
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${year}&quarter=1`, {headers})
             .then((response) => {
-                setData(response.data);
+                setReport(response.data);
+                console.log(response.data)
             }).catch(
             (error) => {
                 console.log(error);
@@ -147,6 +148,7 @@ const PersonalC = () => {
     }
     useEffect(() => {
         get_report_year_quarter()
+        console.log(reports)
     })
     return (
         <>
