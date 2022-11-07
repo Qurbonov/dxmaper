@@ -21,47 +21,44 @@ const PersonalC = () => {
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_INDIVIDUAL_BY_PINFL + `?pinfl=${pinfl}`, {headers})
             .then((response) => {
                 setData(response.data);
-            }).catch(
-            (error) => {
-                console.log(error);
-            });
+            }).catch((error) => {
+            console.log(error);
+        });
     }
 
     const dispData = () => {
-        return dataIn && dataIn.success === true ? (
-            <>
-                <table className="table table-hover table-striped">
-                    <thead>
-                    <th>F.I.O (nomi)</th>
-                    <th>{dataIn.body.name}</th>
-                    </thead>
-                    <tr>
-                        <td>Pinfl</td>
-                        <td>{dataIn.body.pinfl}</td>
-                    </tr>
-                    <tr>
-                        <td>STIR raqami</td>
-                        <td>{dataIn.body.tin ? dataIn.body.tin : "--"}</td>
-                    </tr>
-                    <tr>
-                        <td>Ro'yhatga olingan san</td>
-                        <td>{dataIn.body.registrationDate}</td>
-                    </tr>
-                    <tr>
-                        <td>Ro'yhatga olish ID</td>
-                        <td>{dataIn.body.registrationId}</td>
-                    </tr>
-                    <tr>
-                        <td>Yo'nalish</td>
-                        <td>{dataIn.body.activityTypeName}</td>
-                    </tr>
-                    <tr>
-                        <td>Manzil</td>
-                        <td>{dataIn.body.entrepreneurshipAddress.address}</td>
-                    </tr>
-                </table>
-            </>
-        ) : <div className="container alert alert-light"></div>
+        return dataIn && dataIn.success === true ? (<>
+            <table className="table table-hover table-striped">
+                <thead>
+                <th>F.I.O (nomi)</th>
+                <th>{dataIn.body.name}</th>
+                </thead>
+                <tr>
+                    <td>Pinfl</td>
+                    <td>{dataIn.body.pinfl}</td>
+                </tr>
+                <tr>
+                    <td>STIR raqami</td>
+                    <td>{dataIn.body.tin ? dataIn.body.tin : "--"}</td>
+                </tr>
+                <tr>
+                    <td>Ro'yhatga olingan san</td>
+                    <td>{dataIn.body.registrationDate}</td>
+                </tr>
+                <tr>
+                    <td>Ro'yhatga olish ID</td>
+                    <td>{dataIn.body.registrationId}</td>
+                </tr>
+                <tr>
+                    <td>Yo'nalish</td>
+                    <td>{dataIn.body.activityTypeName}</td>
+                </tr>
+                <tr>
+                    <td>Manzil</td>
+                    <td>{dataIn.body.entrepreneurshipAddress.address}</td>
+                </tr>
+            </table>
+        </>) : <div className="container alert alert-light"></div>
     }
 
     /* ----------------- Yuridik shaxs ----------------------- */
@@ -77,15 +74,13 @@ const PersonalC = () => {
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_YURIDIK_BY_STIR + `?inn=${stir}`, {headers})
             .then((response) => {
                 setYuridikData(response.data);
-            }).catch(
-            (error) => {
-                console.log(error);
-            });
+            }).catch((error) => {
+            console.log(error);
+        });
     }
 
     const dispYuridikData = () => {
-        return YuridikData && YuridikData.success === true ? (
-            <>
+        return YuridikData && YuridikData.success === true ? (<>
                 {YuridikData.success}
                 <table className="table table-hover table-striped">
                     <thead>
@@ -122,244 +117,240 @@ const PersonalC = () => {
 
     /* -------------- total table ------------------ */
     // const r_year = useRef("");
-    const options = [
-        {value: '', text: '--Choose an option--'},
-        {value: 2020, text: 2020},
-        {value: 2021, text: 2021},
-        {value: 2022, text: 2022}
-    ]
-    const [year, setYear] = useState(options[1].value);
-    const [reports, setReport] = useState();
+    const optionsOfYear = [// {value: '', text: '--'},
+        {value: 2020, text: "2020 yil"}, {value: 2021, text: "2021 yil"}, {value: 2022, text: "2022 yil"}]
+    const optionsOfQuarter = [// {value: '', text: '--'},
+        {value: 1, text: "1 chorak"}, {value: 2, text: "2 chorak"}, {value: 3, text: "3 chorak"}, {value: 4, text: "4 chorak"}]
+    const [year, setYear] = useState(optionsOfYear[0].value);
+    const [quarter, setQuarter] = useState(optionsOfQuarter[0].value);
+    const [reports, setReport] = useState([]);
+
     const handleChange = event => {
         console.log("event.target.value  " + event.target.value);
         setYear(event.target.value);
-        // get_report_year_quarter();
     };
+
     const get_report_year_quarter = () => {
         // setYear(event.target.value);
-        axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${year}&quarter=1`, {headers})
+        axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${year}&quarter=${quarter}`, {headers})
             .then((response) => {
                 setReport(response.data);
                 console.log("response.data")
                 console.log(response.data)
-            }).catch(
-            (error) => {
-                console.log(error);
-            });
+            }).catch((error) => {
+            console.log(error);
+        });
     }
     useEffect(() => {
         get_report_year_quarter()
         console.log(reports)
     })
-    return (
-        <>
-            {/*<div className="bg-light rounded-3 shadow-sm p-3 mt-3 container ">*/}
-            {/*    /!*Yuridik va yakka tartibdagi tadbirkor*!/*/}
-            {/*    /!*bo'yicha ma'lumotlar !!!*!/*/}
-            {/*</div>*/}
-            <Tabs
-                defaultActiveKey="et"
-                id="fill-tab-example"
-                className="mb-3 mt-4"
-                fill
-            >
-                <Tab eventKey="ytt" title="Yakka tartibdagi tadbirkor">
-                    <div className="container mt-3 shadow-sm p-4 rounded">
-                        <h5>
-                            Yakka tartibdagi tadbirkor (YTT) to'g'risida ma'lumot
-                        </h5>
-                        <div className="bg-light border p-3 rounded-3">
-                            PINFL:
-                            <input type="text" name="pinfl" id="" className="form-text ms-2" ref={inputYtt}/>
-                            {/*<input type="text" name="pinfl" id="" className="form-text ms-2" onChange={e => {*/}
-                            {/*    setPinfl(e.target.value)*/}
-                            {/*}}/>*/}
-                            <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getIndividualInfo}>
-                                <FcSearch/>
-                            </button>
-                        </div>
+    return (<>
+        {/*<div className="bg-light rounded-3 shadow-sm p-3 mt-3 container ">*/}
+        {/*    /!*Yuridik va yakka tartibdagi tadbirkor*!/*/}
+        {/*    /!*bo'yicha ma'lumotlar !!!*!/*/}
+        {/*</div>*/}
+        <Tabs
+            defaultActiveKey="et"
+            id="fill-tab-example"
+            className="mb-3 mt-4"
+            fill
+        >
+            <Tab eventKey="ytt" title="Yakka tartibdagi tadbirkor">
+                <div className="container mt-3 shadow-sm p-4 rounded">
+                    <h5>
+                        Yakka tartibdagi tadbirkor (YTT) to'g'risida ma'lumot
+                    </h5>
+                    <div className="bg-light border p-3 rounded-3">
+                        PINFL:
+                        <input type="text" name="pinfl" id="" className="form-text ms-2" ref={inputYtt}/>
+                        {/*<input type="text" name="pinfl" id="" className="form-text ms-2" onChange={e => {*/}
+                        {/*    setPinfl(e.target.value)*/}
+                        {/*}}/>*/}
+                        <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getIndividualInfo}>
+                            <FcSearch/>
+                        </button>
                     </div>
-                    <div className="container mt-3">
-                        {dispData()}
+                </div>
+                <div className="container mt-3">
+                    {dispData()}
+                </div>
+            </Tab>
+            <Tab eventKey="yuridik" title="Yuridik shaxs">
+                <div className="container mt-3 shadow-sm p-4 rounded">
+                    <h5>
+                        Yuridik shaxs to'g'risida ma'lumot
+                    </h5>
+                    <div className="bg-light border p-3 rounded-3">
+                        STIR:
+                        <input type="text" name="stir" id="" className="form-text ms-2" ref={inputYuridik}/>
+                        {/*<input type="text" name="stir" id="" className="form-text ms-2" onChange={e => {*/}
+                        {/*    setStir(e.target.value)*/}
+                        {/*}}/>*/}
+                        <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getYuridikInfo}>
+                            <FcSearch/>
+                        </button>
                     </div>
-                </Tab>
-                <Tab eventKey="yuridik" title="Yuridik shaxs">
-                    <div className="container mt-3 shadow-sm p-4 rounded">
-                        <h5>
-                            Yuridik shaxs to'g'risida ma'lumot
-                        </h5>
-                        <div className="bg-light border p-3 rounded-3">
-                            STIR:
-                            <input type="text" name="stir" id="" className="form-text ms-2" ref={inputYuridik}/>
-                            {/*<input type="text" name="stir" id="" className="form-text ms-2" onChange={e => {*/}
-                            {/*    setStir(e.target.value)*/}
-                            {/*}}/>*/}
-                            <button className="btn btn-sm btn-outline-secondary ms-2" onClick={getYuridikInfo}>
-                                <FcSearch/>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="container mt-3">
-                        {dispYuridikData()}
-                    </div>
-                </Tab>
-                <Tab eventKey="et" title="Umumlashtiruvchi jadval">
-                    <div>
-                        <div
-                            className="container bg-light p-4 text-end mb-3 rounded-3 shadow-sm">
-                            <div>{year}</div>
-                            <span className="text-info me-2">Yil:</span>
-                            <select value={year} onChange={handleChange}>
-                                {options.map(option => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.text}
-                                    </option>
-                                ))}
-                            </select>
-                            <span className="text-info me-2"> Chorak:</span>
-                            <select name="r_quarter" id="" className="me-4 form-control-sm">
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
-                            </select>
-                        </div>
+                </div>
+                <div className="container mt-3">
+                    {dispYuridikData()}
+                </div>
+            </Tab>
+            <Tab eventKey="et" title="Umumlashtiruvchi jadval">
+                <div>
+                    <div className="container bg-white p-4 text-end mb-3 rounded-3 shadow-sm">
 
-                        <table className="table table-hover table-bordered">
-                            <thead>
-                            <tr>
-                                <th colSpan="12" className="text-center bg-light">Davlat ishtirokidagi korxonalarning
-                                    xatarlari
-                                    bo'yicha umumlashtiruvchi jadval
-                                </th>
-                            </tr>
-                            <tr>
-                                <th rowSpan="3" className="w-25 text-center align-middle">Tashkilotlar</th>
-                                <th colSpan="6" className="text-center">Xatarlar darajasi</th>
-                                <th rowSpan="3" colSpan="3" className=" text-center align-middle"> TOTAL</th>
+                        <select value={year} onChange={handleChange} className="form-control-sm p-2 mx-3">
+                            {optionsOfYear.map(option => (<option key={option.value} value={option.value}>
+                                {option.text}
+                            </option>))}
+                        </select>
 
-                            </tr>
-                            <tr className="text-center">
+                        <select value="{r_quarter}" onChange={handleChange} className="form-control-sm p-2">
+                            {optionsOfQuarter.map(option => (<option key={option.value} value={option.value}>
+                                {option.text}
+                            </option>))}
+                        </select>
 
-                                <th colSpan="2">Joriy likvidlik</th>
-
-                                <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>
-                                <th colSpan="2">Xarajatlarni qoplash</th>
-                            </tr>
-                            <tr className="text-center">
-
-                                <td>Ko'rsatgich</td>
-                                <td>Xatar darajasi</td>
-                                <td>Ko'rsatgich</td>
-                                <td>Xatar darajasi</td>
-                                <td>Ko'rsatgich</td>
-                                <td>Xatar darajasi</td>
-
-                            </tr>
-                            </thead>
-
-                            <tbody>
-
-
-                            <tr>
-                                <td>"O`ZTRANSGAZ" AJ</td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>"NAVOIY KON-METALLURGIYA KOMBINATI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"OLMALIQ KON-METALLURGIYA KOMBINATI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O`ZBEKISTON METALLURGIYA KOMBINATI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"FARG`ONAAZOT " AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"ISSIQLIK ELEKTR STANSIYALARI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O'ZBEKKO'MIR" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O'ZBEKISTON TEMIR YO'LLARI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"UZBEKISTAN AIRWAYS" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O`ZBEKISTON POCHTASI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"UZBEKGIDROENERGO" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O'ZBEKNEFTGAZ" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O`ZBEKTELEKOM " AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O'ZSUVTA'MINOT" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"UZBEKISTAN AIRPORTS" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O'ZKIMYOSANOAT" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"HUDUDGAZTA`MINOT" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"TOSHSHAHARTRANSXIZMAT" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O'ZAVTOSANOATI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"HUDUDIY ELEKTR TARMOQLARI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O'ZDONMAHSULOT" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"O`ZBEKISTON MILLIY ELEKTR TARMOQLARI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"YANGI ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>
-                            </tr>
-                            <tr>
-                                <td>"MAXSUSTRANS ISHLAB CHIQARISH BOSHQARMASI" DUK</td>
-                            </tr>
-                            <tr>
-                                <td>"O`ZAERONAVIGATSIYA MARKAZI" DUK</td>
-                            </tr>
-                            <tr>
-                                <td>TOSHKENT METROPOLITENI" УК</td>
-                            </tr>
-                            </tbody>
-
-                        </table>
+                        <button
+                            className="btn btn-light form-control-sm  rounded-3 ms-2 text-secondary px-4"> Ma'lumot olish
+                        </button>
                     </div>
 
-                </Tab>
-            </Tabs>
+                    <table className="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th colSpan="12" className="text-center bg-light">Davlat ishtirokidagi korxonalarning
+                                xatarlari
+                                bo'yicha umumlashtiruvchi jadval
+                            </th>
+                        </tr>
+                        <tr>
+                            <th rowSpan="3" className="w-25 text-center align-middle">Tashkilotlar</th>
+                            <th colSpan="6" className="text-center">Xatarlar darajasi</th>
+                            <th rowSpan="3" colSpan="3" className=" text-center align-middle"> TOTAL</th>
+
+                        </tr>
+                        <tr className="text-center">
+
+                            <th colSpan="2">Joriy likvidlik</th>
+
+                            <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>
+                            <th colSpan="2">Xarajatlarni qoplash</th>
+                        </tr>
+                        <tr className="text-center">
+
+                            <td>Ko'rsatgich</td>
+                            <td>Xatar darajasi</td>
+                            <td>Ko'rsatgich</td>
+                            <td>Xatar darajasi</td>
+                            <td>Ko'rsatgich</td>
+                            <td>Xatar darajasi</td>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {reports.map(p => ({p}))}
+
+                        <tr>
+                            <td>"O`ZTRANSGAZ" AJ</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>"NAVOIY KON-METALLURGIYA KOMBINATI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"OLMALIQ KON-METALLURGIYA KOMBINATI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O`ZBEKISTON METALLURGIYA KOMBINATI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"FARG`ONAAZOT " AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"ISSIQLIK ELEKTR STANSIYALARI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O'ZBEKKO'MIR" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O'ZBEKISTON TEMIR YO'LLARI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"UZBEKISTAN AIRWAYS" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O`ZBEKISTON POCHTASI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"UZBEKGIDROENERGO" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O'ZBEKNEFTGAZ" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O`ZBEKTELEKOM " AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O'ZSUVTA'MINOT" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"UZBEKISTAN AIRPORTS" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O'ZKIMYOSANOAT" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"HUDUDGAZTA`MINOT" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"TOSHSHAHARTRANSXIZMAT" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O'ZAVTOSANOATI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"HUDUDIY ELEKTR TARMOQLARI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O'ZDONMAHSULOT" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"O`ZBEKISTON MILLIY ELEKTR TARMOQLARI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"YANGI ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>
+                        </tr>
+                        <tr>
+                            <td>"MAXSUSTRANS ISHLAB CHIQARISH BOSHQARMASI" DUK</td>
+                        </tr>
+                        <tr>
+                            <td>"O`ZAERONAVIGATSIYA MARKAZI" DUK</td>
+                        </tr>
+                        <tr>
+                            <td>TOSHKENT METROPOLITENI" УК</td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </Tab>
+        </Tabs>
 
 
-        </>
-    );
+    </>);
 };
 
 
