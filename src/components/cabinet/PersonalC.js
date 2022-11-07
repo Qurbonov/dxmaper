@@ -294,7 +294,7 @@ const PersonalC = () => {
                             <td>"UZBEKGIDROENERGO" AJ</td>
                         </tr>
                         <tr>
-                            <td>"O'ZBEKNEFTGAZ" AJ</td>
+                            <td>"O'ZBEKNEFTGAZ"AJ</td>
                         </tr>
                         <tr>
                             <td>"ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>
