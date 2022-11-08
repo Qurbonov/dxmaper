@@ -189,12 +189,12 @@ const PersonalC = () => {
                                 <td>{r.likvidlikDarajasi.amount}</td>
                                 <td className={r.likvidlikDarajasi.status == "LOW" ? "bg-success" : r.likvidlikDarajasi.status == "HIGH" ? "bg-warning" : r.likvidlikDarajasi.status == "MEDIUM" ? "bg-info" : r.likvidlikDarajasi.status == "VERY_HIGH" ? "bg-danger" : "bg-white"}>
                                     {r.likvidlikDarajasi.status}</td>
-                                <td className={r.kunlikKreditorQarzlarAylanmasi.status == "LOW" ? "bg-success" : r.kunlikKreditorQarzlarAylanmasi.status == "HIGH" ? "bg-warning" : r.kunlikKreditorQarzlarAylanmasi.status == "MEDIUM" ? "bg-info" : r.kunlikKreditorQarzlarAylanmasi.status == "VERY_HIGH" ? "bg-danger" : "bg-white"}>
-                                    {r.kunlikKreditorQarzlarAylanmasi.amount}ddddddddddcdcd
+                                <td>
+                                    {r.kunlikKreditorQarzlarAylanmasi.amount}
                                 </td>
-                                <td>{r.kunlikKreditorQarzlarAylanmasi.status}</td>
+                                <td className={r.kunlikKreditorQarzlarAylanmasi.status == "LOW" ? "bg-success" : r.kunlikKreditorQarzlarAylanmasi.status == "HIGH" ? "bg-warning" : r.kunlikKreditorQarzlarAylanmasi.status == "MEDIUM" ? "bg-info" : r.kunlikKreditorQarzlarAylanmasi.status == "VERY_HIGH" ? "bg-danger" : "bg-white"}>{r.kunlikKreditorQarzlarAylanmasi.status}</td>
                                 <td>{r.xarajatlarningQoplanishi.amount}</td>
-                                <td>{r.xarajatlarningQoplanishi.status}</td>
+                                <td>{r.xarajatlarningQoplanishi.status == "LOW" ? "PAST" : "PAST"}</td>
                                 <td>{r.total.amount}</td>
                                 <td>{r.total.status}</td>
                             </tr>
