@@ -137,6 +137,9 @@ const PersonalC = () => {
     const get_report_year_quarter = () => {
         let yearRef = tYear_ref.current.value;
         let quarterRef = tQuarter_ref.current.value;
+
+        tYear_ref.current.value = 2022;
+        tQuarter_ref.current.value = 1;
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${yearRef}&quarter=${quarterRef}`, {headers})
             .then((response) => {
                 setReport(response.data);
@@ -149,41 +152,42 @@ const PersonalC = () => {
     const dispReportData = () => {
         return reports && reports.success === true ? (
             <>
-                {reports.body.map(r => (
-                    // r.inn
-                    <>
-                        <table className="table table-hover table-bordered">
-                            <thead>
-                            <tr>
-                                <th colSpan="12" className="text-center bg-light">Davlat ishtirokidagi korxonalarning
-                                    xatarlari
-                                    bo'yicha umumlashtiruvchi jadvalfff
-                                </th>
-                            </tr>
-                            <tr>
-                                <th rowSpan="3" className="w-25 text-center align-middle">Tashkilotlar</th>
-                                <th colSpan="6" className="text-center">Xatarlar darajasi</th>
-                                <th rowSpan="2" colSpan="2" className=" text-center align-middle"> TOTAL</th>
-                            </tr>
-                            <tr className="text-center">
-                                <th colSpan="2">Joriy likvidlik</th>
-                                <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>
-                                <th colSpan="2">Xarajatlarni qoplash</th>
-                            </tr>
-                            <tr className="text-center">
-                                <td>Ko'rsatgich</td>
-                                <td>Xatar darajasi</td>
-                                <td>Ko'rsatgich</td>
-                                <td>Xatar darajasi</td>
-                                <td>Ko'rsatgich</td>
-                                <td>Xatar darajasi</td>
-                            </tr>
-                            </thead>
-                            <tbody>
+                // r.inn
+                <>
+                    <table className="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th colSpan="12" className="text-center bg-light">Davlat ishtirokidagi korxonalarning
+                                xatarlari
+                                bo'yicha umumlashtiruvchi jadvalfff
+                            </th>
+                        </tr>
+                        <tr>
+                            <th rowSpan="3" className="w-25 text-center align-middle">Tashkilotlar</th>
+                            <th colSpan="6" className="text-center">Xatarlar darajasi</th>
+                            <th rowSpan="2" colSpan="2" className=" text-center align-middle"> TOTAL</th>
+                        </tr>
+                        <tr className="text-center">
+                            <th colSpan="2">Joriy likvidlik</th>
+                            <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>
+                            <th colSpan="2">Xarajatlarni qoplash</th>
+                        </tr>
+                        <tr className="text-center">
+                            <td>Ko'rsatgich</td>
+                            <td>Xatar darajasi</td>
+                            <td>Ko'rsatgich</td>
+                            <td>Xatar darajasi</td>
+                            <td>Ko'rsatgich</td>
+                            <td>Xatar darajasi</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {reports.body.map(r => (
+
                             <tr>
                                 <td>{r.orgName}</td>
                                 <td>{r.likvidlikDarajasi.amount}</td>
-                                <td>{r.likvidlikDarajasi.status}</td>
+                                <td className={r.likvidlikDarajasi.status == "LOW" ? "bg-success" : r.likvidlikDarajasi.status == "HIGH" ? "bg-warning" : r.likvidlikDarajasi.status == "MEDIUM" ? "bg-info" : r.likvidlikDarajasi.status == "VERY_HIGH" ? "bg-danger" : "bg-white"}>{r.likvidlikDarajasi.status}</td>
                                 <td>{r.kunlikKreditorQarzlarAylanmasi.amount}</td>
                                 <td>{r.kunlikKreditorQarzlarAylanmasi.status}</td>
                                 <td>{r.xarajatlarningQoplanishi.amount}</td>
@@ -191,18 +195,20 @@ const PersonalC = () => {
                                 <td>{r.total.amount}</td>
                                 <td>{r.total.status}</td>
                             </tr>
-                            </tbody>
-                        </table>
+                        ))}
+                        {/*<span key={idx} className={paymentType == 2 ? "badge badge-secondary" : paymentType == 1 ? "badge badge-primary" : "badge badge-n"}>{paymentType}</span>*/}
 
-                    </>
-                ))}
+                        </tbody>
+                    </table>
+
+                </>
+
+
             </>
         ) : <div className="container"> cointainers</div>
     }
 
     useEffect(() => {
-        tYear_ref.current.value = 2022;
-        tQuarter_ref.current.value = 1;
         get_report_year_quarter()
         // console.log(reports)
     })
