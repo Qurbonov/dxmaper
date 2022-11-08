@@ -83,7 +83,7 @@ const PersonalC = () => {
 
     const dispYuridikData = () => {
         return YuridikData && YuridikData.success === true ? (<>
-                {YuridikData.success}
+                {/*{YuridikData.success}*/}
                 <table className="table table-hover table-striped">
                     <thead>
                     <th>F.I.O (nomi</th>
@@ -146,6 +146,60 @@ const PersonalC = () => {
             console.log(error);
         });
     }
+    const dispReportData = () => {
+        return reports && reports.success === true ? (
+            <>
+                {reports.body.map(r => (
+                    // r.inn
+                    <>
+                        <table className="table table-hover table-bordered">
+                            <thead>
+                            <tr>
+                                <th colSpan="12" className="text-center bg-light">Davlat ishtirokidagi korxonalarning
+                                    xatarlari
+                                    bo'yicha umumlashtiruvchi jadvalfff
+                                </th>
+                            </tr>
+                            <tr>
+                                <th rowSpan="3" className="w-25 text-center align-middle">Tashkilotlar</th>
+                                <th colSpan="6" className="text-center">Xatarlar darajasi</th>
+                                <th rowSpan="2" colSpan="2" className=" text-center align-middle"> TOTAL</th>
+                            </tr>
+                            <tr className="text-center">
+                                <th colSpan="2">Joriy likvidlik</th>
+                                <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>
+                                <th colSpan="2">Xarajatlarni qoplash</th>
+                            </tr>
+                            <tr className="text-center">
+                                <td>Ko'rsatgich</td>
+                                <td>Xatar darajasi</td>
+                                <td>Ko'rsatgich</td>
+                                <td>Xatar darajasi</td>
+                                <td>Ko'rsatgich</td>
+                                <td>Xatar darajasi</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{r.orgName}</td>
+                                <td>{r.likvidlikDarajasi.amount}</td>
+                                <td>{r.likvidlikDarajasi.status}</td>
+                                <td>{r.kunlikKreditorQarzlarAylanmasi.amount}</td>
+                                <td>{r.kunlikKreditorQarzlarAylanmasi.status}</td>
+                                <td>{r.xarajatlarningQoplanishi.amount}</td>
+                                <td>{r.xarajatlarningQoplanishi.status}</td>
+                                <td>{r.total.amount}</td>
+                                <td>{r.total.status}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </>
+                ))}
+            </>
+        ) : <div className="container"> cointainers</div>
+    }
+
     useEffect(() => {
         tYear_ref.current.value = 2022;
         tQuarter_ref.current.value = 1;
@@ -202,153 +256,140 @@ const PersonalC = () => {
             <Tab eventKey="et" title="Umumlashtiruvchi jadval">
                 <div>
                     <div className="container bg-white p-4 text-end mb-3 rounded-3 shadow-sm">
-
                         <input type="text" name="tYear" className="form-text" ref={tYear_ref}/>
                         <input type="text" name="tQuarter" className="form-text" ref={tQuarter_ref}/>
-                        {/*<select value={year} onChange={handleChange} className="form-control-sm p-2 mx-3">*/}
-                        {/*    {optionsOfYear.map(option => (<option key={option.value} value={option.value}>*/}
-                        {/*        {option.text}*/}
-                        {/*    </option>))}*/}
-                        {/*</select>*/}
-
-                        {/*<select value="{r_quarter}" onChange={handleChange} className="form-control-sm p-2">*/}
-                        {/*    {optionsOfQuarter.map(option => (<option key={option.value} value={option.value}>*/}
-                        {/*        {option.text}*/}
-                        {/*    </option>))}*/}
-                        {/*</select>*/}
-
                         <button
                             className="btn btn-light form-control-sm  rounded-3 ms-2 text-secondary px-4" onClick={get_report_year_quarter}> Ma'lumot olish
                         </button>
                     </div>
+                    {dispReportData()}
+                    {/*<table className="table table-hover table-bordered">*/}
+                    {/*    <thead>*/}
+                    {/*    <tr>*/}
+                    {/*        <th colSpan="12" className="text-center bg-light">Davlat ishtirokidagi korxonalarning*/}
+                    {/*            xatarlari*/}
+                    {/*            bo'yicha umumlashtiruvchi jadval*/}
+                    {/*        </th>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <th rowSpan="3" className="w-25 text-center align-middle">Tashkilotlar</th>*/}
+                    {/*        <th colSpan="6" className="text-center">Xatarlar darajasi</th>*/}
+                    {/*        <th rowSpan="3" colSpan="3" className=" text-center align-middle"> TOTAL</th>*/}
 
-                    <table className="table table-hover table-bordered">
-                        <thead>
-                        <tr>
-                            <th colSpan="12" className="text-center bg-light">Davlat ishtirokidagi korxonalarning
-                                xatarlari
-                                bo'yicha umumlashtiruvchi jadval
-                            </th>
-                        </tr>
-                        <tr>
-                            <th rowSpan="3" className="w-25 text-center align-middle">Tashkilotlar</th>
-                            <th colSpan="6" className="text-center">Xatarlar darajasi</th>
-                            <th rowSpan="3" colSpan="3" className=" text-center align-middle"> TOTAL</th>
+                    {/*    </tr>*/}
+                    {/*    <tr className="text-center">*/}
 
-                        </tr>
-                        <tr className="text-center">
+                    {/*        <th colSpan="2">Joriy likvidlik</th>*/}
 
-                            <th colSpan="2">Joriy likvidlik</th>
+                    {/*        <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>*/}
+                    {/*        <th colSpan="2">Xarajatlarni qoplash</th>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr className="text-center">*/}
 
-                            <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>
-                            <th colSpan="2">Xarajatlarni qoplash</th>
-                        </tr>
-                        <tr className="text-center">
+                    {/*        <td>Ko'rsatgich</td>*/}
+                    {/*        <td>Xatar darajasi</td>*/}
+                    {/*        <td>Ko'rsatgich</td>*/}
+                    {/*        <td>Xatar darajasi</td>*/}
+                    {/*        <td>Ko'rsatgich</td>*/}
+                    {/*        <td>Xatar darajasi</td>*/}
 
-                            <td>Ko'rsatgich</td>
-                            <td>Xatar darajasi</td>
-                            <td>Ko'rsatgich</td>
-                            <td>Xatar darajasi</td>
-                            <td>Ko'rsatgich</td>
-                            <td>Xatar darajasi</td>
+                    {/*    </tr>*/}
+                    {/*    </thead>*/}
 
-                        </tr>
-                        </thead>
+                    {/*    <tbody>*/}
+                    {/*    /!*{reports.map(p => ({p}))}*!/*/}
 
-                        <tbody>
-                        {reports.map(p => ({p}))}
+                    {/*    <tr>*/}
+                    {/*        <td>"O`ZTRANSGAZ" AJ</td>*/}
+                    {/*        <td>1</td>*/}
+                    {/*        <td>2</td>*/}
+                    {/*        <td>3</td>*/}
+                    {/*        <td>4</td>*/}
+                    {/*        <td>5</td>*/}
+                    {/*        <td>6</td>*/}
+                    {/*        <td>6</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"NAVOIY KON-METALLURGIYA KOMBINATI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"OLMALIQ KON-METALLURGIYA KOMBINATI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O`ZBEKISTON METALLURGIYA KOMBINATI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"FARG`ONAAZOT " AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"ISSIQLIK ELEKTR STANSIYALARI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O'ZBEKKO'MIR" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O'ZBEKISTON TEMIR YO'LLARI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"UZBEKISTAN AIRWAYS" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O`ZBEKISTON POCHTASI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"UZBEKGIDROENERGO" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O'ZBEKNEFTGAZ"AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O`ZBEKTELEKOM " AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O'ZSUVTA'MINOT" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"UZBEKISTAN AIRPORTS" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O'ZKIMYOSANOAT" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"HUDUDGAZTA`MINOT" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"TOSHSHAHARTRANSXIZMAT" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O'ZAVTOSANOATI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"HUDUDIY ELEKTR TARMOQLARI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O'ZDONMAHSULOT" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O`ZBEKISTON MILLIY ELEKTR TARMOQLARI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"YANGI ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"MAXSUSTRANS ISHLAB CHIQARISH BOSHQARMASI" DUK</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>"O`ZAERONAVIGATSIYA MARKAZI" DUK</td>*/}
+                    {/*    </tr>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>TOSHKENT METROPOLITENI" УК</td>*/}
+                    {/*    </tr>*/}
+                    {/*    </tbody>*/}
 
-                        <tr>
-                            <td>"O`ZTRANSGAZ" AJ</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>6</td>
-                        </tr>
-                        <tr>
-                            <td>"NAVOIY KON-METALLURGIYA KOMBINATI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"OLMALIQ KON-METALLURGIYA KOMBINATI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O`ZBEKISTON METALLURGIYA KOMBINATI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"FARG`ONAAZOT " AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"ISSIQLIK ELEKTR STANSIYALARI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O'ZBEKKO'MIR" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O'ZBEKISTON TEMIR YO'LLARI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"UZBEKISTAN AIRWAYS" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O`ZBEKISTON POCHTASI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"UZBEKGIDROENERGO" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O'ZBEKNEFTGAZ"AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O`ZBEKTELEKOM " AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O'ZSUVTA'MINOT" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"UZBEKISTAN AIRPORTS" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O'ZKIMYOSANOAT" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"HUDUDGAZTA`MINOT" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"TOSHSHAHARTRANSXIZMAT" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O'ZAVTOSANOATI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"HUDUDIY ELEKTR TARMOQLARI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O'ZDONMAHSULOT" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"O`ZBEKISTON MILLIY ELEKTR TARMOQLARI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"YANGI ANGREN ISSIQLIK ELEKTR STANSIYASI" AJ</td>
-                        </tr>
-                        <tr>
-                            <td>"MAXSUSTRANS ISHLAB CHIQARISH BOSHQARMASI" DUK</td>
-                        </tr>
-                        <tr>
-                            <td>"O`ZAERONAVIGATSIYA MARKAZI" DUK</td>
-                        </tr>
-                        <tr>
-                            <td>TOSHKENT METROPOLITENI" УК</td>
-                        </tr>
-                        </tbody>
-
-                    </table>
+                    {/*</table>*/}
                 </div>
 
             </Tab>
