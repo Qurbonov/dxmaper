@@ -45,7 +45,6 @@ const ContractsInfo = () => {
             });
     };
     useEffect(() => {
-        console.log(rabbitData)
         getResultsData();
     }, [query, page]);
 

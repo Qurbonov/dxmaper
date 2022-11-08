@@ -3,6 +3,8 @@ import axios from "axios";
 import {FcSearch} from 'react-icons/fc';
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import * as punycode from "punycode";
+import {icons} from "react-icons";
 
 const PersonalC = () => {
 
@@ -121,18 +123,21 @@ const PersonalC = () => {
         {value: 2020, text: "2020 yil"}, {value: 2021, text: "2021 yil"}, {value: 2022, text: "2022 yil"}]
     const optionsOfQuarter = [// {value: '', text: '--'},
         {value: 1, text: "1 chorak"}, {value: 2, text: "2 chorak"}, {value: 3, text: "3 chorak"}, {value: 4, text: "4 chorak"}]
-    const [year, setYear] = useState(optionsOfYear[0].value);
-    const [quarter, setQuarter] = useState(optionsOfQuarter[0].value);
+
+
+    // const [year, setYear] = useState(2020);
+    // const [quarter, setQuarter] = useState(1);
+
+    const tQuarter_ref = useRef(2020);
+    const tYear_ref = useRef(null);
+
+
     const [reports, setReport] = useState([]);
 
-    const handleChange = event => {
-        console.log("event.target.value  " + event.target.value);
-        setYear(event.target.value);
-    };
-
     const get_report_year_quarter = () => {
-        // setYear(event.target.value);
-        axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${year}&quarter=${quarter}`, {headers})
+        let yearRef = tYear_ref.current.value;
+        let quarterRef = tQuarter_ref.current.value;
+        axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${yearRef}&quarter=${quarterRef}`, {headers})
             .then((response) => {
                 setReport(response.data);
                 console.log("response.data")
@@ -142,14 +147,12 @@ const PersonalC = () => {
         });
     }
     useEffect(() => {
+        tYear_ref.current.value = 2022;
+        tQuarter_ref.current.value = 1;
         get_report_year_quarter()
-        console.log(reports)
+        // console.log(reports)
     })
     return (<>
-        {/*<div className="bg-light rounded-3 shadow-sm p-3 mt-3 container ">*/}
-        {/*    /!*Yuridik va yakka tartibdagi tadbirkor*!/*/}
-        {/*    /!*bo'yicha ma'lumotlar !!!*!/*/}
-        {/*</div>*/}
         <Tabs
             defaultActiveKey="et"
             id="fill-tab-example"
@@ -200,20 +203,22 @@ const PersonalC = () => {
                 <div>
                     <div className="container bg-white p-4 text-end mb-3 rounded-3 shadow-sm">
 
-                        <select value={year} onChange={handleChange} className="form-control-sm p-2 mx-3">
-                            {optionsOfYear.map(option => (<option key={option.value} value={option.value}>
-                                {option.text}
-                            </option>))}
-                        </select>
+                        <input type="text" name="tYear" className="form-text" ref={tYear_ref}/>
+                        <input type="text" name="tQuarter" className="form-text" ref={tQuarter_ref}/>
+                        {/*<select value={year} onChange={handleChange} className="form-control-sm p-2 mx-3">*/}
+                        {/*    {optionsOfYear.map(option => (<option key={option.value} value={option.value}>*/}
+                        {/*        {option.text}*/}
+                        {/*    </option>))}*/}
+                        {/*</select>*/}
 
-                        <select value="{r_quarter}" onChange={handleChange} className="form-control-sm p-2">
-                            {optionsOfQuarter.map(option => (<option key={option.value} value={option.value}>
-                                {option.text}
-                            </option>))}
-                        </select>
+                        {/*<select value="{r_quarter}" onChange={handleChange} className="form-control-sm p-2">*/}
+                        {/*    {optionsOfQuarter.map(option => (<option key={option.value} value={option.value}>*/}
+                        {/*        {option.text}*/}
+                        {/*    </option>))}*/}
+                        {/*</select>*/}
 
                         <button
-                            className="btn btn-light form-control-sm  rounded-3 ms-2 text-secondary px-4"> Ma'lumot olish
+                            className="btn btn-light form-control-sm  rounded-3 ms-2 text-secondary px-4" onClick={get_report_year_quarter}> Ma'lumot olish
                         </button>
                     </div>
 
