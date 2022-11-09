@@ -135,6 +135,7 @@ const PersonalC = () => {
     const tYear_ref = useRef(1);
     const [reports, setReport] = useState([]);
 
+
     const get_report_year_quarter = () => {
         let yearRef = tYear_ref.current.value;
         let quarterRef = tQuarter_ref.current.value;
@@ -148,6 +149,32 @@ const PersonalC = () => {
             console.log(error);
         });
     }
+
+    const getUzbData = (resData) => {
+        if (resData === "LOW") {
+            return <span className="table-success"> "PAST"</span>
+        } else if (resData === "HIGH") {
+            return "YUQORI"
+        } else if (resData === "MEDIUM") {
+            return "O`RTA"
+        } else if (resData === "VERY_HIGH") {
+            return "O`TA YUQORI"
+        }
+    }
+    // reports.map(t => {
+    //         if (t.likvidlikDarajasi?.status === "LOW") {
+    //             return "PAST"
+    //         } else if (t.likvidlikDarajasi?.status === "HIGH") {
+    //             return "YUQORI"
+    //         } else if (t.likvidlikDarajasi?.status === "MEDIUM") {
+    //             return "O`RTA"
+    //         } else if (t.likvidlikDarajasi?.status === "VERY_HIGH") {
+    //             return "O`TA YUQORI"
+    //         }
+    //     // }
+    // )
+    // }
+    // getUzbData("d")
     const dispReportData = () => {
         return reports && reports.success === true ? (
             <>
@@ -191,7 +218,7 @@ const PersonalC = () => {
                             <td>{r.orgName}</td>
                             <td>{r.likvidlikDarajasi?.amount === null ? "---" : r.likvidlikDarajasi?.amount}</td>
                             <td className={r.likvidlikDarajasi?.status === "LOW" ? "bg-success" : r.likvidlikDarajasi?.status === "HIGH" ? "bg-warning" : r.likvidlikDarajasi?.status === "MEDIUM" ? "bg-info" : r.likvidlikDarajasi?.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>
-                                {r.likvidlikDarajasi?.status}</td>
+                                {getUzbData(r.likvidlikDarajasi?.status)}</td>
                             <td>
                                 {r.kunlikKreditorQarzlarAylanmasi?.amount === null ? "---" : r.kunlikKreditorQarzlarAylanmasi?.amount}
                             </td>
