@@ -171,7 +171,6 @@ const PersonalC = () => {
                     </tr>
                     <tr className="text-center">
                         <th colSpan="2">Joriy likvidlik</th>
-                        <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>
                         <th colSpan="2">Xarajatlarni qoplash</th>
                     </tr>
                     <tr className="text-center">
@@ -181,27 +180,30 @@ const PersonalC = () => {
                         <td>Xatar darajasi</td>
                         <td>Ko'rsatgich</td>
                         <td>Xatar darajasi</td>
+                        <td>Ko'rsatgich</td>
+                        <td>Xatar darajasi</td>
+
                     </tr>
                     </thead>
                     <tbody>
                     {reports.body.map(r => (
                         <tr>
                             <td>{r.orgName}</td>
-                            <td>{r.likvidlikDarajasi?.amount === null ? "---" : r.likvidlikDarajasi.amount}</td>
-                            <td className={r.likvidlikDarajasi.status === "LOW" ? "bg-success" : r.likvidlikDarajasi.status === "HIGH" ? "bg-warning" : r.likvidlikDarajasi.status === "MEDIUM" ? "bg-info" : r.likvidlikDarajasi.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>
-                                {r.likvidlikDarajasi.status}</td>
+                            <td>{r.likvidlikDarajasi?.amount === null ? "---" : r.likvidlikDarajasi?.amount}</td>
+                            <td className={r.likvidlikDarajasi?.status === "LOW" ? "bg-success" : r.likvidlikDarajasi?.status === "HIGH" ? "bg-warning" : r.likvidlikDarajasi?.status === "MEDIUM" ? "bg-info" : r.likvidlikDarajasi?.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>
+                                {r.likvidlikDarajasi?.status}</td>
                             <td>
-                                {r.kunlikKreditorQarzlarAylanmasi?.amount === null ? "---" : r.kunlikKreditorQarzlarAylanmasi.amount}
+                                {r.kunlikKreditorQarzlarAylanmasi?.amount === null ? "---" : r.kunlikKreditorQarzlarAylanmasi?.amount}
                             </td>
                             <td className={r.kunlikKreditorQarzlarAylanmasi.status === "LOW" ? "bg-success" : r.kunlikKreditorQarzlarAylanmasi.status === "HIGH" ? "bg-warning" : r.kunlikKreditorQarzlarAylanmasi.status === "MEDIUM" ? "bg-info" : r.kunlikKreditorQarzlarAylanmasi.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>{r.kunlikKreditorQarzlarAylanmasi.status}</td>
-                            <td>{r.xarajatlarningQoplanishi?.amount === null ? "---" : r.xarajatlarningQoplanishi.amount}</td>
-                            <td>{r.xarajatlarningQoplanishi.status}</td>
-                            <td>{r.total?.amount === null ? "---" : r.total.amount}</td>
-                            <td>{r.total.status}</td>
+                            <td>{r.xarajatlarningQoplanishi?.amount === null ? "---" : r.xarajatlarningQoplanishi?.amount}</td>
+                            <td className={r.xarajatlarningQoplanishi.status === "LOW" ? "bg-success" : r.xarajatlarningQoplanishi.status === "HIGH" ? "bg-warning" : r.xarajatlarningQoplanishi.status === "MEDIUM" ? "bg-info" : r.xarajatlarningQoplanishi.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>{r.xarajatlarningQoplanishi.status}</td>
+                            <td>{r.total?.amount === null ? "---" : r.total?.amount}</td>
+                            <td className={r.total.status === "LOW" ? "bg-success" : r.total.status === "HIGH" ? "bg-warning" : r.total.status === "MEDIUM" ? "bg-info" : r.total.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>{r.total.status}</td>
                         </tr>
                     ))}
                     <tr>
-                        <td colSpan="9"> --- - DSQda ma'lumot mavjud emas.</td>
+                        <td colSpan="9" className="text-end bg-light"> --- - DSQda ma'lumot mavjud emas.</td>
                     </tr>
                     </tbody>
                 </table>
@@ -209,9 +211,7 @@ const PersonalC = () => {
         ) : <div className="container"></div>
     }
 
-    useEffect(() => {
-        get_report_year_quarter()
-    });
+
     return (
         <>
             <Tabs
@@ -262,32 +262,29 @@ const PersonalC = () => {
                 </Tab>
                 <Tab eventKey="et" title="Umumlashtiruvchi jadval">
                     <div>
-                        <div className="container bg-white p-4 mb-3 rounded-3 shadow-sm">
-                            <div className="row">
-                                <div className="col-md">
-                                    Ma'lumot olish uchun davrni tanlang:
-                                    <select value={selectedYear} onChange={handleChangeYear} className="form-select-sm mx-4">
-                                        {optionsOfYear.map(option => (
-                                            <option key={option.value} value={option.value}>
-                                                {option.text}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    <select value={selectedQuarter} onChange={handleChangeQuarter} className="form-select-sm">
-                                        {optionsOfQuarter.map(option => (
-                                            <option key={option.value} value={option.value}>
-                                                {option.text}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    {/*<input type="text" name="tYear" className="form-text" ref={tYear_ref}/>*/}
-                                    {/*<input type="text" name="tQuarter" className="form-text" ref={tQuarter_ref}/>*/}
-                                    {/*<button*/}
-                                    {/*    className="btn btn-light form-control-sm  rounded-3 ms-2 text-secondary px-4" onClick={get_report_year_quarter}> Ma'lumot olish*/}
-                                    {/*</button>*/}
-                                </div>
-                                <div className="col-md text-end">{selectedYear} yil {selectedQuarter} chorak davri uchun ma'lumotlar</div>
-                            </div>
+                        <div className="container text-end bg-white p-4 mb-3 rounded-3 shadow-sm">
+                            Ma'lumot olish uchun davrni tanlang:
+                            <select value={selectedYear} onChange={handleChangeYear} className="form-select-sm mx-4">
+                                {optionsOfYear.map(option => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.text}
+                                    </option>
+                                ))}
+                            </select>
+                            <select value={selectedQuarter} onChange={handleChangeQuarter} className="form-select-sm">
+                                {optionsOfQuarter.map(option => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.text}
+                                    </option>
+                                ))}
+                            </select>
+
+                            {/*<input type="text" name="tYear" className="form-text" ref={tYear_ref}/>*/}
+                            {/*<input type="text" name="tQuarter" className="form-text" ref={tQuarter_ref}/>*/}
+                            <button
+                                className="btn btn-light form-control-sm  rounded-3 ms-2 text-secondary px-4" onClick={get_report_year_quarter}> Ma'lumot olish
+                            </button>
+
                         </div>
                         {dispReportData()}
                     </div>
