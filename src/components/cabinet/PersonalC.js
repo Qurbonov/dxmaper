@@ -161,20 +161,7 @@ const PersonalC = () => {
             return <div className="bg-danger text-white px-3 py-1 rounded">O`TA YUQORI</div>
         }
     }
-    // reports.map(t => {
-    //         if (t.likvidlikDarajasi?.status === "LOW") {
-    //             return "PAST"
-    //         } else if (t.likvidlikDarajasi?.status === "HIGH") {
-    //             return "YUQORI"
-    //         } else if (t.likvidlikDarajasi?.status === "MEDIUM") {
-    //             return "O`RTA"
-    //         } else if (t.likvidlikDarajasi?.status === "VERY_HIGH") {
-    //             return "O`TA YUQORI"
-    //         }
-    //     // }
-    // )
-    // }
-    // getUzbData("d")
+
     const dispReportData = () => {
         return reports && reports.success === true ? (
             <>
@@ -194,7 +181,7 @@ const PersonalC = () => {
                     <tr>
                         <th rowSpan="3" className="w-25 text-center align-middle">Tashkilotlar</th>
                         <th colSpan="6" className="text-center">Xatarlar darajasi</th>
-                        <th rowSpan="2" colSpan="2" className=" text-center align-middle"> TOTAL</th>
+                        <th rowSpan="2" colSpan="2" className=" text-center align-middle"> Yakuniy</th>
                     </tr>
                     <tr className="text-center">
                         <th colSpan="2">Joriy likvidlik</th>
@@ -218,23 +205,17 @@ const PersonalC = () => {
                         <tr>
                             <td>{r.orgName}</td>
                             <td>{r.likvidlikDarajasi?.amount === null ? "---" : r.likvidlikDarajasi?.amount}</td>
-                            {/*<td className={r.likvidlikDarajasi?.status === "LOW" ? "bg-success" : r.likvidlikDarajasi?.status === "HIGH" ? "bg-warning" : r.likvidlikDarajasi?.status === "MEDIUM" ? "bg-info" : r.likvidlikDarajasi?.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>*/}
                             <td>
                                 {getUzbData(r.likvidlikDarajasi?.status)}</td>
                             <td>
                                 {r.kunlikKreditorQarzlarAylanmasi?.amount === null ? "---" : r.kunlikKreditorQarzlarAylanmasi?.amount}
                             </td>
-                            {/*<td className={r.kunlikKreditorQarzlarAylanmasi.status === "LOW" ? "bg-success" : r.kunlikKreditorQarzlarAylanmasi.status === "HIGH" ? "bg-warning" : r.kunlikKreditorQarzlarAylanmasi.status === "MEDIUM" ? "bg-info" : r.kunlikKreditorQarzlarAylanmasi.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>*/}
                             <td>
                                 {getUzbData(r.kunlikKreditorQarzlarAylanmasi.status)}</td>
                             <td>{r.xarajatlarningQoplanishi?.amount === null ? "---" : r.xarajatlarningQoplanishi?.amount}</td>
-                            {/*<td className={r.xarajatlarningQoplanishi.status === "LOW" ? "bg-success" : r.xarajatlarningQoplanishi.status === "HIGH" ? "bg-warning" : r.xarajatlarningQoplanishi.status === "MEDIUM" ? "bg-info" : r.xarajatlarningQoplanishi.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>*/}
                             <td>{getUzbData(r.xarajatlarningQoplanishi.status)}</td>
                             <td>{r.total?.amount === null ? "---" : r.total?.amount}</td>
-                            {/*<td className={r.total.status === "LOW" ? "bg-success" : r.total.status === "HIGH" ? "bg-warning" : r.total.status === "MEDIUM" ? "bg-info" : r.total.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>*/}
-                            <td>
-                                {getUzbData(r.total.status)
-                                }</td>
+                            <td>{getUzbData(r.total.status)}</td>
                         </tr>
                     ))}
                     <tr>
