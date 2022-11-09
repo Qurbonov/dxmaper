@@ -152,13 +152,13 @@ const PersonalC = () => {
 
     const getUzbData = (resData) => {
         if (resData === "LOW") {
-            return <span className="table-success"> "PAST"</span>
-        } else if (resData === "HIGH") {
-            return "YUQORI"
+            return <span className="text-success">PAST</span>
         } else if (resData === "MEDIUM") {
-            return "O`RTA"
+            return <span className="text-primary"> O`RTA</span>
+        } else if (resData === "HIGH") {
+            return <span className="text-warning">YUQORI</span>
         } else if (resData === "VERY_HIGH") {
-            return "O`TA YUQORI"
+            return <span className="text-danger">O`TA YUQORI</span>
         }
     }
     // reports.map(t => {
@@ -217,16 +217,23 @@ const PersonalC = () => {
                         <tr>
                             <td>{r.orgName}</td>
                             <td>{r.likvidlikDarajasi?.amount === null ? "---" : r.likvidlikDarajasi?.amount}</td>
-                            <td className={r.likvidlikDarajasi?.status === "LOW" ? "bg-success" : r.likvidlikDarajasi?.status === "HIGH" ? "bg-warning" : r.likvidlikDarajasi?.status === "MEDIUM" ? "bg-info" : r.likvidlikDarajasi?.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>
+                            {/*<td className={r.likvidlikDarajasi?.status === "LOW" ? "bg-success" : r.likvidlikDarajasi?.status === "HIGH" ? "bg-warning" : r.likvidlikDarajasi?.status === "MEDIUM" ? "bg-info" : r.likvidlikDarajasi?.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>*/}
+                            <td>
                                 {getUzbData(r.likvidlikDarajasi?.status)}</td>
                             <td>
                                 {r.kunlikKreditorQarzlarAylanmasi?.amount === null ? "---" : r.kunlikKreditorQarzlarAylanmasi?.amount}
                             </td>
-                            <td className={r.kunlikKreditorQarzlarAylanmasi.status === "LOW" ? "bg-success" : r.kunlikKreditorQarzlarAylanmasi.status === "HIGH" ? "bg-warning" : r.kunlikKreditorQarzlarAylanmasi.status === "MEDIUM" ? "bg-info" : r.kunlikKreditorQarzlarAylanmasi.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>{r.kunlikKreditorQarzlarAylanmasi.status}</td>
+                            {/*<td className={r.kunlikKreditorQarzlarAylanmasi.status === "LOW" ? "bg-success" : r.kunlikKreditorQarzlarAylanmasi.status === "HIGH" ? "bg-warning" : r.kunlikKreditorQarzlarAylanmasi.status === "MEDIUM" ? "bg-info" : r.kunlikKreditorQarzlarAylanmasi.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>*/}
+                            <td>
+                                {getUzbData(r.kunlikKreditorQarzlarAylanmasi.status)}</td>
                             <td>{r.xarajatlarningQoplanishi?.amount === null ? "---" : r.xarajatlarningQoplanishi?.amount}</td>
-                            <td className={r.xarajatlarningQoplanishi.status === "LOW" ? "bg-success" : r.xarajatlarningQoplanishi.status === "HIGH" ? "bg-warning" : r.xarajatlarningQoplanishi.status === "MEDIUM" ? "bg-info" : r.xarajatlarningQoplanishi.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>{r.xarajatlarningQoplanishi.status}</td>
+                            {/*<td className={r.xarajatlarningQoplanishi.status === "LOW" ? "bg-success" : r.xarajatlarningQoplanishi.status === "HIGH" ? "bg-warning" : r.xarajatlarningQoplanishi.status === "MEDIUM" ? "bg-info" : r.xarajatlarningQoplanishi.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>*/}
+                            <td>{getUzbData(r.xarajatlarningQoplanishi.status)}</td>
                             <td>{r.total?.amount === null ? "---" : r.total?.amount}</td>
-                            <td className={r.total.status === "LOW" ? "bg-success" : r.total.status === "HIGH" ? "bg-warning" : r.total.status === "MEDIUM" ? "bg-info" : r.total.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>{r.total.status}</td>
+                            {/*<td className={r.total.status === "LOW" ? "bg-success" : r.total.status === "HIGH" ? "bg-warning" : r.total.status === "MEDIUM" ? "bg-info" : r.total.status === "VERY_HIGH" ? "bg-danger" : "bg-white"}>*/}
+                            <td>
+                                {getUzbData(r.total.status)
+                                }</td>
                         </tr>
                     ))}
                     <tr>
