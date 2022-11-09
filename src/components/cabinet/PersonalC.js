@@ -152,13 +152,13 @@ const PersonalC = () => {
 
     const getUzbData = (resData) => {
         if (resData === "LOW") {
-            return <div className="bg-success text-white px-3 py-1">PAST</div>
+            return <div className="bg-success text-white px-3 py-1 rounded">PAST</div>
         } else if (resData === "MEDIUM") {
-            return <div className="bg-primary text-white px-3 py-1">O`RTA</div>
+            return <div className="bg-primary text-white px-3 py-1 rounded">O`RTA</div>
         } else if (resData === "HIGH") {
-            return <div className="bg-warning text-white px-3 py-1">YUQORI</div>
+            return <div className="bg-warning text-white px-3 py-1 rounded">YUQORI</div>
         } else if (resData === "VERY_HIGH") {
-            return <div className="bg-danger text-white px-3 py-1">O`TA YUQORI</div>
+            return <div className="bg-danger text-white px-3 py-1 rounded">O`TA YUQORI</div>
         }
     }
     // reports.map(t => {
