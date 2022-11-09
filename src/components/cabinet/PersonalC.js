@@ -186,6 +186,7 @@ const PersonalC = () => {
                     <tr className="text-center">
                         <th colSpan="2">Joriy likvidlik</th>
                         <th colSpan="2">Xarajatlarni qoplash</th>
+                        <th colSpan="2">Kunlik kreditor qarzlar aylanmasi</th>
                     </tr>
                     <tr className="text-center">
                         <td>Ko'rsatgich
