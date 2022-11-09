@@ -152,13 +152,13 @@ const PersonalC = () => {
 
     const getUzbData = (resData) => {
         if (resData === "LOW") {
-            return <span className="text-success">PAST</span>
+            return <div className="bg-success text-white p-3">PAST</div>
         } else if (resData === "MEDIUM") {
-            return <span className="text-primary"> O`RTA</span>
+            return <div className="bg-primary text-white p-3">O`RTA</div>
         } else if (resData === "HIGH") {
-            return <span className="text-warning">YUQORI</span>
+            return <div className="bg-warning text-white p-3">YUQORI</div>
         } else if (resData === "VERY_HIGH") {
-            return <span className="text-danger">O`TA YUQORI</span>
+            return <div className="bg-danger text-white p-3">`TA YUQORI</div>
         }
     }
     // reports.map(t => {
@@ -201,7 +201,8 @@ const PersonalC = () => {
                         <th colSpan="2">Xarajatlarni qoplash</th>
                     </tr>
                     <tr className="text-center">
-                        <td>Ko'rsatgich</td>
+                        <td>Ko'rsatgich
+                        </td>
                         <td>Xatar darajasi</td>
                         <td>Ko'rsatgich</td>
                         <td>Xatar darajasi</td>
