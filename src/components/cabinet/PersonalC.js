@@ -188,7 +188,7 @@ const PersonalC = () => {
                     <tr>
                         <th colSpan="12" className="text-center bg-light">Davlat ishtirokidagi korxonalarning
                             xatarlari
-                            bo'yicha umumlashtiruvchi jadvalfff
+                            bo'yicha umumlashtiruvchi jadval
                         </th>
                     </tr>
                     <tr>
