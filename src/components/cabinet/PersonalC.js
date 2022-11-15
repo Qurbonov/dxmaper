@@ -34,12 +34,12 @@ const PersonalC = () => {
                     <th>{dataIn.body.name}</th>
                 </tr>
                 <tr>
-                    <td>Holati</td>
-                    <td>{dataIn.body.status}</td>
-                </tr>
-                <tr>
                     <td>Pinfl</td>
                     <td>{dataIn.body.pinfl}</td>
+                </tr>
+                <tr>
+                    <td>Holati</td>
+                    <td>{dataIn.body.status}</td>
                 </tr>
                 <tr>
                     <td>STIR raqami</td>
@@ -86,6 +86,9 @@ const PersonalC = () => {
         return YuridikData && YuridikData.success === true ? (<>
                 <table className="table table-hover table-striped">
                     <tr>
+                        <td colSpan="2" className="bg-light"> Tashkilot</td>
+                    </tr>
+                    <tr>
                         <th>Tashkilot nomi</th>
                         <th>{YuridikData.body.company.name}</th>
                     </tr>
@@ -93,14 +96,7 @@ const PersonalC = () => {
                         <td>Tashkilot qisqa nomi</td>
                         <td>{YuridikData.body.company.shortName}</td>
                     </tr>
-                    <tr>
-                        <td>Rahbar (F.I.O)</td>
-                        <td>{YuridikData.body.director.lastName} {YuridikData.body.director.firstName} {YuridikData.body.director.middleName}</td>
-                    </tr>
-                    <tr>
-                        <td>Jinsi</td>
-                        <td>{YuridikData.body.director.gender === 1 ? "Erkak" : YuridikData.body.director.gender === 2 ? "Ayol" : "-"}</td>
-                    </tr>
+
                     <tr>
                         <td>STIR raqami</td>
                         <td>{YuridikData.body.company.tin ? YuridikData.body.company.tin : "-"}</td>
@@ -120,6 +116,17 @@ const PersonalC = () => {
                     <tr>
                         <td>Holati</td>
                         <td>{YuridikData.body.company.status}</td>
+                    </tr>
+                    <tr>
+                        <td colSpan="2" className="bg-light"> Rahbar</td>
+                    </tr>
+                    <tr>
+                        <td>F.I.O</td>
+                        <td>{YuridikData.body.director.lastName} {YuridikData.body.director.firstName} {YuridikData.body.director.middleName}</td>
+                    </tr>
+                    <tr>
+                        <td>Jinsi</td>
+                        <td>{YuridikData.body.director.gender === 1 ? "Erkak" : YuridikData.body.director.gender === 2 ? "Ayol" : "-"}</td>
                     </tr>
                 </table>
             </>
