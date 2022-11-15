@@ -30,8 +30,14 @@ const PersonalC = () => {
         return dataIn && dataIn.success === true ? (<>
             <table className="table table-hover table-striped">
                 <thead>
-                <th>F.I.O (nomi)</th>
-                <th>{dataIn.body.name}</th>
+                <tr>
+                    <th>F.I.O (nomi)</th>
+                    <th>{dataIn.body.name}</th>
+                </tr>
+                <tr>
+                    <th>Holati</th>
+                    <th>{dataIn.body.status}</th>
+                </tr>
                 </thead>
                 <tr>
                     <td>Pinfl</td>
@@ -78,19 +84,145 @@ const PersonalC = () => {
             console.log(error);
         });
     }
-
+    // {
+    //     "body": {
+    //     "id": 11,
+    //         "createdAt": "2022-11-14T17:08:31.506402304",
+    //         "updatedAt": "2022-11-14T17:08:31.506404378",
+    //         "createdBy": null,
+    //         "deleted": false,
+    //         "company": {
+    //         "tin": 207054033,
+    //             "name": "PASTDARG'OM TUMAN \"YULDUZCHA\" NOMLI 31-MAKTABGACHA TA'LIM MUASSASASI",
+    //             "shortName": "PASTDARG'OM TUMAN \"YULDUZCHA\" NOMLI 31-MTM",
+    //             "opf": "270",
+    //             "kfs": "200",
+    //             "soogu": "04443",
+    //             "sooguRegistrator": "70414",
+    //             "oked": "85100",
+    //             "registrationDate": "26.12.2009",
+    //             "licenseBeginDate": null,
+    //             "licenseEndDate": null,
+    //             "reregistrationDate": "26.12.2009",
+    //             "registrationNumber": "2777",
+    //             "status": "11",
+    //             "statusUpdated": null,
+    //             "taxStatus": null,
+    //             "liquidationDate": null,
+    //             "liquidationReason": null,
+    //             "suspensionDate": null,
+    //             "suspensionReason": null,
+    //             "vatNumber": null,
+    //             "taxpayerType": "1",
+    //             "activityType": null,
+    //             "businessType": "3",
+    //             "individualEntrepreneurType": null,
+    //             "businessFundCurrency": null,
+    //             "businessFund": 0,
+    //             "businessStructure": 36
+    //     },
+    //     "extraActivityTypes": null,
+    //         "companyBanks": [],
+    //         "companyBillingAddress": {
+    //         "id": 846,
+    //             "createdAt": "2022-11-14T17:08:31.502499596",
+    //             "countryCode": "860",
+    //             "soatoCode": "1718227848",
+    //             "village": null,
+    //             "sectorCode": "3",
+    //             "streetName": null,
+    //             "house": null,
+    //             "flat": null,
+    //             "postcode": null,
+    //             "cadastreNumber": null
+    //     },
+    //     "companyShippingAddress": [],
+    //         "companyExtraInfo": {
+    //         "monthlyNumberEmployees": null,
+    //             "avgNumberEmployees": 43
+    //     },
+    //     "director": {
+    //         "lastName": "ISHNAZAROVA",
+    //             "firstName": "SOHIBA",
+    //             "middleName": "MUXTAROVNA",
+    //             "gender": 2,
+    //             "countryCode": null,
+    //             "passportSeries": null,
+    //             "passportNumber": null,
+    //             "pinfl": 41009886090058,
+    //             "tin": 540056798
+    //     },
+    //     "directorAddress": {
+    //         "id": 847,
+    //             "createdAt": "2022-11-14T17:08:31.502933039",
+    //             "countryCode": "860",
+    //             "soatoCode": "1718227",
+    //             "village": "0",
+    //             "sectorCode": null,
+    //             "streetName": null,
+    //             "house": null,
+    //             "flat": null,
+    //             "postcode": null,
+    //             "cadastreNumber": null
+    //     },
+    //     "directorContact": {
+    //         "id": 15,
+    //             "createdAt": "2022-11-14T17:08:31.503518136",
+    //             "phone": "902823131",
+    //             "email": null
+    //     },
+    //     "accountant": {
+    //         "lastName": "XUSANOV",
+    //             "firstName": "GAYRAT",
+    //             "middleName": "NASRIDINOVICH",
+    //             "gender": 1,
+    //             "countryCode": null,
+    //             "passportSeries": null,
+    //             "passportNumber": null,
+    //             "pinfl": 31002613950020,
+    //             "tin": 435319552
+    //     },
+    //     "accountantAddress": {
+    //         "id": 845,
+    //             "createdAt": "2022-11-14T17:08:31.501324132",
+    //             "countryCode": "860",
+    //             "soatoCode": "1718227",
+    //             "village": "0",
+    //             "sectorCode": "0",
+    //             "streetName": null,
+    //             "house": null,
+    //             "flat": null,
+    //             "postcode": null,
+    //             "cadastreNumber": null
+    //     },
+    //     "accountantContact": null,
+    //         "founders": null,
+    //         "founderLegal": null,
+    //         "founderContact": null
+    // },
+    //     "success": true
+    // }
     const dispYuridikData = () => {
         return YuridikData && YuridikData.success === true ? (<>
-                {/*{YuridikData.success}*/}
                 <table className="table table-hover table-striped">
                     <thead>
-                    <th>F.I.O (nomi</th>
-                    <th>{YuridikData.body.company.name}</th>
-                    </thead>
                     <tr>
-                        <td>Pinfl</td>
-                        <td>{YuridikData.body.company.shortName}</td>
+                        <th>Tashkilot nomi</th>
+                        <th>{YuridikData.body.company.name}</th>
                     </tr>
+                    <tr>
+                        <th>Tashkilot qisqa nomi</th>
+                        <th>{YuridikData.body.company.shortName}</th>
+                    </tr>
+                    <tr>
+                        <td>Rahbar (F.I.O)</td>
+                        <td>{YuridikData.body.director.lastName} {YuridikData.body.director.firstName} {YuridikData.body.director.middleName}</td>
+                    </tr>
+                    <tr>
+                        <td>Jinsi</td>
+                        <td>{YuridikData.body.director.gender === 1 ? "Erkak" : YuridikData.body.director.gender === 2 ? "Ayol" : "-"}</td>
+                    </tr>
+                    </thead>
                     <tr>
                         <td>STIR raqami</td>
                         <td>{YuridikData.body.company.tin ? YuridikData.body.company.tin : "-"}</td>
@@ -104,10 +236,13 @@ const PersonalC = () => {
                         <td>{YuridikData.body.company.registrationNumber}</td>
                     </tr>
                     <tr>
-                        <td>Rahbar</td>
-                        <td>{YuridikData.body.director.lastName} {YuridikData.body.director.firstName} {YuridikData.body.director.middleName}</td>
+                        <td>Biznes shakli</td>
+                        <td>{YuridikData.body.company.businessType}</td>
                     </tr>
-
+                    <tr>
+                        <td>Holati</td>
+                        <td>{YuridikData.body.company.status}</td>
+                    </tr>
                 </table>
             </>
 
