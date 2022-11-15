@@ -86,11 +86,11 @@ const PersonalC = () => {
         return YuridikData && YuridikData.success === true ? (<>
                 <table className="table table-hover table-striped">
                     <tr>
-                        <td colSpan="2" className="bg-light"> Tashkilot</td>
+                        <th colSpan="2" className="bg-light"> Tashkilot</th>
                     </tr>
                     <tr>
-                        <th>Tashkilot nomi</th>
-                        <th>{YuridikData.body.company.name}</th>
+                        <td>Tashkilot nomi</td>
+                        <td>{YuridikData.body.company.name}</td>
                     </tr>
                     <tr>
                         <td>Tashkilot qisqa nomi</td>
@@ -118,7 +118,7 @@ const PersonalC = () => {
                         <td>{YuridikData.body.company.status}</td>
                     </tr>
                     <tr>
-                        <td colSpan="2" className="bg-light"> Rahbar</td>
+                        <th colSpan="2" className="bg-light"> Rahbar</th>
                     </tr>
                     <tr>
                         <td>F.I.O</td>
