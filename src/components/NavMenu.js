@@ -3,10 +3,15 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import {LinkContainer} from "react-router-bootstrap";
 import logo from "./img/logo1.png";
-import {useNavigate} from "react-router-dom";
+import {Route, useNavigate} from "react-router-dom";
 import React from "react";
+import AdminPage from "./cabinet/AdminPage";
+import Ministry from "./cabinet/Ministry";
+import TaxReport from "./cabinet/TaxReport";
 
 function NavMenu() {
+    let user_role = localStorage.getItem("role");
+
     function hasJWT() {
         let flag = false;
         localStorage.getItem("token") ? flag = true : flag = false
@@ -52,20 +57,46 @@ function NavMenu() {
                                 haqida</Nav.Link>
                         </LinkContainer>
                         {hasJWT() ?
-                            (<>
-                                <LinkContainer to='/personalCabinet'>
-                                    <Nav.Link href='#features' className='mt-2 text-primary'> Umumiy ma'lumotlar </Nav.Link>
-                                </LinkContainer>
-                                <LinkContainer to='/taxreport'>
-                                    <Nav.Link href='#features' className='mt-2 text-primary'> Hisobot topshirish </Nav.Link>
-                                </LinkContainer>
-                                <LinkContainer to='/adminPage'>
-                                    <Nav.Link href='#features' className='mt-2 text-primary'> Administrator </Nav.Link>
-                                </LinkContainer>
-                                <LinkContainer to="/" className='mt-2'>
-                                    <Nav.Link onClick={userLogout} className='text-danger'>Tizimdan chiqish</Nav.Link>
-                                </LinkContainer>
-                            </>) :
+                            (
+                                <>
+                                    {
+                                        user_role === "ROLE_SUPERADMIN" ? (<>
+                                                <LinkContainer to='/personalCabinet'>
+                                                    <Nav.Link href='#features' className='mt-2 text-primary'> Umumiy ma'lumotlar </Nav.Link>
+                                                </LinkContainer>
+                                                <LinkContainer to='/adminPage'>
+                                                    <Nav.Link href='#features' className='mt-2 text-primary'> Administrator </Nav.Link>
+                                                </LinkContainer>
+                                                <LinkContainer to='/taxreport'>
+                                                    <Nav.Link href='#features' className='mt-2 text-primary'> Hisobot topshirish</Nav.Link>
+                                                </LinkContainer>
+                                                <LinkContainer to="/" className='mt-2'>
+                                                    <Nav.Link onClick={userLogout} className='text-danger'>Tizimdan chiqish</Nav.Link>
+                                                </LinkContainer>
+
+                                            </>) :
+                                            user_role === "ROLE_ADMIN" ? (<>
+                                                    <LinkContainer to='/personalCabinet'>
+                                                        <Nav.Link href='#features' className='mt-2 text-primary'> Umumiy ma'lumotlar </Nav.Link>
+                                                    </LinkContainer>
+                                                    <LinkContainer to='/adminPage'>
+                                                        <Nav.Link href='#features' className='mt-2 text-primary'> Administrator </Nav.Link>
+                                                    </LinkContainer>
+                                                    <LinkContainer to="/" className='mt-2'>
+                                                        <Nav.Link onClick={userLogout} className='text-danger'>Tizimdan chiqish</Nav.Link>
+                                                    </LinkContainer>
+                                                </>) :
+                                                user_role === "ROLE_MANAGER" ? (<>
+                                                    <LinkContainer to='/taxreport'>
+                                                        <Nav.Link href='#features' className='mt-2 text-primary'> Hisobot topshirish </Nav.Link>
+                                                    </LinkContainer>
+                                                    <LinkContainer to="/" className='mt-2'>
+                                                        <Nav.Link onClick={userLogout} className='text-danger'>Tizimdan chiqish</Nav.Link>
+                                                    </LinkContainer>
+                                                </>) : console.log("")}
+
+
+                                </>) :
                             <LinkContainer to="/cabinet" className='mt-2'>
                                 <Nav.Link href='#cabinet' className='text-info'>Tizimga kirish</Nav.Link>
                             </LinkContainer>

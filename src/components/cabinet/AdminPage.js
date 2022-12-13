@@ -17,10 +17,8 @@ const AdminPage = () => {
     const inputYtt = useRef(null);
     // const onSubmit = (d) => alert(JSON.stringify(d))
     const onSubmit = (d) => {
-        alert(JSON.stringify(d))
-        axios.post('http://localhost:8585/v1/atm/auth/create', d)
-        //     .then(response => this.setState({articleId: response.data.id}));
-
+        axios.post('http://localhost:8585/v1/atm/auth/create', d);
+        alert("Saqlandi !!!");
     }
 
     const getIndividualInfo = () => {
@@ -60,8 +58,8 @@ const AdminPage = () => {
                     <InputGroup size="default" className="mb-3">
                         <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Xodim: </InputGroup.Text>
                         <Form.Select aria-label="Default select example" {...register("role", {required: true})}>
-                            <option value="ROLE_ADMIN">Vazirlik xodimi</option>
                             <option value="ROLE_MANAGER">Tashkilot xodimi</option>
+                            <option value="ROLE_ADMIN">Vazirlik xodimi</option>
                         </Form.Select>
                     </InputGroup>
 

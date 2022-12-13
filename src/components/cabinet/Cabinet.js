@@ -28,6 +28,12 @@ function Cabinet() {
                 if (response.data.role === 'ROLE_SUPERADMIN') {
                     window.location.href = '/personalCabinet'
                 }
+                if (response.data.role === 'ROLE_ADMIN') {
+                    window.location.href = '/personalCabinet'
+                }
+                if (response.data.role === 'ROLE_MANAGER') {
+                    window.location.href = '/taxreport'
+                }
             })
             .catch(err => console.log(err));
     };

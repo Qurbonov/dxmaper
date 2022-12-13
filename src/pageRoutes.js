@@ -21,26 +21,49 @@ import AdminPage from "./components/cabinet/AdminPage";
 import TaxReport from "./components/cabinet/TaxReport";
 
 function PageRoutes() {
+    let user_role = localStorage.getItem("role");
+
     function hasJWT() {
         let flag = false;
-        localStorage.getItem("role") ? flag = true : flag = false
+        localStorage.getItem("token") ? flag = true : flag = false
         console.log(localStorage.getItem("role"));
         return flag
     }
 
     return (<>
         <NavMenu/>
+
         <Routes>
-            <Route path='/' element={<Home/>}/>
-            {hasJWT() ? (<>
-                        <Route path='personalCabinet' element={<Ministry/>}/>
-                        <Route path='contractsSuccess' element={<ContractsInfo/>}/>
-                        <Route path='adminPage' element={<AdminPage/>}/>
-                        <Route path='taxreport' element={<TaxReport/>}/>
-                    </>
-                ) :
-                <Route path='cabinet' element={<Cabinet/>}/>
+            {
+                hasJWT() ? (
+                        <>
+                            {
+                                user_role === "ROLE_SUPERADMIN" ? (
+                                        <>
+                                            <Route path='adminPage' element={<AdminPage/>}/>
+                                            <Route path='personalCabinet' element={<Ministry/>}/>
+                                            <Route path='taxreport' element={<TaxReport/>}/>
+                                        </>
+                                    ) :
+                                    user_role === "ROLE_ADMIN" ? (
+                                            <>
+                                                <Route path='personalCabinet' element={<Ministry/>}/>
+                                                <Route path='adminPage' element={<AdminPage/>}/>
+                                            </>
+                                        ) :
+                                        user_role === "ROLE_MANAGER" ? (
+                                            <>
+                                                <Route path='taxreport' element={<TaxReport/>}/>
+                                            </>
+                                        ) : console.log("")}
+                        </>
+                    ) :
+                    <Route path='cabinet' element={<Cabinet/>}/>
             }
+
+
+            <Route path='/' element={<Home/>}/>
+            <Route path='contractsSuccess' element={<ContractsInfo/>}/>
             <Route path='contractsFailed' element={<FailedContractsInfo/>}/>
             <Route path='contractsFailed' element={<FailedContractsInfo/>}/>
             <Route path='contractsCoorp' element={<ContractsCoorpInfo/>}/>

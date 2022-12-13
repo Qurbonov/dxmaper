@@ -9,7 +9,7 @@ import MainCard from './MainCard';
 import classes from './MainPage.module.css'
 import HelperServices from './helper.services';
 import HelperApis from "./helperApis";
-import {Notification} from './notifications';
+// import {console.log} from './notifications';
 import regions from './mapss/map';
 import RegionOrgInfo from './RegionOrgInfo';
 import {ArrowDownOutlined, ArrowUpOutlined} from '@ant-design/icons';
@@ -127,7 +127,7 @@ const Map = () => {
 
             setRegionTrades(regInfos.data);
         } catch (err) {
-            Notification('error', err);
+            console.log('error', err);
         }
     }
 
@@ -171,7 +171,7 @@ const Map = () => {
             setLoading(false)
 
         } catch (err) {
-            Notification('error', err);
+            console.log('error', err);
             setLoading(false)
         }
     }
@@ -189,7 +189,7 @@ const Map = () => {
                 setOrgCount(orgCount.data[1].TotalCount)
                 // setLoading(false)
             } catch (err) {
-                Notification('error', err);
+                console.log('error', err);
                 // setLoading(false)
             }
         }
@@ -204,7 +204,7 @@ const Map = () => {
                 setOrgSalary(orgSalary.data[0].TotalSum)
                 setLoadingOrgSalary(false)
             } catch (err) {
-                Notification('error', err);
+                console.log('error', err);
                 setLoadingOrgSalary(false)
             }
         }
@@ -266,7 +266,7 @@ const Map = () => {
                     )
                 })
                 .catch(err => {
-                    Notification('error', err)
+                    console.log('error', err)
                 });
             HelperServices.getInfoDashboardOrganization(
                 {
@@ -278,7 +278,7 @@ const Map = () => {
                     setLoading(false)
                 })
                 .catch(err => {
-                    Notification('error', err)
+                    console.log('error', err)
                     setLoading(false)
                 });
         }
@@ -321,7 +321,7 @@ const Map = () => {
                     setLoading(false)
                 })
                 .catch(err => {
-                    Notification('error', err)
+                    console.log('error', err)
                     setLoading(false)
                 });
 
@@ -396,7 +396,7 @@ const Map = () => {
                 setLoading(false)
             })
             .catch(err => {
-                Notification('error', err)
+                console.log('error', err)
                 setLoading(false)
             });
     }
@@ -457,7 +457,7 @@ const Map = () => {
                                 setLoading(false)
                             })
                             .catch(err => {
-                                Notification('error', err)
+                                console.log('error', err)
                                 setLoading(false)
                             });
 
