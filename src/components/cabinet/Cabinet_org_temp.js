@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, {useState} from 'react';
-import data from "bootstrap/js/src/dom/data";
 
 function Cabinet({setToken}) {
     const [username, setUserName] = useState();
@@ -23,7 +22,6 @@ function Cabinet({setToken}) {
             username,
             password
         });
-        console.log(token);
         setToken(token);
     }
     return (

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {setAuthToken} from "../helpers/setAuthToken"
 
@@ -23,12 +23,14 @@ function Cabinet() {
             .then(response => {
                 const token = response.data.token;
                 localStorage.setItem("token", token);
+                localStorage.setItem("role", response.data.role);
                 setAuthToken(token);
-                window.location.href = '/'
+                if (response.data.role === 'ROLE_SUPERADMIN') {
+                    window.location.href = '/personalCabinet'
+                }
             })
             .catch(err => console.log(err));
     };
-
     return (
         <>
             <form

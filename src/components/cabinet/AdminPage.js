@@ -1,0 +1,124 @@
+import React, {useState, useRef, useEffect} from 'react';
+import axios from "axios";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import {useForm} from "react-hook-form";
+
+const AdminPage = () => {
+
+    const headers = {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+    };
+    const {register, handleSubmit} = useForm();
+    const [dataIn, setData] = useState();
+    const inputYtt = useRef(null);
+    // const onSubmit = (d) => alert(JSON.stringify(d))
+    const onSubmit = (d) => {
+        alert(JSON.stringify(d))
+        axios.post('http://localhost:8585/v1/atm/auth/create', d)
+        //     .then(response => this.setState({articleId: response.data.id}));
+
+    }
+
+    const getIndividualInfo = () => {
+        const pinfl = inputYtt.current.value;
+        axios.get(process.env.REACT_APP_LOCAL_URL_GET_INDIVIDUAL_BY_PINFL + `?pinfl=${pinfl}`, {headers})
+            .then((response) => {
+                setData(response.data);
+            }).catch((error) => {
+            console.log(error);
+        });
+    }
+    return (
+        <>
+            <div className='container'>
+                <h2 className='my-4'>Foydalanuvchi qo'shish.</h2>
+                <hr/>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+
+                    <InputGroup size="default" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Ism: </InputGroup.Text>
+                        <Form.Control
+                            aria-label="default"
+                            aria-describedby="inputGroup-sizing-default"
+                            type="text"
+                            {...register("firstName", {required: true, maxLength: 80})}
+                        />
+                    </InputGroup>
+                    <InputGroup size="default" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Familiya: </InputGroup.Text>
+                        <Form.Control
+                            aria-label="default"
+                            aria-describedby="inputGroup-sizing-default"
+                            type="text"
+                            {...register("lastName", {required: true, maxLength: 80})}
+                        />
+                    </InputGroup>
+                    <InputGroup size="default" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Xodim: </InputGroup.Text>
+                        <Form.Select aria-label="Default select example" {...register("role", {required: true})}>
+                            <option value="ROLE_ADMIN">Vazirlik xodimi</option>
+                            <option value="ROLE_MANAGER">Tashkilot xodimi</option>
+                        </Form.Select>
+                    </InputGroup>
+
+                    <InputGroup size="default" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm" className=' bg-secondary text-white' style={{width: 150}}>Tashkilot nomi: </InputGroup.Text>
+                        <Form.Select aria-label="Default select example" {...register("orgId", {required: true})}>
+                            <option value="1">Test</option>
+                        </Form.Select>
+                    </InputGroup>
+                    <InputGroup size="default" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Departament: </InputGroup.Text>
+                        <Form.Control
+                            aria-label="default"
+                            aria-describedby="inputGroup-sizing-default"
+                            type="text"
+                            {...register("department", {required: true, maxLength: 80})}
+                        />
+                    </InputGroup>
+                    <InputGroup size="default" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Lavozim: </InputGroup.Text>
+                        <Form.Control
+                            aria-label="default"
+                            aria-describedby="inputGroup-sizing-default"
+                            type="text"
+                            {...register("position", {required: true, maxLength: 80})}
+                        />
+                    </InputGroup>
+                    <hr/>
+                    <InputGroup size="default" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Login: </InputGroup.Text>
+                        <Form.Control
+                            aria-label="default"
+                            aria-describedby="inputGroup-sizing-default"
+                            type="text"
+                            {...register("username", {required: true, maxLength: 80})}
+                        />
+                    </InputGroup>
+                    <InputGroup size="default" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Parol: </InputGroup.Text>
+                        <Form.Control
+                            aria-label="default"
+                            aria-describedby="inputGroup-sizing-default"
+                            type="password"
+                            {...register("password", {required: true, maxLength: 80})}
+                        />
+                    </InputGroup>
+                    {/*<Form.Group className="mb-3" controlId="formBasicCheckbox">*/}
+                    {/*    <Form.Check type="checkbox" label="Check me out"/>*/}
+                    {/*</Form.Group>*/}
+                    {/*<div className='bg-primary rounded-3'>*/}
+                    <Button variant="primary" type="submit" className="ml-auto">
+                        Saqlash
+                    </Button>
+                    {/*</div>*/}
+                </Form>
+            </div>
+        </>
+    );
+};
+export default AdminPage;

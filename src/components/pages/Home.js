@@ -10,6 +10,7 @@ import AreaAuc from "../charts/AreaAuc";
 import AreaComp from "../charts/AreaComp";
 import AreaEShop from "../charts/AreaEShop";
 import StackedBars from "../charts/StackedBars";
+import Map from "../map/Map";
 import LineWithData from "../charts/LineWithData";
 import React, {useEffect, useState} from "react";
 
@@ -60,6 +61,7 @@ function Home() {
                 <Row>
                     <Col>
                         <StackedBars/>
+                        <Map/>
                     </Col>
                 </Row>
                 <Row className='my-5' style={{margin: "0px"}}>

@@ -8,7 +8,6 @@ import React from "react";
 
 function NavMenu() {
     function hasJWT() {
-
         let flag = false;
         localStorage.getItem("token") ? flag = true : flag = false
         return flag
@@ -17,99 +16,66 @@ function NavMenu() {
     const history = useNavigate();
     const userLogout = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('role')
         history("/")
         history(0)
     }
-    if (hasJWT()) {
-        return (<>
-            <Navbar
-                className='navbar py-4 shadow px-0'
-                style={{borderBottom: "8px outset #C3E3FF"}}
-            >
-                <Container>
-                    <Navbar.Brand href='/'>
-                        <img src={logo} width='200' height='50'/>
-                    </Navbar.Brand>
-                    <Nav className='mr-auto'>
+    return (<>
+        <Navbar className='shadow p-4 border-bottom border-info' expand="lg">
+            <Container>
+                <Navbar.Brand href='/'>
+                    <img src={logo} width='200' height='50'/>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto text-center">
                         <LinkContainer to='/contractsSuccess'>
-                            <Nav.Link href='#features' className='text-center align-middle'> Amalga
+                            <Nav.Link href='#features'> Amalga
                                 oshgan <br/> shartnoma ma'lumotlari</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to='/trades'>
-                            <Nav.Link href='#features' className='text-center align-middle'>Amaldagi
+                            <Nav.Link href='#features' className='mt-2'>Amaldagi
                                 e'lonlar</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to='/contractsFailed'>
-                            <Nav.Link href='#features' className='text-center align-middle'> Amalga
+                            <Nav.Link href='#features'> Amalga
                                 oshmagan <br/> shartnoma
                                 ma'lumotlari</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to='/contractsCoorp'>
                             <Nav.Link href='#features'
-                                      className='text-center align-middle '>Korporativ <br/> shartnoma
+                                      className='text-center'>Korporativ <br/> shartnoma
                                 ma'lumotlari</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to='/about'>
-                            <Nav.Link href='#features' className='text-center align-middle '>Portal
+                            <Nav.Link href='#features' className='mt-2'>Portal
                                 haqida</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to='/personalCabinet'>
-                            <Nav.Link href='#features' className='text-center align-middle '> Cabinet</Nav.Link>
-                        </LinkContainer>
-
-                        <LinkContainer to="/" className="m-1">
-                            <Nav.Link className="btn btn- p-3" onClick={userLogout}>LogOut</Nav.Link>
-                        </LinkContainer>
+                        {hasJWT() ?
+                            (<>
+                                <LinkContainer to='/personalCabinet'>
+                                    <Nav.Link href='#features' className='mt-2 text-primary'> Umumiy ma'lumotlar </Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to='/taxreport'>
+                                    <Nav.Link href='#features' className='mt-2 text-primary'> Hisobot topshirish </Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to='/adminPage'>
+                                    <Nav.Link href='#features' className='mt-2 text-primary'> Administrator </Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/" className='mt-2'>
+                                    <Nav.Link onClick={userLogout} className='text-danger'>Tizimdan chiqish</Nav.Link>
+                                </LinkContainer>
+                            </>) :
+                            <LinkContainer to="/cabinet" className='mt-2'>
+                                <Nav.Link href='#cabinet' className='text-info'>Tizimga kirish</Nav.Link>
+                            </LinkContainer>
+                        }
                     </Nav>
-                </Container>
-            </Navbar>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    </>)
 
-        </>)
-    } else {
-    }
-
-    return (
-        <>
-            <Navbar
-                className='navbar py-4 shadow px-0'
-                style={{borderBottom: "8px outset #C3E3FF"}}
-            >
-                <Container>
-                    <Navbar.Brand href='/'>
-                        <img src={logo} width='200' height='50'/>
-                    </Navbar.Brand>
-                    <Nav className='mr-auto'>
-                        <LinkContainer to='/contractsSuccess'>
-                            <Nav.Link href='#features' className='text-center align-middle'> Amalga
-                                oshgan <br/> shartnoma ma'lumotlari</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to='/trades'>
-                            <Nav.Link href='#features' className='text-center align-middle'>Amaldagi
-                                e'lonlar</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to='/contractsFailed'>
-                            <Nav.Link href='#features' className='text-center align-middle'> Amalga
-                                oshmagan <br/> shartnoma
-                                ma'lumotlari</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to='/contractsCoorp'>
-                            <Nav.Link href='#features'
-                                      className='text-center align-middle '>Korporativ <br/> shartnoma
-                                ma'lumotlari</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to='/about'>
-                            <Nav.Link href='#features' className='text-center align-middle '>Portal
-                                haqida</Nav.Link>
-                        </LinkContainer>
-
-                        {/*<LinkContainer to="/cabinet" className="m-1">*/}
-                        {/*    <Nav.Link href='#cabinet' className="btn btn- p-3">Login</Nav.Link>*/}
-                        {/*</LinkContainer>*/}
-                    </Nav>
-                </Container>
-            </Navbar>
-        </>
-    );
 }
 
 export default NavMenu;

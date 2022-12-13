@@ -4,7 +4,7 @@ import {FcSearch} from 'react-icons/fc';
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 
-const PersonalC = () => {
+const Ministry = () => {
 
     const headers = {
         'Authorization': 'Bearer ' + localStorage.getItem("token")
@@ -330,4 +330,4 @@ const PersonalC = () => {
         </>
     );
 };
-export default PersonalC;
+export default Ministry;
