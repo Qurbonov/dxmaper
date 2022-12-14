@@ -105,11 +105,11 @@ const FailedContractsInfo = () => {
             reorder: true,
             width: "12%",
         },
-        {
-            name: "Rad etilganlik haqida",
-            selector: (row) => row.errmsg,
-            width: "14%",
-        },
+        // {
+        //     name: "Rad etilganlik haqida",
+        //     selector: (row) => row.errmsg,
+        //     width: "14%",
+        // },
         {
             name: "Holati",
             style: {
