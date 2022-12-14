@@ -106,6 +106,7 @@ const FailedContractsInfo = () => {
             width: "12%",
         },
         // {
+        //
         //     name: "Rad etilganlik haqida",
         //     selector: (row) => row.errmsg,
         //     width: "14%",
