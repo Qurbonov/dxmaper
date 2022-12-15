@@ -3,8 +3,6 @@ import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import {useForm} from "react-hook-form";
 
 const AdminPage = () => {
@@ -15,9 +13,8 @@ const AdminPage = () => {
     const {register, handleSubmit} = useForm();
     const [dataIn, setData] = useState();
     const inputYtt = useRef(null);
-    // const onSubmit = (d) => alert(JSON.stringify(d))
     const onSubmit = (d) => {
-        axios.post('http://localhost:8585/v1/atm/auth/create', d);
+        axios.post(process.env.REACT_APP_LOCAL_URL_POST_CREATE_USER, d);
         alert("Saqlandi !!!");
     }
 
@@ -106,10 +103,6 @@ const AdminPage = () => {
                             {...register("password", {required: true, maxLength: 80})}
                         />
                     </InputGroup>
-                    {/*<Form.Group className="mb-3" controlId="formBasicCheckbox">*/}
-                    {/*    <Form.Check type="checkbox" label="Check me out"/>*/}
-                    {/*</Form.Group>*/}
-                    {/*<div className='bg-primary rounded-3'>*/}
                     <Button variant="primary" type="submit" className="ml-auto">
                         Saqlash
                     </Button>

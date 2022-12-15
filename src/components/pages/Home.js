@@ -1,21 +1,19 @@
 import About from "./About";
 
-import Line from "../charts/Line";
+import React from "react";
+import Map from "../map/Map";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import Stat from "../charts/Stat";
 import Area from "../charts/AreaEK";
-import Donut from "../charts/Donut";
 import AreaTT from "../charts/AreaTT";
 import TreeMap from "../charts/TreeMap";
 import AreaAuc from "../charts/AreaAuc";
 import AreaComp from "../charts/AreaComp";
 import AreaEShop from "../charts/AreaEShop";
 import StackedBars from "../charts/StackedBars";
-import Map from "../map/Map";
-import LineWithData from "../charts/LineWithData";
-import React, {useEffect, useState} from "react";
-
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import Container from "react-bootstrap/Container";
 

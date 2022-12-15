@@ -26,7 +26,6 @@ function PageRoutes() {
     function hasJWT() {
         let flag = false;
         localStorage.getItem("token") ? flag = true : flag = false
-        console.log(localStorage.getItem("role"));
         return flag
     }
 

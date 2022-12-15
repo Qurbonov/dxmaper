@@ -16,7 +16,7 @@ function Cabinet() {
     const [password, setPassword] = useState("")
 
     const handleSubmit = () => {
-        axios.post("http://localhost:8585/v1/atm/auth/login", {
+        axios.post("process.env.REACT_APP_LOCAL_URL_LOGIN", {
             username: username,
             password: password
         })

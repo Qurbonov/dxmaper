@@ -18,12 +18,11 @@ function NavMenu() {
         return flag
     }
 
-    const history = useNavigate();
+    const navigate = useNavigate();
     const userLogout = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('role')
-        history("/")
-        history(0)
+        navigate("/")
     }
     return (<>
         <Navbar className='shadow p-4 border-bottom border-info' expand="lg">
