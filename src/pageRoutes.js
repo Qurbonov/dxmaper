@@ -20,6 +20,7 @@ import Ministry from "./components/cabinet/Ministry"
 import AdminPage from "./components/cabinet/AdminPage";
 import TaxReport from "./components/cabinet/TaxReport";
 
+
 function PageRoutes() {
     let user_role = localStorage.getItem("role");
 
@@ -42,6 +43,7 @@ function PageRoutes() {
                                             <Route path='adminPage' element={<AdminPage/>}/>
                                             <Route path='personalCabinet' element={<Ministry/>}/>
                                             <Route path='taxreport' element={<TaxReport/>}/>
+
                                         </>
                                     ) :
                                     user_role === "ROLE_ADMIN" ? (
@@ -53,6 +55,7 @@ function PageRoutes() {
                                         user_role === "ROLE_MANAGER" ? (
                                             <>
                                                 <Route path='taxreport' element={<TaxReport/>}/>
+
                                             </>
                                         ) : console.log("")}
                         </>

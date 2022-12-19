@@ -25,7 +25,7 @@ function NavMenu() {
         navigate("/")
     }
     return (<>
-        <Navbar className='shadow p-4 border-bottom border-info' expand="lg">
+        <Navbar className=' p-4 border-bottom border-light' expand="lg">
             <Container>
                 <Navbar.Brand href='/'>
                     <img src={logo} width='200' height='50'/>
@@ -87,8 +87,9 @@ function NavMenu() {
                                                 </>) :
                                                 user_role === "ROLE_MANAGER" ? (<>
                                                     <LinkContainer to='/taxreport'>
-                                                        <Nav.Link href='#features' className='mt-2 text-primary'> Hisobot topshirish </Nav.Link>
+                                                        <Nav.Link href='#features' className='mt-2 text-primary'> Hisobot formasi </Nav.Link>
                                                     </LinkContainer>
+                                                   
                                                     <LinkContainer to="/" className='mt-2'>
                                                         <Nav.Link onClick={userLogout} className='text-danger'>Tizimdan chiqish</Nav.Link>
                                                     </LinkContainer>

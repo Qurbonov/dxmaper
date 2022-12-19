@@ -16,7 +16,7 @@ function Cabinet() {
     const [password, setPassword] = useState("")
 
     const handleSubmit = () => {
-        axios.post("process.env.REACT_APP_LOCAL_URL_LOGIN", {
+        axios.post(process.env.REACT_APP_LOCAL_URL_LOGIN, {
             username: username,
             password: password
         })

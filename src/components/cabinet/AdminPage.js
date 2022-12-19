@@ -11,21 +11,9 @@ const AdminPage = () => {
         'Authorization': 'Bearer ' + localStorage.getItem("token")
     };
     const {register, handleSubmit} = useForm();
-    const [dataIn, setData] = useState();
-    const inputYtt = useRef(null);
+
     const onSubmit = (d) => {
         axios.post(process.env.REACT_APP_LOCAL_URL_POST_CREATE_USER, d);
-        alert("Saqlandi !!!");
-    }
-
-    const getIndividualInfo = () => {
-        const pinfl = inputYtt.current.value;
-        axios.get(process.env.REACT_APP_LOCAL_URL_GET_INDIVIDUAL_BY_PINFL + `?pinfl=${pinfl}`, {headers})
-            .then((response) => {
-                setData(response.data);
-            }).catch((error) => {
-            console.log(error);
-        });
     }
     return (
         <>

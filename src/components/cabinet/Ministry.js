@@ -3,6 +3,7 @@ import axios from "axios";
 import {FcSearch} from 'react-icons/fc';
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import Blacklist from "./Blacklist";
 
 const Ministry = () => {
 
@@ -252,7 +253,7 @@ const Ministry = () => {
     return (
         <>
             <Tabs
-                defaultActiveKey="et"
+                defaultActiveKey="bk"
                 id="fill-tab-example"
                 className="mb-3 mt-4"
                 fill
@@ -325,6 +326,9 @@ const Ministry = () => {
                         </div>
                         {dispReportData()}
                     </div>
+                </Tab>
+                <Tab eventKey="bk" title="Insofsiz etkazib beruvchilar">
+                    <Blacklist/>
                 </Tab>
             </Tabs>
         </>
