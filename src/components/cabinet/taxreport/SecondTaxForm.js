@@ -24,7 +24,7 @@ const SecondTaxForm = () => {
             <div className="container rounded-3 border  shadow-sm border-1 p-4 ">
                 <Form onSubmit={handleSubmit(onSecondSubmit)}>
                     <Row className='mb-3 '>
-                        <Form.Group as={Col} controlId="formGridState" className=' text-secondary'>
+                        <Form.Group as={Col} controlId="formGridState" className='text-secondary'>
                             <Form.Label className='text-secondary'>1. Yil</Form.Label>
                             {errors.year?.type === 'required' && <span role="alert" className='text-danger ms-2'>Yil to'liq ko'rinishda.</span>}
                             <Form.Select defaultValue="2022" {...register("year")}>
@@ -48,7 +48,7 @@ const SecondTaxForm = () => {
                                 aria-label="default"
                                 aria-describedby="inputGroup-sizing-default"
                                 type="text"
-                                {...register("ptype", {required: true, maxLength: 2})}
+                                {...register("reportType", {required: true, maxLength: 2})}
                             />
                         </Form.Group>
 
@@ -70,7 +70,7 @@ const SecondTaxForm = () => {
                                 aria-label="default"
                                 aria-describedby="inputGroup-sizing-default"
                                 type="text"
-                                {...register("ns10_Code", {required: true, maxLength: 2})}
+                                {...register("ns10Code", {required: true, maxLength: 2})}
                             />
                         </Form.Group>
                         <Form.Group as={Col} controlId="formGridTin">
@@ -79,18 +79,18 @@ const SecondTaxForm = () => {
                                 aria-label="default"
                                 aria-describedby="inputGroup-sizing-default"
                                 type="text"
-                                {...register("ns11_Code", {required: true, maxLength: 2})}
+                                {...register("ns11Code", {required: true, maxLength: 2})}
                             />
                         </Form.Group>
-                        <Form.Group as={Col} controlId="formGridTin">
-                            <Form.Label className='text-secondary'>7. Ma'lumot yuborilgan sana: </Form.Label>
-                            <Form.Control
-                                aria-label="default"
-                                aria-describedby="inputGroup-sizing-default"
-                                type="date"
-                                {...register("datesent", {required: true})}
-                            />
-                        </Form.Group>
+                        {/*<Form.Group as={Col} controlId="formGridTin">*/}
+                        {/*    <Form.Label className='text-secondary'>7. Ma'lumot yuborilgan sana: </Form.Label>*/}
+                        {/*    <Form.Control*/}
+                        {/*        aria-label="default"*/}
+                        {/*        aria-describedby="inputGroup-sizing-default"*/}
+                        {/*        type="date"*/}
+                        {/*        {...register("datesent", {required: true})}*/}
+                        {/*    />*/}
+                        {/*</Form.Group>*/}
                         <Form.Group as={Col} controlId="formGridTin">
                             <Form.Label className='text-secondary'>8. Hisobot ID raqami: </Form.Label>
                             <Form.Control
