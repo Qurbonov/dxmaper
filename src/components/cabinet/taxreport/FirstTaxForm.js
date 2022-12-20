@@ -17,7 +17,7 @@ import {StateMachineProvider, createStore} from "little-state-machine";
 const FirstTaxForm = () => {
     const {register, formState: {errors}, handleSubmit} = useForm();
     const onFirstSubmit = (frst) => {
-        console.log(frst);
+        // console.log(frst);
         axios.post(process.env.REACT_APP_LOCAL_URL_POST_FIRST_REPORT, frst);
     }
     return (

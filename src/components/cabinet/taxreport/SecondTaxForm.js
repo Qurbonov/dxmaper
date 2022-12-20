@@ -15,8 +15,8 @@ const SecondTaxForm = () => {
 
     const {register, formState: {errors}, handleSubmit} = useForm();
     const onSecondSubmit = (scnd) => {
-        console.log(scnd);
-        // axios.post(process.env.REACT_APP_LOCAL_URL_POST_CREATE_USER, scnd);
+        // console.log(scnd);
+        axios.post(process.env.REACT_APP_LOCAL_URL_POST_SECOND_REPORT, scnd);
     }
     return (
         <>
