@@ -58,7 +58,7 @@ const AdminPage = () => {
                             <option value="ROLE_ADMIN">Vazirlik xodimi</option>
                         </Form.Select>
                     </InputGroup>
-                    {organizations.body.map(r => (
+                    {organizations.map(r => (
 
                         <InputGroup size="default" className="mb-3">
                             <InputGroup.Text id="inputGroup-sizing-sm" className=' bg-secondary text-white' style={{width: 150}}>Tashkilot nomi: </InputGroup.Text>
