@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,10 +7,21 @@ import {useForm} from "react-hook-form";
 
 const AdminPage = () => {
 
-    const headers = {
-        'Authorization': 'Bearer ' + localStorage.getItem("token")
-    };
     const {register, handleSubmit} = useForm();
+    const [organizations, setOrganization] = useState([]);
+
+    useEffect(() => {
+        try {
+            const response = axios.get(
+                process.env.REACT_APP_LOCAL_URL_GET_ORGANIZATIONS
+            );
+            setOrganization(response);
+            console.log(response)
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
 
     const onSubmit = (d) => {
         axios.post(process.env.REACT_APP_LOCAL_URL_POST_CREATE_USER, d);
