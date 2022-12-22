@@ -63,7 +63,6 @@ const AdminPage = () => {
                         <InputGroup.Text id="inputGroup-sizing-sm" className=' bg-secondary text-white' style={{width: 150}}>Tashkilot nomi: </InputGroup.Text>
                         <Form.Select aria-label="Default select example" {...register("orgId", {required: true})}>
                             <option value="1">Test</option>
-                            <option value={r.id}>{r.organizationName}</option>
                         </Form.Select>
                     </InputGroup>
                     <InputGroup size="default" className="mb-3">
