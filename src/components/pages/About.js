@@ -17,7 +17,7 @@ function About() {
                 <h2 className='my-4 border-bottom'>
                     Davlat xaridlari bo‘yicha markaziy axborot portali
                 </h2>
-                <p className='text-justify'>
+                <p style={{textAlign: "justify"}}>
                     Portal O‘zbekiston Respublikasining “Davlat xaridlari to‘g‘risida”gi
                     Qonuni va O‘zbekiston Respublikasi Vazirlar Mahkamasining “Davlat
                     xaridlarini amalga oshirishda xarid qilish tartib-taomillarini tashkil
