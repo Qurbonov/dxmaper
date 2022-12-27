@@ -49,24 +49,15 @@ function NavMenu() {
                                     <NavDropdown.Item href="/contractsFailed">Amalga oshmagan savdolar</NavDropdown.Item>
                                     <NavDropdown.Divider/>
                                     <NavDropdown.Item href="/contractsCoorp">Koorporativ savdolar</NavDropdown.Item>
-
                                 </NavDropdown>
-                                <LinkContainer to="/cabinet">
-                                    <NavDropdown title={<span className="text-light my-auto">Xujjatlar</span>} id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.1">Me'yoriy-huquqiy aktlar</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.2">
-                                            Qo'llanmalar
-                                        </NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.4">
-                                            Eng ko'p beriladigan savollar
-                                        </NavDropdown.Item>
-                                        {/*<NavDropdown.Divider/>*/}
-                                    </NavDropdown>
-                                </LinkContainer>
+                                <NavDropdown title={<span className="text-light my-auto">Xujjatlar</span>} id="basic-nav-dropdown">
+                                    <NavDropdown.Item href="/mha">Me'yoriy-huquqiy aktlar</NavDropdown.Item>
+                                    <NavDropdown.Item href="/qullanma">Qo'llanmalar</NavDropdown.Item>
+                                    <NavDropdown.Item href="/faq">Eng ko'p beriladigan savollar</NavDropdown.Item>
+                                </NavDropdown>
                                 <LinkContainer to='/about'>
                                     <Nav.Link href='#features' className='text-light'>Portal haqida</Nav.Link>
                                 </LinkContainer>
-
                             </Nav>
                             <Nav>
                                 {hasJWT() ?
