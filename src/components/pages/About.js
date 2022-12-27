@@ -10,6 +10,7 @@ function About() {
     const [coop, setCoop] = useState(false);
     const [uzex, setUzex] = useState(false);
     const [qurilish, setQurilish] = useState(false);
+    const [xtxarid, setXtxarid] = useState(false);
 
     return (
         <>
@@ -42,6 +43,7 @@ function About() {
                         <Col xs lg="3" className='text-center' onClick={() => {
                             setCoop(!coop)
                             uzex ? setUzex(!uzex) : setUzex(uzex)
+                            xtxarid ? setXtxarid(!xtxarid) : setXtxarid(xtxarid)
                             qurilish ? setQurilish(!qurilish) : setQurilish(qurilish)
                         }}
                              aria-controls="example-collapse-text"
@@ -52,6 +54,7 @@ function About() {
                         <Col xs lg="3" className='text-center' onClick={() => {
                             setUzex(!uzex)
                             coop ? setCoop(!coop) : setCoop(coop)
+                            xtxarid ? setXtxarid(!xtxarid) : setXtxarid(xtxarid)
                             qurilish ? setQurilish(!qurilish) : setQurilish(qurilish)
                         }
                         }
@@ -60,7 +63,15 @@ function About() {
                             <img src="/uzex_logo.png" width="55" height="70" alt=""/>
                             <p className='pt-2 text-secondary'> Tovat-xom ashyo birjasi</p>
                         </Col>
-                        <Col xs lg="3" className='text-center'>
+                        <Col xs lg="3" className='text-center' onClick={() => {
+                            setXtxarid(!xtxarid)
+                            coop ? setCoop(!coop) : setCoop(coop)
+                            qurilish ? setQurilish(!qurilish) : setQurilish(qurilish)
+                            uzex ? setUzex(!uzex) : setUzex(uzex)
+                        }
+                        }
+                             aria-controls="example-collapse-text"
+                             aria-expanded={uzex}>
                             <img src="/xtxarid_logo.png" width="65" height="70" alt=""/>
                             <p className='pt-2 text-secondary'> XT-Xarid texnologiyalari</p>
                         </Col>
@@ -68,6 +79,7 @@ function About() {
                             setQurilish(!qurilish)
                             uzex ? setUzex(!uzex) : setUzex(uzex)
                             coop ? setCoop(!coop) : setCoop(coop)
+                            xtxarid ? setXtxarid(!xtxarid) : setXtxarid(xtxarid)
                         }
                         }
                              aria-controls="example-collapse-text"
@@ -237,10 +249,34 @@ function About() {
                                             </ListGroup>
                                         </Col>
                                         <Col>
+                                            {/*<ListGroup as="ol" numbered>*/}
+                                            {/*    <ListGroup.Item variant="light" as="li">*/}
+                                            {/*    </ListGroup.Item>*/}
+                                            {/*</ListGroup>*/}
+                                        </Col>
+                                    </Row>
+                                </Container>
+                            </div>
+                        </Collapse>
+                        <Collapse in={xtxarid} className='pt-2'>
+                            <div id="example-collapse-text">
+                                <Container>
+                                    <h5>XT-Xarid texnologiyalari</h5>
+                                    <Row>
+                                        <Col>
                                             <ListGroup as="ol" numbered>
                                                 <ListGroup.Item variant="light" as="li">
+                                                    <a href="/docs/xtxarid/xt_xarid.pptx" className='text-lowercase text-decoration-none'>
+                                                        Ro‘yxatdan o‘tish tartibi (O'zbek, Рус)
+                                                    </a>
                                                 </ListGroup.Item>
                                             </ListGroup>
+                                        </Col>
+                                        <Col>
+                                            {/*<ListGroup as="ol" numbered>*/}
+                                            {/*    <ListGroup.Item variant="light" as="li">*/}
+                                            {/*    </ListGroup.Item>*/}
+                                            {/*</ListGroup>*/}
                                         </Col>
                                     </Row>
                                 </Container>
