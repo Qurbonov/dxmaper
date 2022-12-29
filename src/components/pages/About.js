@@ -14,7 +14,7 @@ function About() {
 
     return (
         <>
-            <div className='mt-1 container shadow p-5 rounded'>
+            <div className='container shadow-sm px-5 py-4 rounded-5'>
                 <h2 className='my-4 border-bottom'>
                     Davlat xaridlari bo‘yicha markaziy axborot portali
                 </h2>

@@ -20,7 +20,7 @@ import Container from "react-bootstrap/Container";
 function Home() {
 
     return (
-        <div className=' pt-3'>
+        <div>
             <Container>
                 <Row>
                     <Col>
@@ -32,7 +32,7 @@ function Home() {
                         <Stat/>
                     </Col>
                 </Row>
-                <Row className='my-5 '>
+                <Row className='my-5'>
                     <Col>
                         <Accordion className='shadow rounded'>
                             <Accordion.Item eventKey='0'>
