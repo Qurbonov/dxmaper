@@ -30,9 +30,6 @@ function NavMenu() {
                 <a href="/">
                     <img src={logo} width='230' height='50' className='mt-4'/>
                 </a>
-                <a href="http://www.mf.uz">
-                    <img src="/logo_mf.png" width="210" height="80" alt="" className='position-absolute top-0 end-0 mt-3'/>
-                </a>
             </div>
             <div className='my-5'>
                 <Navbar collapseOnSelect expand="lg" bg="success" variant="light" className='shadow-lg'>
