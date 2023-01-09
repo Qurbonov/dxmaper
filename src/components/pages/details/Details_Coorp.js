@@ -100,16 +100,16 @@ const Details_Coorp = () => {
                         <b>Shartnoma imzolangan sana :</b> {data.PAYLOAD?.CONTRACTENDS} y.
                     </li>
                     <li className='list-group-item'>
-                        <b className='me-2'>Maxsulot (xizmat):</b>
-                        {data.PAYLOAD?.SPECIFICATIONS[0]?.TOVARNAME}
+                        <b className='me-2'>Maxsulot (xizmat) nomi:</b>
+                        {data.PAYLOAD?.SPECIFICATIONS[0]?.TOVARNAME} -
                     </li>
                     <li className='list-group-item'>
-                        <b className='me-2'>Maxsulot (xizmat):</b>
-                        {data.PAYLOAD?.SPECIFICATIONS[0]?.NOTE[0]?.TECHSPEC}
+                        <b className='me-2'>Maxsulot (xizmat) ma'lutmoti :</b>
+                        {data.PAYLOAD?.PURPOSE}
                     </li>
                     <li className='list-group-item '>
                         <b>Mahsulot (xizmat) narxi :</b>{" "}
-                        <span style={{letterSpacing: 1}}>{data.PAYLOAD?.SPECIFICATIONS[0]?.TOVARPRICE}
+                        <span style={{letterSpacing: 1}}>{data.PAYLOAD?.SPECIFICATIONS[0]?.TOVARPRICE} so'm
                         </span>
                     </li>
                     {" "}
@@ -122,7 +122,7 @@ const Details_Coorp = () => {
                     {" "}
                     <li className='list-group-item '>
                         <b>Umumiy summa :</b>{" "}
-                        {data.PAYLOAD?.SPECIFICATIONS[0]?.TOVARSUMMA}
+                        {data.PAYLOAD?.SPECIFICATIONS[0]?.TOVARSUMMA} so'm
                     </li>
                     {" "}
 
@@ -135,20 +135,20 @@ const Details_Coorp = () => {
                     </li>
                     {" "}
                     <li className='list-group-item '>
-                        <b>Xaridor : </b> {data.customer}
+                        <b>Xaridor : </b> {data.PAYLOAD?.ORGAN}
                     </li>
                     {" "}
-                    <li className='list-group-item '>
-                        <b>Xaridor STIR raqami :</b> {data.innCustomer}
-                    </li>
-                    {" "}
-                    <li className='list-group-item '>
-                        <b>Xaridor manzili :</b> {data.areaCustomer}
-                    </li>
-                    {" "}
-                    <li className='list-group-item '>
-                        <b>Xaridor Hududi :</b> {data.regionCustomer}
-                    </li>
+                    {/*<li className='list-group-item '>*/}
+                    {/*    <b>Xaridor STIR raqami :</b> {data.innCustomer}*/}
+                    {/*</li>*/}
+                    {/*{" "}*/}
+                    {/*<li className='list-group-item '>*/}
+                    {/*    <b>Xaridor manzili :</b> {data.areaCustomer}*/}
+                    {/*</li>*/}
+                    {/*{" "}*/}
+                    {/*<li className='list-group-item '>*/}
+                    {/*    <b>Xaridor Hududi :</b> {data.regionCustomer}*/}
+                    {/*</li>*/}
                     <li
                         className='list-group-item bg-light'
                         style={{color: "#8198B2", letterSpacing: 1}}
@@ -156,19 +156,19 @@ const Details_Coorp = () => {
                         <h6 className='mt-1'>Etkazib beruvchi tashkilot</h6>
                     </li>
                     <li className='list-group-item '>
-                        <b>Etkazib beruvchi :</b> {data.provider}
+                        <b>Etkazib beruvchi :</b> {data.PAYLOAD?.VENDORNAME}
                     </li>
                     <li className='list-group-item '>
                         <b>Etkazib beruvchi manzili :</b>{" "}
-                        {data.areaProvider}
+                        {data.PAYLOAD?.vender_terr_name}
                     </li>
-                    <li className='list-group-item '>
-                        <b>Etkazib beruvchi hududi :</b>{" "}
-                        {data.regionProvider}
-                    </li>
+                    {/*<li className='list-group-item '>*/}
+                    {/*    <b>Etkazib beruvchi hududi :</b>{" "}*/}
+                    {/*    {data.regionProvider}*/}
+                    {/*</li>*/}
                     <li className='list-group-item '>
                         <b>Etkazib beruvchi STIR raqami:</b>{" "}
-                        {data.innProvider}
+                        {data.PAYLOAD?.VENDORINN}
                     </li>
                 </ul>
             </div>
