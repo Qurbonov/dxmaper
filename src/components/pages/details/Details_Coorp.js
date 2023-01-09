@@ -94,19 +94,22 @@ const Details_Coorp = () => {
                         <h6 className='mt-1'>Shartnoma</h6>
                     </li>
                     <li className='list-group-item '>
-                        <b>Shartnoma raqami :</b> # {data.PAYLOAD?.CONTRACTNUM}
+                        <b>Shartnoma raqami :</b># {data.PAYLOAD?.CONTRACTNUM}
                     </li>
                     <li className='list-group-item '>
-                        <b>Shartnoma imzolangan sana :</b>{data.PAYLOAD?.CONTRACTENDS} y.
+                        <b>Shartnoma imzolangan sana :</b> {data.PAYLOAD?.CONTRACTENDS} y.
                     </li>
                     <li className='list-group-item'>
                         <b className='me-2'>Maxsulot (xizmat):</b>
                         {data.PAYLOAD?.SPECIFICATIONS[0]?.TOVARNAME}
                     </li>
+                    <li className='list-group-item'>
+                        <b className='me-2'>Maxsulot (xizmat):</b>
+                        {data.PAYLOAD?.SPECIFICATIONS[0]?.NOTE[0]?.TECHSPEC}
+                    </li>
                     <li className='list-group-item '>
                         <b>Mahsulot (xizmat) narxi :</b>{" "}
-                        <span style={{letterSpacing: 1}}>
-                           test {data.PAYLOAD?.SPECIFICATIONS[0]?.TOVARPRICE}
+                        <span style={{letterSpacing: 1}}>{data.PAYLOAD?.SPECIFICATIONS[0]?.TOVARPRICE}
                         </span>
                     </li>
                     {" "}
