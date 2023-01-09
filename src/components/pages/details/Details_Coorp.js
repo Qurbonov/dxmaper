@@ -106,7 +106,7 @@ const Details_Coorp = () => {
                     <li className='list-group-item '>
                         <b>Mahsulot (xizmat) narxi :</b>{" "}
                         <span style={{letterSpacing: 1}}>
-                            {data.PAYLOAD?.SPECIFICATIONS.TOVARPRICE}
+                           test {data.PAYLOAD?.SPECIFICATIONS.TOVARPRICE}
                         </span>
                     </li>
                     {" "}
