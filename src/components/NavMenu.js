@@ -40,13 +40,23 @@ function NavMenu() {
                                 <LinkContainer to='/'>
                                     <Nav.Link href='#features' className='text-light'> Bosh sahifa </Nav.Link>
                                 </LinkContainer>
-                                <NavDropdown title={<span className="text-light my-auto">Savdolar</span>} id="basic-nav-dropdown" className='text-light'>
+                                <NavDropdown title={<span className="text-light my-auto">Byudjet savdolari</span>} id="basic-nav-dropdown" className='text-light'>
                                     <NavDropdown.Item href="/trades">Amaldagi e'lonlar</NavDropdown.Item>
                                     <NavDropdown.Item href="/contractsSuccess">Amalga oshgan savdolar</NavDropdown.Item>
                                     <NavDropdown.Item href="/contractsFailed">Amalga oshmagan savdolar</NavDropdown.Item>
-                                    <NavDropdown.Divider/>
-                                    <NavDropdown.Item href="/contractsCoorp">Koorporativ savdolar</NavDropdown.Item>
+                                    {/*<NavDropdown.Divider/>*/}
+                                    {/*<NavDropdown.Item href="/contractsCoorp">Koorporativ savdolar</NavDropdown.Item>*/}
                                 </NavDropdown>
+                                <LinkContainer to='/contractsCoorp'>
+                                    <Nav.Link href='#features' className='text-light'>Koorporativ savdolar</Nav.Link>
+                                </LinkContainer>
+                                {/*<NavDropdown title={<span className="text-light my-auto">Korporativ savdolari</span>} id="basic-nav-dropdown" className='text-light'>*/}
+                                {/*    <NavDropdown.Item href="/trades">Amaldagi e'lonlar</NavDropdown.Item>*/}
+                                {/*    <NavDropdown.Item href="/contractsSuccess">Amalga oshgan savdolar</NavDropdown.Item>*/}
+                                {/*    <NavDropdown.Item href="/contractsFailed">Amalga oshmagan savdolar</NavDropdown.Item>*/}
+                                {/*    <NavDropdown.Divider/>*/}
+                                {/*    <NavDropdown.Item href="/contractsCoorp">Koorporativ savdolar</NavDropdown.Item>*/}
+                                {/*</NavDropdown>*/}
                                 <NavDropdown title={<span className="text-light my-auto">Xujjatlar</span>} id="basic-nav-dropdown">
                                     <NavDropdown.Item href="/mha">Me'yoriy-huquqiy aktlar</NavDropdown.Item>
                                     <NavDropdown.Item href="/qullanma">Qo'llanmalar</NavDropdown.Item>
