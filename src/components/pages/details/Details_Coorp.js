@@ -9,7 +9,7 @@ const Details_Coorp = () => {
 
     useEffect(() => {
         fetch(
-            process.env.REACT_APP_LOCAL_URL_GET_COORP_BY_ID + `/${param.id}`
+            process.env.REACT_APP_LOCAL_URL_GET_COORP_BY_ID + `${param.id}`
         )
             .then((res) => res.json())
             .then((data) => {
@@ -21,9 +21,20 @@ const Details_Coorp = () => {
             });
     }, [param]);
 
-    const docs = (l) => {
-        for (let index = 0; index < 4; index++) {
-            console.log(index);
+    const etp = (etpid) => {
+        switch (etpid) {
+            case 1:
+                return " UZEX";
+            case 2:
+                return " XT - Xarid";
+            case 3:
+                return (
+                    " COOPERATION.UZ"
+                );
+            case 4:
+                return (
+                    " Shaffof qurilish"
+                );
         }
     };
 
@@ -33,7 +44,7 @@ const Details_Coorp = () => {
                 <div className='row'>
                     <div className='col-10 mb-2'>
                         <h5>
-                            Tovar Nomi :
+                            LOT raqami :
                             <span
                                 className='px-2 ms-1'
                                 style={{
@@ -41,7 +52,7 @@ const Details_Coorp = () => {
                                     letterSpacing: "0.1em",
                                 }}
                             >
-                 {data.tovarName}
+                 {data.PAYLOAD?.LOTID}
               </span>
                         </h5>
                     </div>
@@ -70,12 +81,11 @@ const Details_Coorp = () => {
                         <h6 className='mt-1'>Umumiy ma'lumot</h6>
                     </li>
                     <li className='list-group-item'>
-                        <b>Tovar TN kodi :</b> {data.tnCode}
+                        <b>Elektron savdo maydoni :</b>
+                        {etp(data.ETP_ID)}
+
                     </li>
-                    <li className='list-group-item'>
-                        <b className='me-2'>O'lchov birligi :</b>
-                        {data.measurement}
-                    </li>
+
                     <li
                         className='list-group-item bg-light'
                         style={{color: "#8198B2", letterSpacing: 1}}
@@ -83,40 +93,35 @@ const Details_Coorp = () => {
                         <h6 className='mt-1'>Shartnoma</h6>
                     </li>
                     <li className='list-group-item '>
-                        <b>Shartnoma raqami :</b> # {data.contractNum}
+                        <b>Shartnoma raqami :</b> # {data.PAYLOAD?.CONTRACTNUM}
                     </li>
                     <li className='list-group-item '>
-                        <b>Boshlang'ich summasi :</b>{" "}
+                        <b>Shartnoma imzolangan sana :</b>{data.PAYLOAD?.CONTRACTENDS} y.
+                    </li>
+                    <li className='list-group-item'>
+                        <b className='me-2'>Maxsulot (xizmat):</b>
+                        {data.PAYLOAD?.SPECIFICATIONS?.TOVARNAME}
+                    </li>
+                    <li className='list-group-item '>
+                        <b>Mahsulot (xizmat) narxi :</b>{" "}
                         <span style={{letterSpacing: 1}}>
-              {data.startSummaLot}
-            </span>
+                            {data.PAYLOAD?.SPECIFICATIONS?.TOVARPRICE}
+                        </span>
                     </li>
                     {" "}
                     <li className='list-group-item '>
-                        <b>Bir dona tovar narxi :</b>{" "}
+                        <b>Jami mahsulot (xizmat) soni :</b>{" "}
                         <span style={{letterSpacing: 1}}>
-              {data.unitSumma}
-            </span>
+                        {data.PAYLOAD?.SPECIFICATIONS?.TOVARAMOUNT}
+                        </span>
                     </li>
                     {" "}
                     <li className='list-group-item '>
-                        <b>Jami tovar soni :</b>{" "}
-                        <span style={{letterSpacing: 1}}>
-              {data.qty}
-            </span>
+                        <b>Umumiy summa :</b>{" "}
+                        {data.PAYLOAD?.SPECIFICATIONS?.TOVARSUMMA}
                     </li>
                     {" "}
-                    <li className='list-group-item '>
-                        <b>Sharnoma umumiy summasi :</b>{" "}
-                        {data.contractSumma}
-                    </li>
-                    {" "}
-                    <li className='list-group-item '>
-                        <b>Shartnoma imzolangan sana :</b>{" "}
-                        {Moment(data.contractDate).format(
-                            "YYYY-MM-DD"
-                        ) + " y."}
-                    </li>
+
                     {" "}
                     <li
                         className='list-group-item bg-light'

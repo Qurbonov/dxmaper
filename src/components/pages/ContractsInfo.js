@@ -30,9 +30,6 @@ const ContractsInfo = () => {
             )
             .then((response) => {
                 // console.log(response);
-                console.log(response.data);
-                console.log(response.data.body);
-                // setRbtData([1,2,3,4,5]);
                 setRbtData(response.data.body);
                 setRbtTotal(response.data.total);
                 // console.log(response.data.total);
@@ -50,7 +47,7 @@ const ContractsInfo = () => {
 
     const columns = React.useMemo(() => [
         {
-            name: "ETP",
+            name: "Elektron savdo maydoni",
             selector: (row) => {
                 switch (row.etp_id) {
                     case 1:
@@ -166,7 +163,7 @@ const ContractsInfo = () => {
                             <div className='border px-3 py-3'>
                                 <div className='row'>
                                     <div className='col-sm'>
-                                        ETP:
+                                        Elektron savdo maydoni:
                                         <select
                                             className='form-control form-control-sm'
                                             value={etp}

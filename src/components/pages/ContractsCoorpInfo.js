@@ -50,53 +50,93 @@ const ContractsCoorpInfo = () => {
 
     const columns = React.useMemo(() => [
         {
-            name: "Tovar nomi",
-            selector: (row) => <Link to={`/details/coorp/${row.id}`}>{row.tovarName}</Link>,
+            name: "Elektron savdo maydoni",
+            selector: (row) => {
+                switch (row.etp_id) {
+                    case 1:
+                        return <div className='rounded px-3 py-1 bg-light'>UZEX</div>;
+                    case 2:
+                        return <div className='rounded px-3 py-1 bg-light'>XT-Xarid</div>;
+                    case 3:
+                        return (
+                            <div className='rounded px-3 py-1 bg-light'>COOPERATION.UZ</div>
+                        );
+                    case 4:
+                        return (
+                            <div className='rounded px-3 py-1 bg-light'>Shaffof qurilish</div>
+                        );
+                }
+            },
+            sortable: true,
+            reorder: true,
+            width: "13%",
+        },
+        {
+            name: "LOT raqami",
+            selector: (row) => <Link to={`/details/coorp/${row.id}`}>{row.lot_id}</Link>,
             sortable: true,
             reorder: true,
             width: "20%",
+            style: {
+                paddingLeft: 12
+            }
         },
-        {
-            name: "Tovar Kodi",
-            selector: (row) => (row.tnCode),
-            sortable: true,
-            reorder: true,
-            width: "12%",
-        },
+        // {
+        //     name: "Tovar Kodi",
+        //     selector: (row) => (row.state),
+        //     sortable: true,
+        //     reorder: true,
+        //     width: "12%",
+        // },
         {
             name: "Shartnoma raqami",
-            selector: (row) => (row.contractNum),
+            selector: (row) => (row.contract_num),
             sortable: true,
             reorder: true,
             width: "10%",
         },
         {
             name: "Shartnoma summasi",
-            selector: (row) => (row.summaContract),
+            selector: (row) => (row.summa),
             sortable: true,
             reorder: true,
             width: "12%",
         },
-        {
-            name: "Xaridor ",
-            selector: (row) => (row.customer),
-            sortable: true,
-            reorder: true,
-            width: "18%",
-        },
-        {
-            name: "Hudud (Xaridor)",
-            selector: (row) => (row.areaCustomer),
-            sortable: true,
-            reorder: true,
-            width: "10%",
-        },
+        // {
+        //     name: "Xaridor ",
+        //     selector: (row) => (row.customer),
+        //     sortable: true,
+        //     reorder: true,
+        //     width: "18%",
+        // },
+        // {
+        //     name: "Hudud (Xaridor)",
+        //     selector: (row) => (row.areaCustomer),
+        //     sortable: true,
+        //     reorder: true,
+        //     width: "10%",
+        // },
         {
             name: "Yetkazib beruvchi ",
-            selector: (row) => (row.provider),
+            selector: (row) => (row.v_terr),
             sortable: true,
             reorder: true,
             width: "18%",
+        },
+        {
+            name: "Holati",
+            style: {
+                color: 'green'
+            },
+            selector: (row) => {
+                switch (row.state) {
+                    case 2:
+                        return "Muvaffaqiyatli";
+                }
+            },
+            sortable: true,
+            reorder: true,
+            width: "12%",
         },
     ]);
 
@@ -125,58 +165,40 @@ const ContractsCoorpInfo = () => {
                     <Accordion.Item eventKey='0' className='bg-light'>
                         <Accordion.Header>
                             <FcEmptyFilter/>
-                            <span
-                                className='ms-2 text-secondary'
-                                style={{fontSize: "1.1em"}}
-                            >
-                Filter
-              </span>
+                            <span className='ms-2 text-secondary' style={{fontSize: "1.1em"}}>
+                                Filter
+                            </span>
                         </Accordion.Header>
                         <Accordion.Body>
                             <div className='border px-3 py-3'>
                                 <div className='row'>
                                     <div className='col-sm'>
-                                        Tovar nomi
-                                        <input
-                                            type='text'
-                                            onChange={(e) => onChange(e, "tovarName")}
-                                            className='form-control  form-control-sm'
-                                        />
+                                        Elektron savdo maydoni:
+                                        <select
+                                            className='form-control form-control-sm'
+                                            value={etp}
+                                            onChange={(e) => onChange(e, "etpId")}
+                                        >
+                                            <option value=''>Barchasi</option>
+                                            <option value='1'>UZEX</option>
+                                            <option value='2'>XT-Xarid</option>
+                                            <option value='3'>COOPERATION.UZ</option>
+                                            <option value='4'>Shaffof qurilish</option>
+                                        </select>
                                     </div>
-                                    {" "}
                                     <div className='col-sm'>
-                                        Tovar Tn Kodi
+                                        Lot raqami
                                         <input
                                             type='text'
-                                            onChange={(e) => onChange(e, "tnCode")}
+                                            onChange={(e) => onChange(e, "lotId")}
                                             className='form-control  form-control-sm'
                                         />
                                     </div>
-                                    {" "}
                                     <div className='col-sm'>
                                         Shartnoma raqami
                                         <input
                                             type='text'
                                             onChange={(e) => onChange(e, "contractNum")}
-                                            className='form-control  form-control-sm'
-                                        />
-                                    </div>
-                                </div>
-                                <div className='row'>
-                                    <div className='col-sm'>
-                                        Xaridor Nomi
-                                        <input
-                                            type='text'
-                                            onChange={(e) => onChange(e, "customer")}
-                                            className='form-control  form-control-sm'
-                                        />
-                                    </div>
-                                    {" "}
-                                    <div className='col-sm'>
-                                        Yetkazib beruvchi nomi
-                                        <input
-                                            type='text'
-                                            onChange={(e) => onChange(e, "provider")}
                                             className='form-control  form-control-sm'
                                         />
                                     </div>
@@ -195,7 +217,7 @@ const ContractsCoorpInfo = () => {
                             backgroundColor: "#fff",
                         }}
                     >
-                        <h5> Shartnoma ma`lumotlari</h5>
+                        <h5> Koorporativ savdo ma`lumotlari</h5>
                     </div>
                     <DataTable
                         columns={columns}

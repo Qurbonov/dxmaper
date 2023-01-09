@@ -45,7 +45,7 @@ const FailedContractsInfo = () => {
 
     const columns = React.useMemo(() => [
         {
-            name: "ETP",
+            name: "Elektron savdo maydoni",
             selector: (row) => {
                 switch (row.etp_id) {
                     case 1:
@@ -165,7 +165,7 @@ const FailedContractsInfo = () => {
                             <div className='border px-3 py-3'>
                                 <div className='row'>
                                     <div className='col-sm'>
-                                        ETP:
+                                        Elektron savdo maydoni:
                                         <select
                                             className='form-control form-control-sm'
                                             value={etp}
