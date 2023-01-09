@@ -82,7 +82,7 @@ const Details_Coorp = () => {
                         <h6 className='mt-1'>Umumiy ma'lumot</h6>
                     </li>
                     <li className='list-group-item'>
-                        <b>Elektron savdo maydoni :</b>
+                        <b>Elektron savdo maydoni:</b>
                         {etp(data.ETP_ID)}
 
                     </li>
