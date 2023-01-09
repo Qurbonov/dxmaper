@@ -106,20 +106,20 @@ const Details_Coorp = () => {
                     <li className='list-group-item '>
                         <b>Mahsulot (xizmat) narxi :</b>{" "}
                         <span style={{letterSpacing: 1}}>
-                            {data.PAYLOAD?.SPECIFICATIONS?.TOVARPRICE}
+                            {data.PAYLOAD?.SPECIFICATIONS.TOVARPRICE}
                         </span>
                     </li>
                     {" "}
                     <li className='list-group-item '>
                         <b>Jami mahsulot (xizmat) soni :</b>{" "}
                         <span style={{letterSpacing: 1}}>
-                        {data.PAYLOAD?.SPECIFICATIONS?.TOVARAMOUNT}
+                        {data.PAYLOAD?.SPECIFICATIONS.TOVARAMOUNT}
                         </span>
                     </li>
                     {" "}
                     <li className='list-group-item '>
                         <b>Umumiy summa :</b>{" "}
-                        {data.PAYLOAD?.SPECIFICATIONS?.TOVARSUMMA}
+                        {data.PAYLOAD?.SPECIFICATIONS.TOVARSUMMA}
                     </li>
                     {" "}
 
