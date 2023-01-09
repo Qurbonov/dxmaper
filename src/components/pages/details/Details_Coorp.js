@@ -160,7 +160,7 @@ const Details_Coorp = () => {
                     </li>
                     <li className='list-group-item '>
                         <b>Etkazib beruvchi manzili :</b>{" "}
-                        {data.PAYLOAD?.vender_terr_name}
+                        {data.PAYLOAD?.vendor_terr_name}
                     </li>
                     {/*<li className='list-group-item '>*/}
                     {/*    <b>Etkazib beruvchi hududi :</b>{" "}*/}
