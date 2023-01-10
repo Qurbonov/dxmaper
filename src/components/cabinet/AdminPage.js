@@ -16,7 +16,7 @@ const AdminPage = () => {
                 process.env.REACT_APP_LOCAL_URL_GET_ORGANIZATIONS
             );
             setOrganization(response.data);
-            console.log(response.data.body)
+            // console.log(response.data.body)
         } catch (error) {
             console.log(error);
         }

@@ -13,8 +13,8 @@ const Details_Coorp = () => {
         )
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
-                console.log(data.PAYLOAD.SPECIFICATIONS);
+                // console.log(data);
+                // console.log(data.PAYLOAD.SPECIFICATIONS);
                 setLotInfo(data);
             })
             .finally(() => {

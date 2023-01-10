@@ -75,7 +75,7 @@ const Ministry = () => {
     const getYuridikInfo = () => {
         const stir = inputYuridik.current.value;
         // setStir(stir)
-        console.log(stir);
+        // console.log(stir);
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_YURIDIK_BY_STIR + `?inn=${stir}`, {headers})
             .then((response) => {
                 setYuridikData(response.data);
@@ -145,11 +145,11 @@ const Ministry = () => {
     const [selectedQuarter, setSelectedQuarter] = useState(optionsOfQuarter[0].value);
 
     const handleChangeYear = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         setSelectedYear(event.target.value);
     };
     const handleChangeQuarter = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         setSelectedQuarter(event.target.value);
     };
     const tQuarter_ref = useRef(2020);
@@ -164,8 +164,8 @@ const Ministry = () => {
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_REPORT_YEAR_QUARTER + `?year=${selectedYear}&quarter=${selectedQuarter}`, {headers})
             .then((response) => {
                 setReport(response.data);
-                console.log("response.data")
-                console.log(response.data)
+                // console.log("response.data")
+                // console.log(response.data)
             }).catch((error) => {
             console.log(error);
         });
