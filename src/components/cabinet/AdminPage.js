@@ -18,7 +18,7 @@ const AdminPage = () => {
             setOrganization(response.data);
             // console.log(response.data.body)
         } catch (error) {
-            console.log(error);
+            console.log("error");
         }
     }, []);
 

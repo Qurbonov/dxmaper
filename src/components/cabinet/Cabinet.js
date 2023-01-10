@@ -35,7 +35,7 @@ function Cabinet() {
                     window.location.href = '/taxreport'
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log("error"));
     };
     return (
         <>
