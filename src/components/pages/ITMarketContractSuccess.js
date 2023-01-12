@@ -73,7 +73,7 @@ const ITMarketContractSuccess = () => {
         {
             name: "Savdo turi",
             selector: (row) => {
-                switch (row.procId) {
+                switch (row.proc_id) {
                     case 6:
                         return "Elektron katalog";
                     case 3:
