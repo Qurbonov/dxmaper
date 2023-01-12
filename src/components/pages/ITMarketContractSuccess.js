@@ -22,7 +22,7 @@ const ITMarketContractSuccess = () => {
                 process.env.REACT_APP_LOCAL_URL_GET_IT_RESULTATS_SUCCESS + `?offset=${page}&limit=${countPerPage}`,
                 {
                     params: {
-                        // limit: 100,
+                        limit: 100,
                         // offset: 1,
                         // tradeId: 6,
                         ...query,
@@ -34,7 +34,7 @@ const ITMarketContractSuccess = () => {
                 setRbtData(response.data.body);
                 // console.log(response.data)
                 setRbtTotal(response.data.total);
-                // console.log(response.data.total);
+                console.log(response.data.total);
             })
             .catch((err) => {
                 console.log(err);
