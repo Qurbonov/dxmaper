@@ -30,7 +30,7 @@ const ITMarketContractSuccess = () => {
                 }
             )
             .then((response) => {
-                // console.log(response);
+                console.log(response);
                 setRbtData(response.data.body);
                 setRbtTotal(response.data.total);
                 // console.log(response.data.total);
