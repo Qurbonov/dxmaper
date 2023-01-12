@@ -29,20 +29,11 @@ function Blacklist() {
                     </Nav.Item>
                 </Nav>
 
-                <h3>Black List</h3>
+                <h3 className='my-3'>Shubhali etkazib beruvchilar ro'yhatiga qo'shish</h3>
 
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <InputGroup size="default" className="mb-3">
-                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>STIR: </InputGroup.Text>
-                        <Form.Control
-                            aria-label="default"
-                            aria-describedby="inputGroup-sizing-default"
-                            type="text"
-                            {...register("inn", {required: true, minLength: 9})}
-                        />
-                    </InputGroup>
-                    <InputGroup size="default" className="mb-3">
-                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Nomi: </InputGroup.Text>
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>Nomi: </InputGroup.Text>
                         <Form.Control
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
@@ -51,34 +42,70 @@ function Blacklist() {
                         />
                     </InputGroup>
                     <InputGroup size="default" className="mb-3">
-                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Kiritilgan sana: </InputGroup.Text>
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>STIR: </InputGroup.Text>
                         <Form.Control
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
                             type="text"
-                            {...register("DATE_BEGIN", {required: true, minLength: 9})}
+                            {...register("inn", {required: true, minLength: 9})}
                         />
                     </InputGroup>
                     <InputGroup size="default" className="mb-3">
-                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Chiqarilgan sana: </InputGroup.Text>
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>Hudud: </InputGroup.Text>
                         <Form.Control
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
                             type="text"
-                            {...register("DATE_END", {required: true, minLength: 9})}
+                            {...register("REGION", {required: true, minLength: 9})}
                         />
                     </InputGroup>
                     <InputGroup size="default" className="mb-3">
-                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Holati: </InputGroup.Text>
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>Tadbirkorlik sub'ektining F.I.SH.: </InputGroup.Text>
                         <Form.Control
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
                             type="text"
-                            {...register("STATUS", {required: true, minLength: 9})}
+                            {...register("OWNER", {required: true, minLength: 9})}
                         />
                     </InputGroup>
+
                     <InputGroup size="default" className="mb-3">
-                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 150}}>Izoh: </InputGroup.Text>
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>Sud qarori sanasi: </InputGroup.Text>
+                        <Form.Control
+                            aria-label="default"
+                            aria-describedby="inputGroup-sizing-default"
+                            type="text"
+                            {...register("JUDGEMENT_NUMBER", {required: true, minLength: 9})}
+                        />
+                    </InputGroup> <InputGroup size="default" className="mb-3">
+                    <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>Sud qarori raqami: </InputGroup.Text>
+                    <Form.Control
+                        aria-label="default"
+                        aria-describedby="inputGroup-sizing-default"
+                        type="text"
+                        {...register("JUDGEMENT_DATE", {required: true, minLength: 9})}
+                    />
+                </InputGroup>
+                    {/*<InputGroup size="default" className="mb-3">*/}
+                    {/*    <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>Chiqarilgan sana: </InputGroup.Text>*/}
+                    {/*    <Form.Control*/}
+                    {/*        aria-label="default"*/}
+                    {/*        aria-describedby="inputGroup-sizing-default"*/}
+                    {/*        type="text"*/}
+                    {/*        {...register("DATE_END", {required: true, minLength: 9})}*/}
+                    {/*    />*/}
+                    {/*</InputGroup>*/}
+                    {/*<InputGroup size="default" className="mb-3">*/}
+                    {/*    <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>Holati: </InputGroup.Text>*/}
+                    {/*    <Form.Control*/}
+                    {/*        aria-label="default"*/}
+                    {/*        aria-describedby="inputGroup-sizing-default"*/}
+                    {/*        type="text"*/}
+                    {/*        {...register("STATUS", {required: true, minLength: 9})}*/}
+                    {/*    />*/}
+                    {/*</InputGroup>*/}
+                    <InputGroup size="default" className="mb-3">
+                        <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>Izoh: </InputGroup.Text>
                         <Form.Control
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"

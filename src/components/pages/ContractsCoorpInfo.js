@@ -50,22 +50,21 @@ const ContractsCoorpInfo = () => {
 
     const columns = React.useMemo(() => [
         {
-            name: "Elektron savdo maydoni",
+            name: <div className='ms-2'>"Elektron savdo maydoni"</div>,
             selector: (row) => {
                 switch (row.etp_id) {
                     case 1:
-                        return <div className='rounded px-3 py-1 bg-light'>UZEX</div>;
+                        return <div className='rounded mx-3 px-3 py-1 bg-light'>UZEX</div>;
                     case 2:
-                        return <div className='rounded px-3 py-1 bg-light'>XT-Xarid</div>;
+                        return <div className='rounded mx-3 px-3 py-1 bg-light'>XT-Xarid</div>;
                     case 3:
-                        return (
-                            <div className='rounded px-3 py-1 bg-light'>COOPERATION.UZ</div>
-                        );
+                        return <div className='rounded mx-3 px-3 py-1 bg-light'>COOPERATION.UZ</div>;
                     case 4:
-                        return (
-                            <div className='rounded px-3 py-1 bg-light'>Shaffof qurilish</div>
-                        );
+                        return <div className='rounded mx-3 px-3 py-1 bg-light'>Shaffof qurilish</div>;
                 }
+            },
+            style: {
+                paddingLeft: -10
             },
             sortable: true,
             reorder: true,
@@ -77,9 +76,7 @@ const ContractsCoorpInfo = () => {
             sortable: true,
             reorder: true,
             width: "20%",
-            style: {
-                paddingLeft: 12
-            }
+
         },
         // {
         //     name: "Tovar Kodi",
@@ -116,13 +113,13 @@ const ContractsCoorpInfo = () => {
         //     reorder: true,
         //     width: "10%",
         // },
-        {
-            name: "Yetkazib beruvchi ",
-            selector: (row) => (row.v_terr),
-            sortable: true,
-            reorder: true,
-            width: "18%",
-        },
+        // {
+        //     name: "Yetkazib beruvchi ",
+        //     selector: (row) => (row.v_terr),
+        //     sortable: true,
+        //     reorder: true,
+        //     width: "18%",
+        // },
         {
             name: "Holati",
             style: {

@@ -1,11 +1,11 @@
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
-import {FcEmptyFilter} from "react-icons/fc";
 import Accordion from "react-bootstrap/Accordion";
-import React, {useEffect, useState} from "react";
+import {FcEmptyFilter} from "react-icons/fc";
 import DataTable from "react-data-table-component";
 
-const ContractsInfo = () => {
+const ITMarketContractSuccess = () => {
     const [rabbitData, setRbtData] = useState([]);
     const [rabbitTotal, setRbtTotal] = useState();
     const countPerPage = 10;
@@ -19,12 +19,12 @@ const ContractsInfo = () => {
         setLoading(true);
         axios
             .get(
-                process.env.REACT_APP_LOCAL_URL_GET_RESULTATS_SUCCESS + `?offset=${page}&limit=${countPerPage}`,
+                process.env.REACT_APP_LOCAL_URL_GET_IT_RESULTATS_SUCCESS + `?offset=${page}&limit=${countPerPage}`,
                 {
                     params: {
                         // limit: 100,
                         // offset: 1,
-                        procId: 6,
+                        // tradeId: 6,
                         ...query,
                     },
                 }
@@ -96,7 +96,7 @@ const ContractsInfo = () => {
             width: "14%",
         },
         {
-            name: "Hudud (etkazib beruvchi)",
+            name: "Hudud",
             selector: (row) => (row.v_terr == null ? "-" : row.v_terr),
             sortable: true,
             reorder: true,
@@ -111,7 +111,7 @@ const ContractsInfo = () => {
             width: "14%",
         },
         {
-            name: "Umumiy summa",
+            name: "Summa",
             selector: (row) => row.summa,
             sortable: true,
             reorder: true,
@@ -318,4 +318,4 @@ const ContractsInfo = () => {
     );
 };
 
-export default ContractsInfo;
+export default ITMarketContractSuccess;

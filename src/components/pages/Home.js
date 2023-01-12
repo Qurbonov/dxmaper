@@ -18,7 +18,6 @@ import Accordion from "react-bootstrap/Accordion";
 import Container from "react-bootstrap/Container";
 
 function Home() {
-
     return (
         <div>
             <Container>
@@ -34,21 +33,15 @@ function Home() {
                 </Row>
                 <Row className='my-5'>
                     <Col>
-                        <Accordion className='shadow rounded'>
+                        <Accordion className='shadow-sm rounded-5'>
                             <Accordion.Item eventKey='0'>
                                 <Accordion.Header>
-                  <span
-                      className='ms-2 text-secondary'
-                      style={{fontSize: "1.1em"}}
-                  >
-                    Savdo turlari bo'yicha hisobot (2022 yil)
-                  </span>
+                                    Savdo turlari bo'yicha hisobot (2022 yil)
                                 </Accordion.Header>
                                 <Accordion.Body>
                                     <Area/>
                                     <AreaEShop/>
                                     <AreaAuc/>
-
                                     <AreaTT/>
                                     <AreaComp/>
                                 </Accordion.Body>
@@ -59,6 +52,10 @@ function Home() {
                 <Row>
                     <Col>
                         <StackedBars/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
                         <Map/>
                     </Col>
                 </Row>
