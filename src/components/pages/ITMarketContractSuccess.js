@@ -22,7 +22,7 @@ const ITMarketContractSuccess = () => {
                 process.env.REACT_APP_LOCAL_URL_GET_IT_RESULTATS_SUCCESS + `?offset=${page}&limit=${countPerPage}`,
                 {
                     params: {
-                        limit: 100,
+                        // limit: 100,
                         // offset: 1,
                         // tradeId: 6,
                         ...query,
@@ -299,7 +299,8 @@ const ITMarketContractSuccess = () => {
                         pagination
                         // paginationComponentOptions={paginationOptions}
                         paginationServer
-                        paginationTotalRows={rabbitTotal}
+                        // paginationTotalRows={rabbitTotal}
+                        paginationTotalRows={150}
                         paginationPerPage={countPerPage}
                         paginationComponentOptions={{
                             noRowsPerPage: true,
