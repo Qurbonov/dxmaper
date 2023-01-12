@@ -73,7 +73,7 @@ const ITMarketContractSuccess = () => {
         {
             name: "Savdo turi",
             selector: (row) => {
-                switch (row.proc_id) {
+                switch (row.tradeId) {
                     case 6:
                         return "Elektron katalog";
                     case 3:
@@ -188,7 +188,7 @@ const ITMarketContractSuccess = () => {
                                         <select
                                             className='form-control form-control-sm'
                                             value={etp}
-                                            onChange={(e) => onChange(e, "procId")}
+                                            onChange={(e) => onChange(e, "tradeId")}
                                         >
                                             <option value=''>Barchasi</option>
                                             <option value='6'>Elektron katalog</option>
