@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -9,10 +9,25 @@ import Nav from "react-bootstrap/Nav";
 
 function Blacklist() {
     const {register, handleSubmit} = useForm();
+    const [resStatus, setResStatus] = useState("");
 
-    const onSubmit = (d) => {
-        // axios.post(process.env.REACT_APP_LOCAL_URL_POST_CREATE_USER, d);
-        alert("read");
+    const onSubmit = (datas) => {
+        axios
+            .post(process.env.REACT_APP_LOCAL_URL_POST_BLACK_LIST_ADD, datas)
+            .then(function (response) {
+                console.log("response.status");
+                console.log(response.status);
+                if (response.status === 200) {
+                    setResStatus("Successful Registration!");
+                } else {
+                    setResStatus("error");
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        console.log(datas);
+        console.log(resStatus);
     }
     return (
         <>
@@ -38,7 +53,7 @@ function Blacklist() {
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
                             type="text"
-                            {...register("name", {required: true, minLength: 9})}
+                            {...register("NAME", {required: true})}
                         />
                     </InputGroup>
                     <InputGroup size="default" className="mb-3">
@@ -47,7 +62,7 @@ function Blacklist() {
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
                             type="text"
-                            {...register("inn", {required: true, minLength: 9})}
+                            {...register("INN", {required: true, minLength: 9})}
                         />
                     </InputGroup>
                     <InputGroup size="default" className="mb-3">
@@ -56,7 +71,7 @@ function Blacklist() {
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
                             type="text"
-                            {...register("REGION", {required: true, minLength: 9})}
+                            {...register("REGION", {required: true})}
                         />
                     </InputGroup>
                     <InputGroup size="default" className="mb-3">
@@ -65,7 +80,7 @@ function Blacklist() {
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
                             type="text"
-                            {...register("OWNER", {required: true, minLength: 9})}
+                            {...register("OWNER", {required: true})}
                         />
                     </InputGroup>
 
@@ -74,8 +89,8 @@ function Blacklist() {
                         <Form.Control
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
-                            type="text"
-                            {...register("JUDGEMENT_NUMBER", {required: true, minLength: 9})}
+                            type="date"
+                            {...register("JUDGEMENT_DATE", {required: true})}
                         />
                     </InputGroup> <InputGroup size="default" className="mb-3">
                     <InputGroup.Text id="inputGroup-sizing-sm" className='bg-secondary text-white' style={{width: 260}}>Sud qarori raqami: </InputGroup.Text>
@@ -83,7 +98,7 @@ function Blacklist() {
                         aria-label="default"
                         aria-describedby="inputGroup-sizing-default"
                         type="text"
-                        {...register("JUDGEMENT_DATE", {required: true, minLength: 9})}
+                        {...register("JUDGEMENT_NUMBER", {required: true})}
                     />
                 </InputGroup>
                     {/*<InputGroup size="default" className="mb-3">*/}
@@ -110,7 +125,7 @@ function Blacklist() {
                             aria-label="default"
                             aria-describedby="inputGroup-sizing-default"
                             type="text"
-                            {...register("NOTE", {required: true, minLength: 9})}
+                            {...register("NOTE", {required: true})}
                         />
                     </InputGroup>
                     <Button variant="primary" type="submit" className="ml-auto">

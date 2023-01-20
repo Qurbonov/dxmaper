@@ -105,7 +105,6 @@ const AdminPage = () => {
                     <Button variant="primary" type="submit" className="ml-auto">
                         Saqlash
                     </Button>
-                    {/*</div>*/}
                 </Form>
             </div>
         </>

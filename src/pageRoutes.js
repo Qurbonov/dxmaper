@@ -20,6 +20,7 @@ import Ministry from "./components/cabinet/Ministry"
 import AdminPage from "./components/cabinet/AdminPage";
 import TaxReport from "./components/cabinet/TaxReport";
 import ITMarketContractSuccess from "./components/pages/ITMarketContractSuccess";
+import ITMarketRating from "./components/pages/ITMarketRating";
 
 
 function PageRoutes() {
@@ -68,6 +69,7 @@ function PageRoutes() {
             <Route path='/' element={<Home/>}/>
             <Route path='contractsSuccess' element={<ContractsInfo/>}/>
             <Route path='contractsItSuccess' element={<ITMarketContractSuccess/>}/>
+            <Route path='contractsItRating' element={<ITMarketRating/>}/>
             <Route path='contractsFailed' element={<FailedContractsInfo/>}/>
             <Route path='contractsFailed' element={<FailedContractsInfo/>}/>
             <Route path='contractsCoorp' element={<ContractsCoorpInfo/>}/>

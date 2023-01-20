@@ -32,7 +32,7 @@ function NavMenu() {
                 </a>
             </div>
             <div className='my-5'>
-                <Navbar collapseOnSelect expand="lg" bg="success" variant="light" className='shadow-lg'>
+                <Navbar collapseOnSelect expand="lg" bg="success" className='shadow'>
                     <Container>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                         <Navbar.Collapse id="responsive-navbar-nav">
@@ -53,6 +53,7 @@ function NavMenu() {
                                 <NavDropdown title={<span className="text-light my-auto">AT savdolari</span>} id="basic-nav-dropdown" className='text-light'>
                                     {/*<NavDropdown.Item href="/trades">Amaldagi e'lonlar</NavDropdown.Item>*/}
                                     <NavDropdown.Item href="/contractsItSuccess">Amalga oshgan savdolar</NavDropdown.Item>
+                                    <NavDropdown.Item href="/contractsItRating">Tashkilotlar reytingi</NavDropdown.Item>
                                     {/*<NavDropdown.Item href="/contractsFailed">Amalga oshmagan savdolar</NavDropdown.Item>*/}
                                     {/*<NavDropdown.Divider/>*/}
                                     {/*<NavDropdown.Item href="/contractsCoorp">Koorporativ savdolar</NavDropdown.Item>*/}
@@ -82,7 +83,10 @@ function NavMenu() {
                                                             <Nav.Link href='#features' className='mt-2 text-light'> Hisobot topshirish</Nav.Link>
                                                         </LinkContainer>
                                                         <LinkContainer to="/" className='mt-2'>
-                                                            <Nav.Link onClick={userLogout} className='text-warning'><AiOutlineLogout className='mb-1' style={{fontSize: 24}}/> Tizimdan chiqish</Nav.Link>
+                                                            <Nav.Link onClick={userLogout} className='text-warning'>
+                                                                <AiOutlineLogout className='mb-1' style={{fontSize: 24}}/>
+                                                                Tizimdan chiqish
+                                                            </Nav.Link>
                                                         </LinkContainer>
 
                                                     </>) :
@@ -110,11 +114,11 @@ function NavMenu() {
 
                                         </>) : (<>
 
-                                        <LinkContainer to="/cabinet">
-                                            <Nav.Link href='#cabinet' className='text-light'>
-                                                <AiOutlineLogin className='mb-1' style={{fontSize: 24}}/> Tizimga kirish
-                                            </Nav.Link>
-                                        </LinkContainer>
+                                        {/*<LinkContainer to="/cabinet">*/}
+                                        {/*    <Nav.Link href='#cabinet' className='text-light'>*/}
+                                        {/*        <AiOutlineLogin className='mb-1' style={{fontSize: 24}}/> Tizimga kirish*/}
+                                        {/*    </Nav.Link>*/}
+                                        {/*</LinkContainer>*/}
 
                                     </>)
                                 }
