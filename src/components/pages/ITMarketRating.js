@@ -59,7 +59,7 @@ const ITMarketRating = () => {
         },
         {
             name: "Summasi",
-            selector: (row) => row.summa,
+            selector: (row) => row.summa.toLocaleString('en-US'),
             sortable: true,
             reorder: true,
             width: "11%",

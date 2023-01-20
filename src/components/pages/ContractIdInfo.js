@@ -35,7 +35,7 @@ export default function complateData() {
             <b>etkazib beruvchi:</b> {data?.resultat?.PAYLOAD.VENDORNAME}
           </li>
           <li className='list-group-item'>
-            <b>summasi:</b> {data?.resultat?.PAYLOAD.SUMMA}
+            <b>summasi:</b> {data?.resultat?.PAYLOAD.SUMMA.toLocaleString('en-US') + " " + "so'm"}
           </li>
           <li className='list-group-item'>
             <b>xizmat (tovar) nomi: </b>{' '}

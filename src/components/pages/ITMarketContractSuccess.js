@@ -113,7 +113,7 @@ const ITMarketContractSuccess = () => {
         },
         {
             name: "Summa",
-            selector: (row) => row.summa,
+            selector: (row) => row.summa.toLocaleString('en-US') + " " + "so'm",
             sortable: true,
             reorder: true,
             width: "11%",

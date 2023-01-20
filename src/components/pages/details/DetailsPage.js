@@ -138,7 +138,7 @@ const DetailsPage = () => {
                     <li className='list-group-item '>
                         <b>Summasi:</b>{" "}
                         <span style={{letterSpacing: 1}}>
-              {data?.resultat?.PAYLOAD.SUMMA}
+              {data?.resultat?.PAYLOAD.SUMMA.toLocaleString('en-US') + " " + "so'm"}
             </span>
                     </li>
                     <li className='list-group-item '>
