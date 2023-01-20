@@ -53,16 +53,20 @@ const ITMarketRating = () => {
             id: 'tName',
             name: "Tashkilot nomi",
             selector: (row) => row.name,
-            // sortable: true,
-            reorder: true,
-            // width: "14%",
+            width: "50%",
         },
         {
+            // id: 'tName',
+            name: "Tashkilot STIR raqami",
+            selector: (row) => row.inn,
+            width: "25%",
+        },
+        {
+            id: "sum",
             name: "Summasi",
-            selector: (row) => row.summa.toLocaleString('en-US'),
+            selector: (row) => row.summa.toLocaleString('en-US') + " " + "so'm",
             sortable: true,
-            reorder: true,
-            width: "11%",
+            width: "25%",
         },
 
         // {
@@ -111,7 +115,7 @@ const ITMarketRating = () => {
                         columns={columns}
                         data={rabbitData}
                         // pagination
-                        defaultSortFieldId="tName"
+                        defaultSortFieldId="sum"
                         // paginationComponentOptions={paginationOptions}
                         // paginationServer
                         // paginationTotalRows={rabbitTotal}
@@ -128,6 +132,7 @@ const ITMarketRating = () => {
                         highlightOnHover
                         striped
                         progressPending={loading}
+
                     />
                 </div>
             </div>
