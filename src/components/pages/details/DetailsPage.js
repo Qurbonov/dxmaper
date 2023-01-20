@@ -13,7 +13,7 @@ const DetailsPage = () => {
             .then((res) => res.json())
             .then((data) => {
                 setLotInfo(data);
-                console.log(data);
+                // console.log(data);
                 if (data.resultat.PAYLOAD.SPECIFICATIONS[0].NOTE[0] === undefined) {
                     data.resultat.PAYLOAD.SPECIFICATIONS[0].NOTE[0] = "-";
                 } else {
@@ -217,15 +217,15 @@ const DetailsPage = () => {
                         <b>Xizmat (mahsulot) soni:</b>{" "}
                         {data?.resultat?.PAYLOAD.SPECIFICATIONS[0]?.SPLIT[0]?.TOVARAMOUNT}
                     </li>
-                    <li className='list-group-item '>
-                        <b>
-                            {data?.resultat?.PAYLOAD.LINKS.length > 0 ? (
-                                <b className='text-dark'>Lot xujjatlari:</b>
-                            ) : (
-                                <b className='text-danger'>Lot xujjatlari mavjud emas</b>
-                            )}
-                        </b>
-                    </li>
+                    {/*<li className='list-group-item '>*/}
+                    {/*    <b>*/}
+                    {/*        {data?.resultat?.PAYLOAD.LINKS.length > 0 ? (*/}
+                    {/*            <b className='text-dark'>Lot xujjatlari:</b>*/}
+                    {/*        ) : (*/}
+                    {/*            <b className='text-danger'>Lot xujjatlari mavjud emas</b>*/}
+                    {/*        )}*/}
+                    {/*    </b>*/}
+                    {/*</li>*/}
                     <li className='list-group-item'>
                         {data?.resultat?.PAYLOAD.LINKS.map(function (n) {
                             return (
