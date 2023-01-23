@@ -12,12 +12,12 @@ const GovShare = () => {
     const [etp, setEtp] = useState();
 
     const [page, setPage] = useState(1);
-    const [res, setRes] = useState(0);
+    // const [res, setRes] = useState(0);
 
     const getResultsData = () => {
         setLoading(true);
         axios
-            .get(process.env.REACT_APP_LOCAL_GOV_SHARE + `?page=${res}&size=${countPerPage}`)
+            .get(process.env.REACT_APP_LOCAL_GOV_SHARE + `?page=${page}&size=${countPerPage}`)
             .then((response) => {
                 console.log(response);
                 setRbtData(response.data.body);
@@ -41,7 +41,7 @@ const GovShare = () => {
             selector: (row) => row.nameUz,
             sortable: true,
             reorder: true,
-            width: "34%",
+            width: "40%",
         },
         {
             name: "Tashkilot STIR raqami",
@@ -114,14 +114,14 @@ const GovShare = () => {
             selector: (row) => row.founderName,
             sortable: true,
             reorder: true,
-            width: "11%",
+            width: "25%",
         },
         {
-            name: "Yuqori turivchi tashkilot",
+            name: "Yuqori turivchi tashkilot STIR raqami",
             selector: (row) => row.founderInn,
             sortable: true,
             reorder: true,
-            width: "11%",
+            // width: "5%",
         },
     ]);
 
