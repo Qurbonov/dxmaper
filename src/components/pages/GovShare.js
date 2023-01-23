@@ -12,14 +12,16 @@ const GovShare = () => {
     const [etp, setEtp] = useState();
 
     const [page, setPage] = useState(1);
+    const [res, setRes] = useState(0);
 
     const getResultsData = () => {
         setLoading(true);
         axios
-            .get(process.env.REACT_APP_LOCAL_GOV_SHARE)
+            .get(process.env.REACT_APP_LOCAL_GOV_SHARE + `?page=${res}`)
             .then((response) => {
                 console.log(response);
                 setRbtData(response.data.body);
+                setRbtTotal(response.data.body.total);
             })
             .catch((err) => {
                 console.log(err);
@@ -30,7 +32,7 @@ const GovShare = () => {
     };
     useEffect(() => {
         getResultsData();
-    }, []);
+    }, [page]);
 
 
     const columns = React.useMemo(() => [
@@ -60,26 +62,39 @@ const GovShare = () => {
             name: "Tashkilot holati",
             selector: (row) => {
                 switch (row.astate) {
-                    // case ((row.astate >= 1) && (row.astate <= 10)):
-                    //     return "Faoliyat ko'rsatayotgan";
-                    // case ((row.astate >= 20) && (row.astate <= 22)):
-                    //     return "Faoliyat ko'rsatmayotgan";
-
-                    case 1:
-                        return "Faoliyat ko'rsatayotgan";
-                    case 23:
-                        return "Tugatish jarayonida";
-                    case 24:
-                        return "Faoliyat ko'rsatmayotgan";
-                    case ((row.astate >= 30) && (row.astate <= 34)):
-                        return "Faoliyat ko'rsatmayotgan";
-                    case 96:
+                    case "1":
+                        return <span className='text-success'>Faoliyat ko'rsatayotgan</span>;
+                    case "10":
+                        return <span className='text-success'>Faoliyat ko'rsatayotgan</span>;
+                    case "11":
+                        return <span className='text-success'>Faoliyat ko'rsatayotgan</span>;
+                    case "20":
+                        return <span className='text-danger'>Faoliyat ko'rsatmayotgan</span>;
+                    case "21":
+                        return <span className='text-danger'>Faoliyat ko'rsatmayotgan</span>;
+                    case "22":
+                        return <span className='text-danger'>Faoliyat ko'rsatmayotgan</span>;
+                    case "23":
+                        return <span className='text-warning'>Tugatish jarayonida</span>;
+                    case "24":
+                        return <span className='text-danger'>Faoliyat ko'rsatmayotgan</span>;
+                    case "30":
+                        return <span className='text-danger'>Tugatilgan</span>;
+                    case "31":
+                        return <span className='text-danger'>Tugatilgan</span>;
+                    case "32":
+                        return <span className='text-danger'>Tugatilgan</span>;
+                    case "33":
+                        return <span className='text-danger'>Tugatilgan</span>;
+                    case "34":
+                        return <span className='text-danger'>Tugatilgan</span>;
+                    case "96":
                         return "Bo'lib to'lash shari bilan";
-                    case 97:
+                    case "97":
                         return "Tasarruf etish huquqisiz";
-                    case 98:
-                        return "Sotildi";
-                    case 99:
+                    case "98":
+                        return <span className='text-info'>Sotildi</span>;
+                    case "99":
                         return "Reestrdan chiqarilgan";
                 }
             },
@@ -124,7 +139,7 @@ const GovShare = () => {
                         pagination
                         // paginationComponentOptions={paginationOptions}
                         paginationServer
-                        paginationTotalRows={250}
+                        paginationTotalRows={rabbitTotal}
                         paginationPerPage={countPerPage}
                         paginationComponentOptions={{
                             noRowsPerPage: true,
