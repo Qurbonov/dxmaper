@@ -17,11 +17,11 @@ const GovShare = () => {
     const getResultsData = () => {
         setLoading(true);
         axios
-            .get(process.env.REACT_APP_LOCAL_GOV_SHARE + `?page=${res}`)
+            .get(process.env.REACT_APP_LOCAL_GOV_SHARE + `?page=${res}&size=${countPerPage}`)
             .then((response) => {
                 console.log(response);
                 setRbtData(response.data.body);
-                setRbtTotal(response.data.body.total);
+                setRbtTotal(response.data.total);
             })
             .catch((err) => {
                 console.log(err);
