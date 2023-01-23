@@ -121,7 +121,7 @@ const GovShare = () => {
             selector: (row) => row.founderInn,
             sortable: true,
             reorder: true,
-            // width: "5%",
+            width: "15%",
         },
     ]);
 
