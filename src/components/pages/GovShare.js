@@ -41,11 +41,7 @@ const GovShare = () => {
             selector: (row) => row.nameUz,
             width: "35%",
         },
-        {
-            name: "Tashkilot STIR raqami",
-            selector: (row) => row.inn,
-            width: "10%",
-        },
+        
         {
             name: "Davlat ulushi",
             selector: (row) => row.share1 + " %",
@@ -104,11 +100,7 @@ const GovShare = () => {
             selector: (row) => row.founderName,
             width: "25%",
         },
-        {
-            name: "Yuqori turivchi tashkilot STIR raqami",
-            selector: (row) => row.founderInn,
-            width: "5%",
-        },
+
     ]);
 
     return (
