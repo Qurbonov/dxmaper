@@ -39,34 +39,34 @@ const GovShare = () => {
             selector: (row) => row.nameUz,
             sortable: true,
             reorder: true,
-            width: "24%",
+            width: "34%",
         },
         {
             name: "Tashkilot STIR raqami",
             selector: (row) => row.inn,
             sortable: true,
             reorder: true,
-            width: "15%",
+            width: "10%",
         },
         {
             name: "Davlat ulushi",
             selector: (row) => row.share1 + " %",
             sortable: true,
             reorder: true,
-            width: "15%",
+            width: "5%",
         },
 
         {
             name: "Tashkilot holati",
-            style: {
-                color: 'green'
-            },
             selector: (row) => {
                 switch (row.astate) {
-                    case ((row.astate >= 1) && (row.astate <= 10)):
+                    // case ((row.astate >= 1) && (row.astate <= 10)):
+                    //     return "Faoliyat ko'rsatayotgan";
+                    // case ((row.astate >= 20) && (row.astate <= 22)):
+                    //     return "Faoliyat ko'rsatmayotgan";
+
+                    case 1:
                         return "Faoliyat ko'rsatayotgan";
-                    case ((row.astate >= 20) && (row.astate <= 22)):
-                        return "Faoliyat ko'rsatmayotgan";
                     case 23:
                         return "Tugatish jarayonida";
                     case 24:
@@ -124,12 +124,12 @@ const GovShare = () => {
                         pagination
                         // paginationComponentOptions={paginationOptions}
                         paginationServer
-                        paginationTotalRows={rabbitTotal}
+                        paginationTotalRows={250}
                         paginationPerPage={countPerPage}
                         paginationComponentOptions={{
                             noRowsPerPage: true,
                         }}
-                        onChangePage={(page) => setPage(page)}
+                        // onChangePage={(page) => setPage(page)}
                         // dense
                         responsive
                         // paginationIconFirstPage={false}
