@@ -41,7 +41,7 @@ const GovShare = () => {
             selector: (row) => row.nameUz,
             sortable: true,
             reorder: true,
-            width: "40%",
+            width: "35%",
         },
         {
             name: "Tashkilot STIR raqami",
@@ -100,14 +100,14 @@ const GovShare = () => {
             },
             sortable: true,
             reorder: true,
-            width: "12%",
+            width: "10%",
         },
         {
             name: "Manzil",
             selector: (row) => row.address,
             sortable: true,
             reorder: true,
-            width: "11%",
+            width: "15%",
         },
         {
             name: "Yuqori turivchi tashkilot",
@@ -121,7 +121,7 @@ const GovShare = () => {
             selector: (row) => row.founderInn,
             sortable: true,
             reorder: true,
-            width: "15%",
+            width: "5%",
         },
     ]);
 
