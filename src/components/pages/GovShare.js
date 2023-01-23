@@ -41,7 +41,7 @@ const GovShare = () => {
             selector: (row) => row.nameUz,
             width: "35%",
         },
-        
+
         {
             name: "Davlat ulushi",
             selector: (row) => row.share1 + " %",
@@ -108,7 +108,7 @@ const GovShare = () => {
             <div className='mx-5 my-3'>
                 <div className=''>
                     <div className='px-3 pt-2 rounded-top border-bottom border-info'>
-                        <h5> Ustav kapitalida davlat ulushi 50 foizdan yuqori bo‘lgan xo‘jalik jamiyatlari ro‘yxatiShartnoma ma`lumotlari</h5>
+                        <h5> Ustav kapitalida davlat ulushi 50 foizdan yuqori bo‘lgan xo‘jalik jamiyatlari ro‘yxatiShartnoma ma`lumotlari. <span className='text-info'> Umumiy <b>{rabbitTotal}</b>ta</span></h5>
                     </div>
                     <DataTable
                         columns={columns}
