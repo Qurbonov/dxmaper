@@ -63,6 +63,10 @@ function NavMenu() {
                                     <NavDropdown.Item href="/qullanma">Qo'llanmalar</NavDropdown.Item>
                                     <NavDropdown.Item href="/faq">Eng ko'p beriladigan savollar</NavDropdown.Item>
                                 </NavDropdown>
+                                <NavDropdown title={<span className="text-light my-auto">Reestr</span>} id="basic-nav-dropdown">
+                                    <NavDropdown.Item href="/gs">Davlat ishtirokidagi korxonalar reestri</NavDropdown.Item>
+
+                                </NavDropdown>
                                 <LinkContainer to='/about'>
                                     <Nav.Link href='#features' className='text-light'>Portal haqida</Nav.Link>
                                 </LinkContainer>
