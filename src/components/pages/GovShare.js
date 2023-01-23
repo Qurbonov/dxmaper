@@ -39,22 +39,16 @@ const GovShare = () => {
         {
             name: "Tashkilot nomi",
             selector: (row) => row.nameUz,
-            sortable: true,
-            reorder: true,
             width: "35%",
         },
         {
             name: "Tashkilot STIR raqami",
             selector: (row) => row.inn,
-            sortable: true,
-            reorder: true,
             width: "10%",
         },
         {
             name: "Davlat ulushi",
             selector: (row) => row.share1 + " %",
-            sortable: true,
-            reorder: true,
             width: "5%",
         },
 
@@ -98,29 +92,21 @@ const GovShare = () => {
                         return "Reestrdan chiqarilgan";
                 }
             },
-            sortable: true,
-            reorder: true,
             width: "10%",
         },
         {
             name: "Manzil",
             selector: (row) => row.address,
-            sortable: true,
-            reorder: true,
             width: "15%",
         },
         {
             name: "Yuqori turivchi tashkilot",
             selector: (row) => row.founderName,
-            sortable: true,
-            reorder: true,
             width: "25%",
         },
         {
             name: "Yuqori turivchi tashkilot STIR raqami",
             selector: (row) => row.founderInn,
-            sortable: true,
-            reorder: true,
             width: "5%",
         },
     ]);
@@ -132,7 +118,6 @@ const GovShare = () => {
                     <div className='px-3 pt-2 rounded-top border-bottom border-info'>
                         <h5> Ustav kapitalida davlat ulushi 50 foizdan yuqori bo‘lgan xo‘jalik jamiyatlari ro‘yxatiShartnoma ma`lumotlari</h5>
                     </div>
-                    <p></p>
                     <DataTable
                         columns={columns}
                         data={rabbitData}
@@ -144,7 +129,7 @@ const GovShare = () => {
                         paginationComponentOptions={{
                             noRowsPerPage: true,
                         }}
-                        // onChangePage={(page) => setPage(page)}
+                        onChangePage={(page) => setPage(page)}
                         // dense
                         responsive
                         // paginationIconFirstPage={false}
