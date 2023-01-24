@@ -11,7 +11,7 @@ const GovShare = () => {
     const [query, setQuery] = useState({});
     const [etp, setEtp] = useState();
 
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(0);
     // const [res, setRes] = useState(0);
 
     const getResultsData = () => {
