@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Link} from "react-router-dom";
+import Accordion from "react-bootstrap/Accordion";
 import DataTable from "react-data-table-component";
+import {FcEmptyFilter} from "react-icons/fc";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const GovShare = () => {
     const [rabbitData, setRbtData] = useState([]);
@@ -9,17 +12,20 @@ const GovShare = () => {
     const countPerPage = 10;
     const [loading, setLoading] = useState(false);
     const [query, setQuery] = useState({});
-    const [etp, setEtp] = useState();
 
     const [page, setPage] = useState(0);
-    // const [res, setRes] = useState(0);
 
     const getResultsData = () => {
         setLoading(true);
         axios
-            .get(process.env.REACT_APP_LOCAL_GOV_SHARE + `?page=${page}&size=${countPerPage}`)
+            .get(process.env.REACT_APP_LOCAL_GOV_SHARE + `?page=${page}&size=${countPerPage}`, {
+                params:
+                    {
+                        ...query,
+                    }
+            })
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 setRbtData(response.data.body);
                 setRbtTotal(response.data.total);
             })
@@ -32,7 +38,7 @@ const GovShare = () => {
     };
     useEffect(() => {
         getResultsData();
-    }, [page]);
+    }, [query, page]);
 
 
     const columns = React.useMemo(() => [
@@ -41,11 +47,16 @@ const GovShare = () => {
             selector: (row) => row.nameUz,
             width: "35%",
         },
+        {
+            name: "Tashkilot STIR raqami",
+            selector: (row) => row.inn,
+            width: "10%",
+        },
 
         {
             name: "Davlat ulushi",
             selector: (row) => row.share1 + " %",
-            width: "5%",
+            width: "8%",
         },
 
         {
@@ -103,12 +114,67 @@ const GovShare = () => {
 
     ]);
 
+    const onChange = (e, type) => {
+        const mQuery = {};
+        mQuery[type] = e.target.value;
+        setQuery({
+            ...query,
+            ...mQuery,
+        });
+    };
+
     return (
         <>
+            <div className=' mx-5 mt-3 rounded rounded-top'>
+                <Accordion className=' rounded'>
+                    <Accordion.Item eventKey='0' className='bg-light'>
+                        <Accordion.Header>
+                            <FcEmptyFilter/>
+                            <span className='ms-2 text-secondary' style={{fontSize: "1.1em"}}>
+                                Filter
+                            </span>
+                        </Accordion.Header>
+                        <Accordion.Body>
+                            <div className='border px-3 py-3'>
+                                <div className='row'>
+                                    <div className='col-sm'>
+                                        Tashkilto STIR raqami
+                                        <input
+                                            type='text'
+                                            onChange={(e) => onChange(e, "tin")}
+                                            className='form-control  form-control-sm'
+                                        />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
+            </div>
+
+
             <div className='mx-5 my-3'>
                 <div className=''>
                     <div className='px-3 pt-2 rounded-top border-bottom border-info'>
-                        <h5> Ustav kapitalida davlat ulushi 50 foizdan yuqori bo‘lgan xo‘jalik jamiyatlari ro‘yxatiShartnoma ma`lumotlari. Umumiy <span className='text-info'> {rabbitTotal} ta</span></h5>
+                        <Row>
+                            <Col xs={6}>
+                                <h5>
+                                    Ustav kapitalida davlat ulushi 50 foizdan yuqori bo‘lgan xo‘jalik jamiyatlari ro‘yxati.
+                                </h5>
+                            </Col>
+                            <Col xs={6}>
+                                <h5 className='text-end'>
+                                    Umumiy soni
+                                    <span className='text-info mx-2'>
+                                        {rabbitTotal}
+                                    </span>
+                                    ta
+                                </h5>
+                            </Col>
+                        </Row>
+
+
                     </div>
                     <DataTable
                         columns={columns}
