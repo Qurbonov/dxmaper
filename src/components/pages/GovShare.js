@@ -44,8 +44,8 @@ const GovShare = () => {
     const columns = React.useMemo(() => [
         {
             name: "Tashkilot nomi",
-            selector: (row) => row.nameUz,
-            width: "35%",
+            selector: (row) => <div className='text-wrap'>{row.nameUz}</div>,
+            width: "30%",
         },
         {
             name: "Tashkilot STIR raqami",
@@ -64,31 +64,31 @@ const GovShare = () => {
             selector: (row) => {
                 switch (row.astate) {
                     case "1":
-                        return <span className='text-success'>Faoliyat ko'rsatayotgan</span>;
+                        return <span className='text-success text-wrap'>Faoliyat ko'rsatayotgan</span>;
                     case "10":
-                        return <span className='text-success'>Faoliyat ko'rsatayotgan</span>;
+                        return <span className='text-success text-wrap'>Faoliyat ko'rsatayotgan</span>;
                     case "11":
-                        return <span className='text-success'>Faoliyat ko'rsatayotgan</span>;
+                        return <span className='text-success text-wrap'>Faoliyat ko'rsatayotgan</span>;
                     case "20":
-                        return <span className='text-danger'>Faoliyat ko'rsatmayotgan</span>;
+                        return <span className='text-danger text-wrap'>Faoliyat ko'rsatmayotgan</span>;
                     case "21":
-                        return <span className='text-danger'>Faoliyat ko'rsatmayotgan</span>;
+                        return <span className='text-danger text-wrap'>Faoliyat ko'rsatmayotgan</span>;
                     case "22":
-                        return <span className='text-danger'>Faoliyat ko'rsatmayotgan</span>;
+                        return <span className='text-danger text-wrap'>Faoliyat ko'rsatmayotgan</span>;
                     case "23":
-                        return <span className='text-warning'>Tugatish jarayonida</span>;
+                        return <span className='text-warning text-wrap'>Tugatish jarayonida</span>;
                     case "24":
-                        return <span className='text-danger'>Faoliyat ko'rsatmayotgan</span>;
+                        return <span className='text-danger text-wrap'>Faoliyat ko'rsatmayotgan</span>;
                     case "30":
-                        return <span className='text-danger'>Tugatilgan</span>;
+                        return <span className='text-danger text-wrap'>Tugatilgan</span>;
                     case "31":
-                        return <span className='text-danger'>Tugatilgan</span>;
+                        return <span className='text-danger text-wrap'>Tugatilgan</span>;
                     case "32":
-                        return <span className='text-danger'>Tugatilgan</span>;
+                        return <span className='text-danger text-wrap'>Tugatilgan</span>;
                     case "33":
-                        return <span className='text-danger'>Tugatilgan</span>;
+                        return <span className='text-danger text-wrap'>Tugatilgan</span>;
                     case "34":
-                        return <span className='text-danger'>Tugatilgan</span>;
+                        return <span className='text-danger text-wrap'>Tugatilgan</span>;
                     case "96":
                         return "Bo'lib to'lash shari bilan";
                     case "97":
@@ -108,7 +108,7 @@ const GovShare = () => {
         },
         {
             name: "Yuqori turivchi tashkilot",
-            selector: (row) => row.founderName,
+            selector: (row) => <div className='text-wrap'>{row.founderName}</div>,
             width: "25%",
         },
 
