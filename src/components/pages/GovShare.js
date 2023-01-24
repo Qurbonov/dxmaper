@@ -103,7 +103,7 @@ const GovShare = () => {
         },
         {
             name: "Manzil",
-            selector: (row) => row.address,
+            selector: (row) => <div className='text-wrap'>{row.address}</div>,
             width: "15%",
         },
         {
