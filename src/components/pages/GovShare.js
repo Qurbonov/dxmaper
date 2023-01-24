@@ -138,7 +138,7 @@ const GovShare = () => {
                             <div className='border px-3 py-3'>
                                 <div className='row'>
                                     <div className='col-sm'>
-                                        Tashkilto STIR raqami
+                                        Tashkilot STIR raqami:
                                         <input
                                             type='text'
                                             onChange={(e) => onChange(e, "tin")}
