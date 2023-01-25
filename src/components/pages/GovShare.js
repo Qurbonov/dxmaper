@@ -13,8 +13,8 @@ const GovShare = () => {
     const countPerPage = 10;
     const [loading, setLoading] = useState(false);
     const [query, setQuery] = useState({});
-
     const [page, setPage] = useState(0);
+    const [orgstate, setOrgstate] = useState();
 
     const getResultsData = () => {
         setLoading(true);
@@ -98,6 +98,8 @@ const GovShare = () => {
                         return <span className='text-info'>Sotildi</span>;
                     case "99":
                         return "Reestrdan chiqarilgan";
+
+
                 }
             },
             width: "10%",
@@ -108,7 +110,7 @@ const GovShare = () => {
             width: "15%",
         },
         {
-            name: "Yuqori turivchi tashkilot",
+            name: "Yuqori turuvchi tashkilot",
             selector: (row) => <div className='text-wrap'>{row.founderName}</div>,
             width: "25%",
         },
@@ -139,13 +141,79 @@ const GovShare = () => {
                             <div className='border px-3 py-3'>
                                 <div className='row'>
                                     <div className='col-sm'>
+                                        Tashkilot nomi:
+                                        <input
+                                            type='text'
+                                            onChange={(e) => onChange(e, "nameUz")}
+                                            className='form-control mt-1 form-control-sm'
+                                        />
+                                    </div>
+                                    <div className='col-sm'>
                                         Tashkilot STIR raqami:
                                         <input
                                             type='text'
                                             onChange={(e) => onChange(e, "tin")}
-                                            className='form-control  form-control-sm'
+                                            className='form-control mt-1 form-control-sm'
                                         />
                                     </div>
+                                </div>
+                                <div className='row mt-3'>
+                                    <div className='col-sm'>
+                                        Davlat ulushi (%)
+                                        <input
+                                            type='text'
+                                            onChange={(e) => onChange(e, "share1")}
+                                            className='form-control mt-1 form-control-sm'
+                                        />
+                                    </div>
+                                    <div className='col-sm'>
+                                        Tashkilot holati:
+                                        <select
+                                            className='form-control form-control-sm'
+                                            value={orgstate}
+                                            onChange={(e) => onChange(e, "state")}
+                                        >
+                                            <option value='ALL'>Barchasi</option>
+                                            <option value='1'>Faoliyat ko'rsatayotgan va soliq majburiyatlariga ega</option>
+                                            <option value='10'>Boshqa hududga o'tkazilgan</option>
+                                            <option value='11'>Soliq majburiyatiga ega bo'lmagan</option>
+                                            <option value='20'>Bankrot deb e'lon qilingan</option>
+                                            <option value='21'>Faoliyat ko'rsatmayotgan</option>
+                                            <option value='22'>Harakatsiz holatda</option>
+                                            <option value='23'>Ixtiyoriy tugatish jarayonida</option>
+                                            <option value='24'>Barcha yer maydonlari olib qo'yilgan fermer xo'jaliklari</option>
+                                            <option value='30'>Boshqa korxona tarkibiga qo'shilgan</option>
+                                            <option value='31'>Bankrotlik asosida tugatilgan</option>
+                                            <option value='32'>Ixtiyoriy tugatilgan</option>
+                                            <option value='33'>Majburiy tugatilgan</option>
+                                            <option value='34'>Boshqa tugatilganlar (30, 31, 32, 33 holatdan tashqari tugatilgan korxonalar)</option>
+                                            <option value='96'>Bo'lib to'lash shari bilan</option>
+                                            <option value='97'>Tasarruf etish huquqisiz</option>
+                                            <option value='98'>Sotildi</option>
+                                            <option value='99'>Reestrdan chiqarilgan</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <hr/>
+                                <div className='row mt-3'>
+                                    <div className='col-sm'>
+                                        Yuqori turuvchi tashkilot
+                                        <input
+                                            type='text'
+                                            onChange={(e) => onChange(e, "founderName")}
+                                            className='form-control mt-1 form-control-sm'
+                                        />
+                                    </div>
+                                    <div className='col-sm'>
+                                        Yuqori turuvchi tashkilot STIR raqami
+                                        <input
+                                            type='text'
+                                            onChange={(e) => onChange(e, "founderInn")}
+                                            className='form-control mt-1 form-control-sm'
+                                        />
+                                    </div>
+
                                 </div>
 
                             </div>
