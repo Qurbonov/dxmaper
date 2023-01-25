@@ -5,6 +5,7 @@ import DataTable from "react-data-table-component";
 import {FcEmptyFilter} from "react-icons/fc";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import {RiFileExcel2Fill} from "react-icons/ri";
 
 const GovShare = () => {
     const [rabbitData, setRbtData] = useState([]);
@@ -162,15 +163,34 @@ const GovShare = () => {
                                 <h5>
                                     Ustav kapitalida davlat ulushi 50 foizdan yuqori bo‘lgan xo‘jalik jamiyatlari ro‘yxati.
                                 </h5>
+                                {/*<a className='text-decoration-none' style={{fontSize: 12}}*/}
+                                {/*   href="https://davaktiv.uz/uploads/pages/files/012023/%D0%91%D0%B0%D0%B7%D0%B0%20%D0%90%D0%B3%D0%B5%D0%BD%D1%82%D0%BB%D0%B8%D0%BA%20%D0%B0%D1%84%D0%B8%D0%BB%D0%BB%D0%B0%D0%BD%D0%B3%D0%B0%D0%BD2%20+%2004-01-2023.xlsx">*/}
+                                {/*    <RiFileExcel2Fill*/}
+                                {/*        size={12}*/}
+                                {/*        style={{*/}
+                                {/*            color: "#00A300",*/}
+                                {/*            marginBottom: "3"*/}
+                                {/*        }}/> Excel*/}
+                                {/*</a>*/}
                             </Col>
                             <Col xs={6}>
                                 <h5 className='text-end'>
                                     Umumiy soni
-                                    <span className='text-info mx-2'>
+                                    <span className='text-primary mx-2'>
                                         {rabbitTotal}
                                     </span>
-                                    ta
+                                    ta,
+                                    <a className='ms-4 me-1'
+                                       href="https://davaktiv.uz/uploads/pages/files/012023/%D0%91%D0%B0%D0%B7%D0%B0%20%D0%90%D0%B3%D0%B5%D0%BD%D1%82%D0%BB%D0%B8%D0%BA%20%D0%B0%D1%84%D0%B8%D0%BB%D0%BB%D0%B0%D0%BD%D0%B3%D0%B0%D0%BD2%20+%2004-01-2023.xlsx">
+                                        <RiFileExcel2Fill
+                                            size={25}
+                                            style={{
+                                                color: "#007500",
+                                                marginBottom: "3"
+                                            }}/>
+                                    </a>
                                 </h5>
+
                             </Col>
                         </Row>
 
