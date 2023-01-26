@@ -62,7 +62,7 @@ function About() {
                              aria-controls="example-collapse-text"
                              aria-expanded={uzex}>
                             <img src="/uzex_logo.png" width="55" height="70" alt=""/>
-                            <p className='pt-2 text-secondary'> Tovat-xom ashyo birjasi</p>
+                            <p className='pt-2 text-secondary'> Tovar-xom ashyo birjasi</p>
                         </Col>
                         <Col xs lg="3" className='text-center' onClick={() => {
                             setXtxarid(!xtxarid)
