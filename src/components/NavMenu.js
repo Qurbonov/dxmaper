@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import {LinkContainer} from "react-router-bootstrap";
 import logo from "./img/logo1.png";
+import logoMiv from "./img/miv.png";
 import {useNavigate} from "react-router-dom";
 import React from "react";
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -28,8 +29,13 @@ function NavMenu() {
         <>
             <div className='container my-3 position-relative'>
                 <a href="/">
-                    <img src={logo} width='230' height='50' className='mt-4'/>
+                    <img src={logo} width='230' height='50' className='mt-3'/>
                 </a>
+
+                <a href="http://www.mf.uz" className='float-end'>
+                    <img src={logoMiv} width='250' height='65' className='mt-3'/>
+                </a>
+
             </div>
             <div className='my-5'>
                 <Navbar collapseOnSelect expand="lg" bg="success" className='shadow'>

@@ -109,7 +109,7 @@ const ITMarketRating = () => {
                             backgroundColor: "#fff",
                         }}
                     >
-                        <h5> IT sohasidagi savdolar bo'yicha tashkilotlar reytingi</h5>
+                        <h5> Axborot texnologiyalari sohasidagi savdo ishtirokchilari bo'yicha tashkilotlar reytingi</h5>
                     </div>
                     <DataTable
                         columns={columns}
