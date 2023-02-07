@@ -34,7 +34,7 @@ const ITMarketContractSuccess = () => {
                 setRbtData(response.data.body);
                 // console.log(response.data)
                 setRbtTotal(response.data.total);
-                console.log(response.data.total);
+                // console.log(response.data.total);
             })
             .catch((err) => {
                 console.log(err);
@@ -125,10 +125,11 @@ const ITMarketContractSuccess = () => {
                 color: 'green'
             },
             selector: (row) => {
-                switch (row.state) {
-                    case 2:
-                        return "Muvaffaqiyatli";
-                }
+                row.state = 2 ? "Muvaffaqiyatli" : "Muvaffaqiyatsiz"
+                // switch (row.state) {
+                //     case 2:
+                //         return "Muvaffaqiyatli";
+                // }
             },
             sortable: true,
             reorder: true,

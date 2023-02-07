@@ -22,8 +22,6 @@ const ContractsInfo = () => {
                 process.env.REACT_APP_LOCAL_URL_GET_RESULTATS_SUCCESS + `?offset=${page}&limit=${countPerPage}`,
                 {
                     params: {
-                        // limit: 100,
-                        // offset: 1,
                         procId: 6,
                         ...query,
                     },

@@ -15,8 +15,8 @@ function Blacklist() {
         axios
             .post(process.env.REACT_APP_LOCAL_URL_POST_BLACK_LIST_ADD, datas)
             .then(function (response) {
-                console.log("response.status");
-                console.log(response.status);
+                // console.log("response.status");
+                // console.log(response.status);
                 if (response.status === 200) {
                     setResStatus("Successful Registration!");
                 } else {

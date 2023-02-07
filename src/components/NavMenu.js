@@ -29,11 +29,11 @@ function NavMenu() {
         <>
             <div className='container my-3 position-relative'>
                 <a href="/">
-                    <img src={logo} width='230' height='50' className='mt-3'/>
+                    <img src={logo} width='230' height='50' className='mt-3' alt="logo"/>
                 </a>
 
                 <a href="http://www.mf.uz" className='float-end'>
-                    <img src={logoMiv} width='250' height='65' className='mt-3'/>
+                    <img src={logoMiv} width='250' height='65' className='mt-3' alt="logo"/>
                 </a>
 
             </div>

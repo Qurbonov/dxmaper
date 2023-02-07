@@ -221,8 +221,6 @@ const GovShare = () => {
                     </Accordion.Item>
                 </Accordion>
             </div>
-
-
             <div className='mx-5 my-3'>
                 <div className=''>
                     <div className='px-3 pt-2 rounded-top border-bottom border-info'>
@@ -261,8 +259,6 @@ const GovShare = () => {
 
                             </Col>
                         </Row>
-
-
                     </div>
                     <DataTable
                         columns={columns}

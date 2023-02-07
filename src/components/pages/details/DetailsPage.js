@@ -65,11 +65,11 @@ const DetailsPage = () => {
         }
     };
 
-    const docs = (l) => {
-        for (let index = 0; index < 4; index++) {
-            console.log(index);
-        }
-    };
+    // const docs = (l) => {
+    //     for (let index = 0; index < 4; index++) {
+    //         console.log(index);
+    //     }
+    // };
 
     return (
         <>

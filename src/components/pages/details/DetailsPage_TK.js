@@ -64,7 +64,7 @@ const DetailsPage = () => {
     };
 
     const linkTo = () => {
-        console.log(data?.claimInfoEtp?.PAYLOAD.PROC_ID);
+        // console.log(data?.claimInfoEtp?.PAYLOAD.PROC_ID);
         if (data?.claimInfoEtp?.PAYLOAD.PROC_ID === 1) {
             return "tender";
         } else if (data?.claimInfoEtp?.PAYLOAD.PROC_ID === 2) {
