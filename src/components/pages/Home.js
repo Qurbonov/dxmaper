@@ -56,7 +56,7 @@ function Home() {
                 </Row>
                 <Row>
                     <Col>
-                        <Map/>
+                        {/*<Map/>*/}
                     </Col>
                 </Row>
                 <Row className='my-5' style={{margin: "0px"}}>
