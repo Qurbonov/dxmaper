@@ -70,7 +70,7 @@ function NavMenu() {
                                     <NavDropdown.Item href="/faq">Eng ko'p beriladigan savollar</NavDropdown.Item>
                                 </NavDropdown>
                                 <NavDropdown title={<span className="text-light my-auto">Reestr</span>} id="basic-nav-dropdown">
-                                    <NavDropdown.Item href="/gs">Davlat ishtirokidagi korxonalar reestri</NavDropdown.Item>
+                                    <NavDropdown.Item href="/gs">_Davlat ishtirokidagi korxonalar reestri</NavDropdown.Item>
 
                                 </NavDropdown>
                                 <LinkContainer to='/about'>
