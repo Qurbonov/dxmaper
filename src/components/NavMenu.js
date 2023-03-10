@@ -61,7 +61,7 @@ function NavMenu() {
                                     <NavDropdown.Item href="/contractsItSuccess">Amalga oshgan savdolar</NavDropdown.Item>
                                     <NavDropdown.Item href="/contractsItRating">Tashkilotlar reytingi</NavDropdown.Item>
                                     {/*<NavDropdown.Item href="/contractsFailed">Amalga oshmagan savdolar</NavDropdown.Item>*/}
-                                    {/*<NavDropdown.Divider/>*/}
+                                    <NavDropdown.Divider/>
                                     {/*<NavDropdown.Item href="/contractsCoorp">Koorporativ savdolar</NavDropdown.Item>*/}
                                 </NavDropdown>
                                 <NavDropdown title={<span className="text-light my-auto">Xujjatlar</span>} id="basic-nav-dropdown">
