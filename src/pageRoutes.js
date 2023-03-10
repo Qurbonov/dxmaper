@@ -67,7 +67,7 @@ function PageRoutes() {
                     <Route path='cabinet' element={<Cabinet/>}/>
             }
 
-            aasdas
+            
             <Route path='/' element={<Home/>}/>
             <Route path='contractsSuccess' element={<ContractsInfo/>}/>
             <Route path='contractsItSuccess' element={<ITMarketContractSuccess/>}/>
