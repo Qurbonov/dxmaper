@@ -74,8 +74,8 @@ class Bar extends Component {
 
     componentDidMount() {
         axios.get(process.env.REACT_APP_LOCAL_URL_GET_PROC_MONTHLY).then((res) => {
-            // axios.get(`http://localhost:8585/v1/atm/getProcMonthly`).then((res) => {
             const cData = res.data;
+            console.log(cData);
             console.log(res.data);
             this.setState({
                 series: [
