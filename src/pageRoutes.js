@@ -22,6 +22,7 @@ import TaxReport from "./components/cabinet/TaxReport";
 import ITMarketContractSuccess from "./components/pages/ITMarketContractSuccess";
 import ITMarketRating from "./components/pages/ITMarketRating";
 import GovShare from "./components/pages/GovShare";
+import MXH from "./components/pages/MXH";
 
 
 function PageRoutes() {
@@ -82,6 +83,7 @@ function PageRoutes() {
                 <Route path='konkurs' element={<Trades_konkurs/>}/>
             </Route>
             <Route path='about' element={<About/>}/>
+            <Route path='mxh' element={<MXH/>}/>
             <Route path='gs' element={<GovShare/>}/>
             <Route path='/details/:lot_id' element={<DetailsPage/>}/>
             <Route path='/details/coorp/:id' element={<Details_Coorp/>}/>

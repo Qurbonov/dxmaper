@@ -65,7 +65,7 @@ function NavMenu() {
                                     {/*<NavDropdown.Item href="/contractsCoorp">Koorporativ savdolar</NavDropdown.Item>*/}
                                 </NavDropdown>
                                 <NavDropdown title={<span className="text-light my-auto">Xujjatlar</span>} id="basic-nav-dropdown">
-                                    <NavDropdown.Item href="/mha">Me'yoriy-huquqiy aktlar</NavDropdown.Item>
+                                    <NavDropdown.Item href="/mxh">Me'yoriy-huquqiy aktlar</NavDropdown.Item>
                                     <NavDropdown.Item href="/qullanma">Qo'llanmalar</NavDropdown.Item>
                                     <NavDropdown.Item href="/faq">Eng ko'p beriladigan savollar</NavDropdown.Item>
                                 </NavDropdown>
