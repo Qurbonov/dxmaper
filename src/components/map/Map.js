@@ -16,80 +16,80 @@ import {ArrowDownOutlined, ArrowUpOutlined} from '@ant-design/icons';
 import {ArrowFromBottomIcon, ArrowToBottomIcon, BuildingIcon, MoneyIcon} from './SvgIcons';
 import 'antd/dist/antd.css';
 
-const {Text} = Typography;
-
-const rTrades = {
-    isGroup: true,
-    xField: 'value',
-    yField: 'label',
-    color: ['#13d19b', '#1284f6', '#13d19b', '#1284f6', '#13d19b', '#1284f6', '#13d19b', '#1284f6'],
-    seriesField: 'type',
-    marginRatio: 0,
-    height: 120,
-    fontSize: 14,
-    appendPadding: [0, 80, 0, 0],
-    legend: {
-        position: 'bottom-left',
-    },
-    xAxis: {
-        label: {
-            formatter: (data) => {
-                return new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data) + ' UZS'
-            },
-        },
-    },
-    label: {
-        position: 'left',
-        offset: 4,
-        formatter: (data) => {
-            return new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data.value) + ' UZS'
-        },
-    },
-    tooltip: {
-        formatter: (data) => {
-            return {name: data.type, value: new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data.value) + ' UZS'};
-        },
-    },
-    barStyle: {
-        radius: [8, 8, 0, 0],
-    },
-}
-const barConfig = {
-    isGroup: true,
-    xField: 'value',
-    yField: 'label',
-    color: ['#13d19b', '#1284f6'],
-    seriesField: 'type',
-    marginRatio: 0,
-    height: 120,
-    fontSize: 14,
-    appendPadding: [0, 80, 0, 0],
-    legend: {
-        position: 'bottom-left',
-    },
-    xAxis: {
-        label: {
-            formatter: (data) => {
-                return new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data) + ' UZS'
-            },
-        },
-    },
-    label: {
-        position: 'left',
-        offset: 4,
-        formatter: (data) => {
-            return new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data.value) + ' UZS'
-        },
-    },
-    tooltip: {
-        formatter: (data) => {
-            return {name: data.type, value: new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data.value) + ' UZS'};
-        },
-    },
-    barStyle: {
-        radius: [8, 8, 0, 0],
-    },
-};
+// const {Text} = Typography;
+//
+// const rTrades = {
+//     isGroup: true,
+//     xField: 'value',
+//     yField: 'label',
+//     color: ['#13d19b', '#1284f6', '#13d19b', '#1284f6', '#13d19b', '#1284f6', '#13d19b', '#1284f6'],
+//     seriesField: 'type',
+//     marginRatio: 0,
+//     height: 120,
+//     fontSize: 14,
+//     appendPadding: [0, 80, 0, 0],
+//     legend: {
+//         position: 'bottom-left',
+//     },
+//     xAxis: {
+//         label: {
+//             formatter: (data) => {
+//                 return new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data) + ' UZS'
+//             },
+//         },
+//     },
+//     label: {
+//         position: 'left',
+//         offset: 4,
+//         formatter: (data) => {
+//             return new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data.value) + ' UZS'
+//         },
+//     },
+//     tooltip: {
+//         formatter: (data) => {
+//             return {name: data.type, value: new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data.value) + ' UZS'};
+//         },
+//     },
+//     barStyle: {
+//         radius: [8, 8, 0, 0],
+//     },
+// }
+// const barConfig = {
+//     isGroup: true,
+//     xField: 'value',
+//     yField: 'label',
+//     color: ['#13d19b', '#1284f6'],
+//     seriesField: 'type',
+//     marginRatio: 0,
+//     height: 120,
+//     fontSize: 14,
+//     appendPadding: [0, 80, 0, 0],
+//     legend: {
+//         position: 'bottom-left',
+//     },
+//     xAxis: {
+//         label: {
+//             formatter: (data) => {
+//                 return new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data) + ' UZS'
+//             },
+//         },
+//     },
+//     label: {
+//         position: 'left',
+//         offset: 4,
+//         formatter: (data) => {
+//             return new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data.value) + ' UZS'
+//         },
+//     },
+//     tooltip: {
+//         formatter: (data) => {
+//             return {name: data.type, value: new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2, minimumFractionDigits: 2}).format(data.value) + ' UZS'};
+//         },
+//     },
+//     barStyle: {
+//         radius: [8, 8, 0, 0],
+//     },
+// };
 
 const Map = () => {
     const {t} = useTranslation();
@@ -216,7 +216,8 @@ const Map = () => {
         // console.log(districts, regionName, id);
         if (districts) {
             setOblastID(id)
-            setRegionName(regionName);
+            setRegionName();
+            // console.log(regionName)
         } else if (id === 601) {
             setDistrictName(null)
         } else {
@@ -598,7 +599,6 @@ const Map = () => {
                                 {map.map((item) => {
                                     return (
                                         <>
-
                                             <Tooltip title={t(item.title)} key={item.id}>
                                                 <path
                                                     onClick={(e) => {
@@ -642,6 +642,7 @@ const Map = () => {
                                                         if (item.districts) {
                                                             setOblastID(item.id)
                                                             setRegionName(currentData[0]?.Region);
+
                                                         } else setDistrictName(currentData[0]?.Region);
 
                                                         mapClickHandler(item.districts, item.title, parseInt(item.id));
@@ -649,7 +650,7 @@ const Map = () => {
                                                             path.style = null;
                                                         }
                                                         if (!item.districts) {
-                                                            districtRef.current.style = 'fill: #3f4d67';
+                                                            // districtRef.current.style = 'fill: #3f4d67';
                                                         }
                                                     }}
                                                     d={item.d}
@@ -657,7 +658,8 @@ const Map = () => {
                                                     // className={classes['region']}
                                                     ref={districtRef}
                                                     // fill={item.fill}
-                                                ></path>
+                                                >
+                                                </path>
                                             </Tooltip>
                                         </>
                                     )
