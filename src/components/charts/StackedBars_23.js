@@ -24,7 +24,7 @@ class ApexChart extends React.Component {
                     colors: ["#f3e52d"],
                 },
                 title: {
-                    text: "ETPlar ishtiroki - 2023",
+                    text: "Elektron savdo maydonlarining ishtiroki - 2023",
                 },
 
                 xaxis: {
