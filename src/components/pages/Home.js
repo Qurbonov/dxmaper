@@ -51,9 +51,9 @@ function Home() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col className=' p-3 rounded-3 border border-light'>
                         <StackedBars/>
-                        _________________
+
                         <StackedBars_23/>
                     </Col>
                 </Row>

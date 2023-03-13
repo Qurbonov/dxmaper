@@ -24,7 +24,7 @@ class ApexChart_23 extends React.Component {
                     colors: ["#f3e52d"],
                 },
                 title: {
-                    text: "Elektron savdo maydonlarining ishtiroki - 2023",
+                    text: "Elektron savdo maydonlarining ishtiroki - 2022 yil",
                 },
 
                 xaxis: {
@@ -62,7 +62,7 @@ class ApexChart_23 extends React.Component {
             this.setState({
                 series: [
                     {
-                        name: "UZEX1",
+                        name: "UZEX",
                         data: [
                             cData.tender_info[0].count,
                             cData.konkurs_info[0].count,
