@@ -56,11 +56,7 @@ class ApexChart_23 extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(process.env.REACT_APP_LOCAL_URL_GET_CHART_INFOS, {
-            params: {
-                year: 2023
-            }
-        }).then((res) => {
+        axios.get(process.env.REACT_APP_LOCAL_URL_GET_CHART_INFOS + "?year=2023").then((res) => {
 
             const cData = res.data;
             this.setState({
