@@ -37,7 +37,7 @@ function Home() {
                         <Accordion className='shadow-sm rounded-5'>
                             <Accordion.Item eventKey='0'>
                                 <Accordion.Header>
-                                    Savdo turlari bo'yicha hisobot (2022 yil)
+                                    Savdo turlari bo'yicha hisobot
                                 </Accordion.Header>
                                 <Accordion.Body>
                                     <Area/>
@@ -52,8 +52,8 @@ function Home() {
                 </Row>
                 <Row>
                     <Col>
-                        <StackedBars/>
-                        <StackedBars_23/>
+                        <StackedBars/> - 22
+                        <StackedBars_23/> - 23
                     </Col>
                 </Row>
                 <Row>

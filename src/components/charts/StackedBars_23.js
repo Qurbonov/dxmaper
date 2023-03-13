@@ -2,7 +2,7 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 
-class ApexChart extends React.Component {
+class ApexChart_23 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -125,4 +125,4 @@ class ApexChart extends React.Component {
     }
 }
 
-export default ApexChart;
+export default ApexChart_23;
