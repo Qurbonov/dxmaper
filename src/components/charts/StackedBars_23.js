@@ -62,7 +62,7 @@ class ApexChart_23 extends React.Component {
             this.setState({
                 series: [
                     {
-                        name: "UZEX",
+                        name: "UZEX1",
                         data: [
                             cData.tender_info[0].count,
                             cData.konkurs_info[0].count,
