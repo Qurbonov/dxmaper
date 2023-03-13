@@ -14,6 +14,7 @@ import AreaAuc from "../charts/AreaAuc";
 import AreaComp from "../charts/AreaComp";
 import AreaEShop from "../charts/AreaEShop";
 import StackedBars from "../charts/StackedBars";
+import StackedBars_23 from "../charts/StackedBars_23";
 import Accordion from "react-bootstrap/Accordion";
 import Container from "react-bootstrap/Container";
 
@@ -52,6 +53,7 @@ function Home() {
                 <Row>
                     <Col>
                         <StackedBars/>
+                        <StackedBars_23/>
                     </Col>
                 </Row>
                 <Row>

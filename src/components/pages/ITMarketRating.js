@@ -22,9 +22,6 @@ const ITMarketRating = () => {
                 process.env.REACT_APP_LOCAL_URL_GET_IT_RESULTATS_RATING,
                 {
                     params: {
-                        // limit: 100,
-                        // offset: 1,
-                        // tradeId: 6,
                         year: 2022,
                         size: 10
                     },

@@ -2,6 +2,7 @@
   "name": "dxmaper",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8585",
   "dependencies": {
     "@ant-design/plots": "^1.2.2",
     "@testing-library/jest-dom": "^5.16.4",
