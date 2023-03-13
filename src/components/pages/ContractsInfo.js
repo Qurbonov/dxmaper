@@ -215,65 +215,9 @@ const ContractsInfo = () => {
                                             className='form-control  form-control-sm'
                                         />
                                     </div>
-                                    {/* <div className='col-sm'>
-                    Shartnoma sanasi
-                    <DatePicker
-                      dateFormat='dd.MM.yyyy'
-                      selected={startDate}
-                      onChange={(date) => setStartDate(date)}
-                      className='red-border'
-                    />
-                  </div>
-                  <div className='col-sm'>
-                    <DatePicker
-                      selected={endDate}
-                      onChange={(date) => setEndDate(date)}
-                      selectsEnd
-                      startDate={startDate}
-                      endDate={endDate}
-                      minDate={startDate}
-                    />
-                  </div> */}
+                                  
                                 </div>
-                                {/* <div className='row mt-3'>
-                  <div className='col-sm'>
-                    Xaridor STIR raqami:
-                    <input
-                      type='text'
-                      onChange={(e) => onChange(e, "organInn")}
-                      className='form-control  form-control-sm'
-                    />
-                  </div>{" "}
-                  <div className='col-sm'>
-                    Xaridor tashkilot:
-                    <input
-                      type='text'
-                      onChange={(e) => onChange(e, "organName")}
-                      className='form-control  form-control-sm'
-                    />
-                  </div>
-                  <div className='col-sm'>
-                    Etkazib beruvchi STIR raqami:
-                    <input
-                      type='text'
-                      onChange={(e) => onChange(e, "vendorInn")}
-                      className='form-control  form-control-sm'
-                    />
-                  </div>{" "}
-                  <div className='col-sm'>
-                    Etkazib beruvchi tashkilot nomi:
-                    <input
-                      type='text'
-                      onChange={(e) => onChange(e, "vendorName")}
-                      className='form-control  form-control-sm'
-                    />
-                  </div>
-                </div> */}
-                                {/* <div className='row mt-3'>
-                  <div className='col-sm'>
-                    <input type='submit' value='yubor' />
-                  </div>
-                </div> */}
+
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
