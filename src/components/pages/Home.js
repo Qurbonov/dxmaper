@@ -52,8 +52,9 @@ function Home() {
                 </Row>
                 <Row>
                     <Col>
-                        <StackedBars/> - 22
-                        <StackedBars_23/> - 23
+                        <StackedBars/>
+                        _________________
+                        <StackedBars_23/>
                     </Col>
                 </Row>
                 <Row>
