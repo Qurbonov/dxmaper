@@ -29,7 +29,7 @@ const AdminPage = () => {
     return (
         <>
             <div className='container'>
-                <h2 className='my-4'>Foydalanuvchi qo'shish.</h2>
+                <h2 className='my-4'>Foydalanuvchi qo'shish</h2>
                 <hr/>
                 <Form onSubmit={handleSubmit(onSubmit)}>
 
