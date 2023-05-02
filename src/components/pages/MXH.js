@@ -16,7 +16,7 @@ function MXH() {
                     </a>
                     </li>
                     <li className='list-group-item'>
-                        <MdOutlinePictureAsPdf className='mb-1' style={{fontSize: 24, color: '#f40f02'}}/> <a href="/docs/info/Kommisiya_hisoboti_2023_1_chorak" className='text-decoration-none'>
+                        <MdOutlinePictureAsPdf className='mb-1' style={{fontSize: 24, color: '#f40f02'}}/> <a href="/docs/info/Kommisiya_hisoboti_2023_1_chorak.pdf" className='text-decoration-none'>
                         Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha komissiya tomonidan 2023 yil 1-chorakda ko‘rib chiqilgan murojaatlar va ularnnng natijalari to‘g‘risida ma'lumot
                     </a>
                     </li>
