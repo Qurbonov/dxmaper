@@ -31,7 +31,7 @@ function Stat() {
             <thead className='thead-dark'>
               <tr className='bg-light py-2'>
                 <th colSpan={5}>
-                  Arizalar soni:
+                  E'lonlar soni:
                   <span className='text-primary mx-1'>
                     {stats.responseClaim.total + stats.responseRequest.total}
                   </span>
