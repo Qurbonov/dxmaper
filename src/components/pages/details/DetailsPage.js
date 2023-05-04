@@ -72,14 +72,16 @@ const DetailsPage = () => {
         switch (data?.resultat?.ETP_ID) {
             case 1:
                 switch (data?.resultat?.PAYLOAD.PROC_ID) {
+                    case 3:
+                        return "https://xarid.uzex.uz/completed-deals/auction";
                     case 6:
-                        return "Elektron do`kon";
+                        return "https://xarid.uzex.uz/completed-deals/shop/shop";
                     case 17:
                         return "https://etender.uzex.uz/lot/" + String(str).slice(9);
                     case 18:
-                        return "Eng yahshi takliflarni tanlash (konkurs)";
+                        return "https://etender.uzex.uz/lot/" + String(str).slice(9);
                     case 19:
-                        return "To`g`ridan-to`g`ri shartnoma";
+                        return "https://xarid.uzex.uz/completed-deals/shop/national";
                     default:
                         return "-";
                 }
@@ -100,7 +102,7 @@ const DetailsPage = () => {
                         return "-";
                 }
             case 3:
-                return "Coopiration";
+                return "https://stat.cooperation.uz/procurement/budget";
             case 4:
                 return "https://tender.mc.uz/tender-list/tender/" + String(str).slice(9) + "/view";
             default:
