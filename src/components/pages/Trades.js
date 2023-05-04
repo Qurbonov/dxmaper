@@ -7,9 +7,9 @@ const Trades = () => {
   const [rabbitData, setRbtData] = useState([]);
   const [rabbitDataAE, setRbtDataAE] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [procedureName, setprocedureName] = useState("Tender");
+  const [procedureName, setprocedureName] = useState("Elektron tender");
   const getAllTenders = async () => {
-    setprocedureName("Tender");
+    setprocedureName("Elektron tender");
     try {
       const response = await axios.get(
         process.env.REACT_APP_LOCAL_URL_GET_TENDERS
@@ -124,11 +124,11 @@ const Trades = () => {
         // eslint-disable-next-line default-case
         switch (row.proc_id) {
           case 6:
-            return "Elektron katalog";
+            return "Elektron do'kon";
           case 3:
             return "kelishuv amalga oshdi";
           case 17:
-            return "Tender";
+            return "Elektron tender";
           case 18:
             return "Konkurs";
           case 19:
@@ -276,7 +276,7 @@ const Trades = () => {
         <Accordion.Item eventKey='0' className='bg-light'>
           <Accordion.Header>
             <span className='ms-2 text-secondary' style={{ fontSize: "1.1em" }}>
-              Savdo turlari bo'yicha (Tender, Konkurs)
+              Savdo turlari bo'yicha (Elektron tender, Konkurs)
             </span>
           </Accordion.Header>
           <Accordion.Body>
@@ -287,7 +287,7 @@ const Trades = () => {
                   className='btn px-3'
                   onClick={getAllTenders}
                 >
-                  Tender
+                  Elektron tender
                 </button>
 
                 <button

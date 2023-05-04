@@ -10,10 +10,10 @@ const Trades_tender = () => {
   const countPerPage = 10;
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [procedureName, setprocedureName] = useState("Tender");
+  const [procedureName, setprocedureName] = useState("Elektron tender");
 
   const getAllTenders = async () => {
-    setprocedureName("Tender");
+    setprocedureName("Elektron tender");
     try {
       const response = await axios.get(
         process.env.REACT_APP_LOCAL_URL_GET_TENDERS +

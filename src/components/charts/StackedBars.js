@@ -29,11 +29,11 @@ class ApexChart_23 extends React.Component {
 
                 xaxis: {
                     categories: [
-                        "Tender",
+                        "Elektron tender",
                         "Konkurs",
-                        "Elektron katalog",
+                        "Elektron do'kon",
                         "To'g'ridan to'g'ri shartnoma",
-                        "Auksion (Amalga oshirilgan savdo)",
+                        "Auksion",
                     ],
                 },
                 tooltip: {

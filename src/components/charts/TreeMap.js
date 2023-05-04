@@ -274,7 +274,7 @@ class ApexChart extends React.Component {
               "</span>" +
               "</li>" +
               "</li>" +
-              "<li class='list-group-item'><b>Tender</b>: " +
+              "<li class='list-group-item'><b>Elektron tender</b>: " +
               "<span class='badge bg-success text-light rounded-pill'>" +
               data.tender_c +
               " ta" +

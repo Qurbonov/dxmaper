@@ -9,7 +9,7 @@ const Trades = () => {
   const countPerPage = 10;
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [procedureName, setprocedureName] = useState("Tender");
+  const [procedureName, setprocedureName] = useState("Elektron tender");
 
   const getEMagazins = async () => {
     setprocedureName("Elektron do`kon");

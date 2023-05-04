@@ -1,7 +1,7 @@
 import Moment from "moment";
-import {useParams} from "react-router-dom";
-import React, {useEffect, useState} from "react";
-import {IoReturnUpBackOutline} from "react-icons/io5";
+import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { IoReturnUpBackOutline } from "react-icons/io5";
 
 const DetailsPage = () => {
     var t = 0;
@@ -40,9 +40,9 @@ const DetailsPage = () => {
             case 1:
                 return "Auksion";
             case 2:
-                return "Elektron do`kon (Elektron katalog)";
+                return "Elektron do`kon (Elektron do'kon)";
             default:
-                return "neutral";
+                return "---";
         }
     };
 
@@ -57,7 +57,7 @@ const DetailsPage = () => {
             case 4:
                 return "Shaffof qurilish";
             default:
-                return "neutral";
+                return "---";
         }
     };
 
@@ -82,8 +82,8 @@ const DetailsPage = () => {
                                     letterSpacing: "0.1em",
                                 }}
                             >
-                # {data?.requestEtp?.PAYLOAD?.LOTID}
-              </span>
+                                # {data?.requestEtp?.PAYLOAD?.LOTID}
+                            </span>
                         </h5>
                     </div>
                     <div className='col-2 text-right'>
@@ -106,9 +106,9 @@ const DetailsPage = () => {
                 <ul className='list-group mb-5'>
                     <li
                         className='list-group-item bg-light'
-                        style={{color: "#8198B2", letterSpacing: 1}}
+                        style={{ color: "#8198B2", letterSpacing: 1 }}
                     >
-                        <h6 className='mt-1'>Umumiy ma'lumot</h6>
+                        <h6 className='mt-1'>Umumiy ma'lumot_DTrades</h6>
                     </li>
                     <li className='list-group-item'>
                         <b>ETP:</b> {EtpName(data?.requestEtp?.ETP_ID)}
@@ -119,7 +119,7 @@ const DetailsPage = () => {
                     </li>
                     <li
                         className='list-group-item bg-light'
-                        style={{color: "#8198B2", letterSpacing: 1}}
+                        style={{ color: "#8198B2", letterSpacing: 1 }}
                     >
                         <h6 className='mt-1'>Ariza</h6>
                     </li>
@@ -131,9 +131,9 @@ const DetailsPage = () => {
                     </li>
                     <li className='list-group-item '>
                         <b>Summasi:</b>{" "}
-                        <span style={{letterSpacing: 1}}>
-              {data?.requestEtp?.PAYLOAD.SUMLOT.toLocaleString('en-US') + " " + "so'm"}
-            </span>
+                        <span style={{ letterSpacing: 1 }}>
+                            {data?.requestEtp?.PAYLOAD.SUMLOT.toLocaleString('en-US') + " " + "so'm"}
+                        </span>
                     </li>
                     <li className='list-group-item '>
                         <b> Band qilingan muddat: </b>
@@ -141,7 +141,7 @@ const DetailsPage = () => {
                     </li>
                     <li
                         className='list-group-item bg-light'
-                        style={{color: "#8198B2", letterSpacing: 1}}
+                        style={{ color: "#8198B2", letterSpacing: 1 }}
                     >
                         <h6 className='mt-1'>Xaridor</h6>
                     </li>
@@ -151,7 +151,7 @@ const DetailsPage = () => {
 
                     <li
                         className='list-group-item bg-light'
-                        style={{color: "#8198B2", letterSpacing: 1}}
+                        style={{ color: "#8198B2", letterSpacing: 1 }}
                     >
                         <h6 className='mt-1'>Xizmat (mahsulot) ma'lumotlari</h6>
                     </li>
@@ -159,27 +159,27 @@ const DetailsPage = () => {
                     <li className='list-group-item'>
                         <table className='table table-hover'>
                             <thead>
-                            <tr>
-                                <th className='text-center'>№</th>
-                                <th>Nomi</th>
-                                <th className='text-center'>TYMK *</th>
-                                <th className='text-center'>Soni</th>
-                                <th className='text-center'>Narxi</th>
-                                <th className='text-center'>Umumniy narxi</th>
-                            </tr>
+                                <tr>
+                                    <th className='text-center'>№</th>
+                                    <th>Nomi</th>
+                                    <th className='text-center'>TYMK *</th>
+                                    <th className='text-center'>Soni</th>
+                                    <th className='text-center'>Narxi</th>
+                                    <th className='text-center'>Umumniy narxi</th>
+                                </tr>
                             </thead>
                             {data?.requestEtp?.PAYLOAD.SPECIFICATIONS.map(function (n) {
                                 return (
                                     <>
                                         <tbody>
-                                        <tr key={n.id}>
-                                            <td className='text-center'>{++t}.</td>
-                                            <td>{n.TOVARNAME}</td>
-                                            <td className='text-center text-info'>{n.TOVAR}</td>
-                                            <td className='text-center'>{n.TOVARAMOUNT}</td>
-                                            <td className='text-center'>{n.TOVARPRICE}</td>
-                                            <td className='text-center'>{n.TOVARSUMMA}</td>
-                                        </tr>
+                                            <tr key={n.id}>
+                                                <td className='text-center'>{++t}.</td>
+                                                <td>{n.TOVARNAME}</td>
+                                                <td className='text-center text-info'>{n.TOVAR}</td>
+                                                <td className='text-center'>{n.TOVARAMOUNT}</td>
+                                                <td className='text-center'>{n.TOVARPRICE}</td>
+                                                <td className='text-center'>{n.TOVARSUMMA}</td>
+                                            </tr>
                                         </tbody>
                                     </>
                                 );
@@ -188,7 +188,7 @@ const DetailsPage = () => {
                     </li>
                     <li
                         className='list-group-item bg-light text-end pe-5 text-monospace'
-                        style={{color: "#8198B2", letterSpacing: 1, fontSize: 12}}
+                        style={{ color: "#8198B2", letterSpacing: 1, fontSize: 12 }}
                     >
                         * -{" "}
                         <a

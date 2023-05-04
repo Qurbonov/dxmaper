@@ -13,7 +13,7 @@ const Trades = () => {
   const [page, setPage] = useState(1);
   const [pageAE, setPageAE] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [procedureName, setprocedureName] = useState("Tender");
+  const [procedureName, setprocedureName] = useState("Elektron tender");
   const [isActive, setActive] = useState("true");
   const [isActive2, setActive2] = useState("false");
 
@@ -24,7 +24,7 @@ const Trades = () => {
       setActive2("false");
     }
     // setActive2(isActive);
-    setprocedureName("Tender");
+    setprocedureName("Elektron tender");
     try {
       const response = await axios.get(
         process.env.REACT_APP_LOCAL_URL_GET_TENDERS +
@@ -247,7 +247,7 @@ const Trades = () => {
       >
         <div role='group'>
           <button type='button' className='btn px-3' onClick={getAllTenders}>
-            Tender
+            Elektron tender
           </button>{" "}
           |
           <button

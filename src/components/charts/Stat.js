@@ -40,7 +40,7 @@ function Stat() {
               </tr>
               <tr>
                 <th>Holati</th>
-                <th className='text-center'>Tender</th>
+                <th className='text-center'>Elektron tender</th>
                 <th className='text-center'>Auksion</th>
                 <th className='text-center'>Elektron do'kon</th>
                 <th className='text-center'>Konkurs</th>
@@ -124,7 +124,7 @@ function Stat() {
               </tr>
               <tr>
                 <th>Holati</th>
-                <th className='text-center'>Tender</th>
+                <th className='text-center'>Elektron tender</th>
                 <th className='text-center'>Auksion</th>
                 <th className='text-center'>Elektron do'kon</th>
                 <th className='text-center'>Konkurs</th>

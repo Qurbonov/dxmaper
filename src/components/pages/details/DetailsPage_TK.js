@@ -40,7 +40,7 @@ const DetailsPage = () => {
     const TypeOfProcedure = (parameter) => {
         switch (parameter) {
             case 1:
-                return "Tender";
+                return "Elektron tender";
             case 2:
                 return "Konkurs";
             default:
@@ -81,7 +81,7 @@ const DetailsPage = () => {
                             <ClipLoader color={"#0a99e0"} loading={loading} size={20}/>
                         ) : (
                             <h5>
-                                LOT raqami:
+                                LOT raqami_:
                                 <span
                                     className='px-2 ms-1'
                                     style={{

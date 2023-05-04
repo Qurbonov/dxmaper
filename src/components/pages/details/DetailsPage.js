@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import {IoReturnUpBackOutline} from "react-icons/io5";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { IoReturnUpBackOutline } from "react-icons/io5";
 
 const DetailsPage = () => {
     const param = useParams();
     const [data, setLotInfo] = useState({});
 
     useEffect(() => {
+        EtpUrl();
         fetch(
             process.env.REACT_APP_LOCAL_URL_GET_RESULTAT_BY_ID + `/${param.lot_id}`
         )
@@ -38,15 +39,15 @@ const DetailsPage = () => {
             case 3:
                 return "";
             case 6:
-                return "Elektron do`kon (Elektron katalog)";
+                return "Elektron do`kon";
             case 17:
-                return "Tender";
+                return "Elektron tender";
             case 18:
                 return "Eng yahshi takliflarni tanlash (konkurs)";
             case 19:
                 return "To`g`ridan-to`g`ri shartnoma";
             default:
-                return "neutral";
+                return "-";
         }
     };
 
@@ -61,15 +62,53 @@ const DetailsPage = () => {
             case 4:
                 return "Shaffof qurilish";
             default:
-                return "neutral";
+                return "-";
         }
     };
 
-    // const docs = (l) => {
-    //     for (let index = 0; index < 4; index++) {
-    //         console.log(index);
-    //     }
-    // };
+    const EtpUrl = () => {
+        let str = data?.resultat?.PAYLOAD.LOTID;
+        console.log(data?.resultat?.PAYLOAD.PROC_ID);
+        switch (data?.resultat?.ETP_ID) {
+            case 1:
+                switch (data?.resultat?.PAYLOAD.PROC_ID) {
+                    case 6:
+                        return "Elektron do`kon";
+                    case 17:
+                        return "https://etender.uzex.uz/lot/" + String(str).slice(9);
+                    case 18:
+                        return "Eng yahshi takliflarni tanlash (konkurs)";
+                    case 19:
+                        return "To`g`ridan-to`g`ri shartnoma";
+                    default:
+                        return "-";
+                }
+
+            case 2:
+                switch (data?.resultat?.PAYLOAD.PROC_ID) {
+                    case 3:
+                        return "https://xt-xarid.uz/procedure/" + String(str).slice(7) + "/core";
+                    case 6:
+                        return "https://xt-xarid.uz/ad/" + String(str).slice(7) + "/core";
+                    case 17:
+                        return "https://xt-xarid.uz/procedure/" + String(str).slice(7) + "/core";
+                    case 18:
+                        return "https://xt-xarid.uz/procedure/" + String(str).slice(7) + "/core";
+                    case 19:
+                        return "https://xt-xarid.uz/procedure/" + String(str).slice(7) + "/core";
+                    default:
+                        return "-";
+                }
+            case 3:
+                return "Coopiration";
+            case 4:
+                return "https://tender.mc.uz/tender-list/tender/" + String(str).slice(9) + "/view";
+            default:
+                return "-";
+        }
+    }
+
+
 
     return (
         <>
@@ -85,8 +124,8 @@ const DetailsPage = () => {
                                     letterSpacing: "0.1em",
                                 }}
                             >
-                # {data?.resultat?.PAYLOAD.LOTID}
-              </span>
+                                <a href={EtpUrl()} style={{ textDecoration: 'none' }}>{data?.resultat?.PAYLOAD.LOTID}</a>
+                            </span>
                         </h5>
                     </div>
                     <div className='col-2 text-right'>
@@ -109,7 +148,7 @@ const DetailsPage = () => {
                 <ul className='list-group mb-5'>
                     <li
                         className='list-group-item bg-light'
-                        style={{color: "#8198B2", letterSpacing: 1}}
+                        style={{ color: "#8198B2", letterSpacing: 1 }}
                     >
                         <h6 className='mt-1'>Umumiy ma'lumot</h6>
                     </li>
@@ -128,7 +167,7 @@ const DetailsPage = () => {
                     </li>
                     <li
                         className='list-group-item bg-light'
-                        style={{color: "#8198B2", letterSpacing: 1}}
+                        style={{ color: "#8198B2", letterSpacing: 1 }}
                     >
                         <h6 className='mt-1'>Shartnoma</h6>
                     </li>
@@ -137,9 +176,9 @@ const DetailsPage = () => {
                     </li>
                     <li className='list-group-item '>
                         <b>Summasi:</b>{" "}
-                        <span style={{letterSpacing: 1}}>
-              {data?.resultat?.PAYLOAD.SUMMA.toLocaleString('en-US') + " " + "so'm"}
-            </span>
+                        <span style={{ letterSpacing: 1 }}>
+                            {data?.resultat?.PAYLOAD.SUMMA.toLocaleString('en-US') + " " + "so'm"}
+                        </span>
                     </li>
                     <li className='list-group-item '>
                         <b>Sharnoma imzolagan sanasi:</b>{" "}
@@ -156,7 +195,7 @@ const DetailsPage = () => {
                     </li>
                     <li
                         className='list-group-item bg-light'
-                        style={{color: "#8198B2", letterSpacing: 1}}
+                        style={{ color: "#8198B2", letterSpacing: 1 }}
                     >
                         <h6 className='mt-1'>Xaridor</h6>
                     </li>
@@ -173,7 +212,7 @@ const DetailsPage = () => {
                     </li>
                     <li
                         className='list-group-item bg-light'
-                        style={{color: "#8198B2", letterSpacing: 1}}
+                        style={{ color: "#8198B2", letterSpacing: 1 }}
                     >
                         <h6 className='mt-1'>Etkazib beruvchi tashkilot</h6>
                     </li>
@@ -190,7 +229,7 @@ const DetailsPage = () => {
                     </li>
                     <li
                         className='list-group-item bg-light'
-                        style={{color: "#8198B2", letterSpacing: 1}}
+                        style={{ color: "#8198B2", letterSpacing: 1 }}
                     >
                         <h6 className='mt-1'>Xizmat (mahsulot) ma'lumotlari</h6>
                     </li>
@@ -247,7 +286,7 @@ const DetailsPage = () => {
                         })}
                     </li>
                 </ul>
-            </div>
+            </div >
         </>
     );
 };

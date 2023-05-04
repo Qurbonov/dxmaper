@@ -75,11 +75,11 @@ const ITMarketContractSuccess = () => {
             selector: (row) => {
                 switch (row.proc_id) {
                     case 6:
-                        return "Elektron katalog";
+                        return "Elektron do'kon";
                     case 3:
-                        return "Auksion (Amalga oshirilgan savdo)";
+                        return "Auksion";
                     case 17:
-                        return "Tender";
+                        return "Elektron tender";
                     case 18:
                         return "Konkurs";
                     case 19:
@@ -192,11 +192,11 @@ const ITMarketContractSuccess = () => {
                                             onChange={(e) => onChange(e, "tradeId")}
                                         >
                                             <option value=''>Barchasi</option>
-                                            <option value='6'>Elektron katalog</option>
+                                            <option value='6'>Elektron do'kon</option>
                                             <option value='3'>
-                                                Auksion (Amalga oshirilgan savdo)
+                                                Auksion
                                             </option>
-                                            <option value='17'>Tender</option>
+                                            <option value='17'>Elektron tender</option>
                                             <option value='18'>Konkurs</option>
                                             <option value='19'>To'g'ridan to'g'ri shartnoma</option>
                                         </select>
