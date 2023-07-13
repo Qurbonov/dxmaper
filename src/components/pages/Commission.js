@@ -65,6 +65,46 @@ function MXH() {
               className="mb-1"
               style={{ fontSize: 24, color: "#f40f02" }}
             />{" "}
+            <a href="/docs/info/1_bayon.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining 1-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/2_bayon.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining 2-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/5_bayon.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining 5-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/6_bayon.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining 6-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
             <a href="/docs/info/7_bayon.pdf" className="text-decoration-none">
               Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
               komissiya yig‘ilishining 7-son bayoni
@@ -78,6 +118,26 @@ function MXH() {
             <a href="/docs/info/8_bayon.pdf" className="text-decoration-none">
               Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
               komissiya yig‘ilishining 8-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/bayon.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/bayon_2.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining bayoni
             </a>
           </li>
         </ul>
