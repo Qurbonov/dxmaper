@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
+import { AiOutlineLogout } from "react-icons/ai";
 
 function NavMenu() {
   let user_role = localStorage.getItem("role");
@@ -111,6 +111,7 @@ function NavMenu() {
                   <NavDropdown.Item href="/qullanma">
                     Qo'llanmalar
                   </NavDropdown.Item>
+
                   <NavDropdown.Item href="/faq">
                     Eng ko'p beriladigan savollar
                   </NavDropdown.Item>
@@ -121,6 +122,10 @@ function NavMenu() {
                 >
                   <NavDropdown.Item href="/gs">
                     Davlat ishtirokidagi korxonalar reestri
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/medicine">
+                    Davlat zaxirasidan chiqarilgan dori vositalari
                   </NavDropdown.Item>
                 </NavDropdown>
                 <LinkContainer to="/about">

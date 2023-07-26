@@ -1,7 +1,7 @@
 import React from "react";
 import { MdOutlinePictureAsPdf } from "react-icons/md";
 
-function MXH() {
+function Comm() {
   return (
     <>
       <div className="container shadow-sm px-5 py-4 rounded-5">
@@ -146,4 +146,4 @@ function MXH() {
   );
 }
 
-export default MXH;
+export default Comm;

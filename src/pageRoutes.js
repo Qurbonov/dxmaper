@@ -24,6 +24,7 @@ import ITMarketRating from "./components/pages/ITMarketRating";
 import GovShare from "./components/pages/GovShare";
 import MXH from "./components/pages/MXH";
 import Commission from "./components/pages/Commission";
+import Medicine from "./components/pages/Medicine";
 
 function PageRoutes() {
   let user_role = localStorage.getItem("role");
@@ -84,6 +85,7 @@ function PageRoutes() {
         <Route path="about" element={<About />} />
         <Route path="mxh" element={<MXH />} />
         <Route path="commission" element={<Commission />} />
+        <Route path="medicine" element={<Medicine />} />
         <Route path="gs" element={<GovShare />} />
         <Route path="/details/:lot_id" element={<DetailsPage />} />
         <Route path="/details/coorp/:id" element={<Details_Coorp />} />
