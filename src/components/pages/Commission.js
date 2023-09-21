@@ -110,7 +110,7 @@ function Comm() {
               komissiya yig‘ilishining 7-son bayoni
             </a>
           </li>
-          <li className="list-group-item">
+          {/* <li className="list-group-item">
             <MdOutlinePictureAsPdf
               className="mb-1"
               style={{ fontSize: 24, color: "#f40f02" }}
@@ -119,7 +119,7 @@ function Comm() {
               Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
               komissiya yig‘ilishining 8-son bayoni
             </a>
-          </li>
+          </li> */}
           <li className="list-group-item">
             <MdOutlinePictureAsPdf
               className="mb-1"
@@ -138,6 +138,126 @@ function Comm() {
             <a href="/docs/info/bayon_2.pdf" className="text-decoration-none">
               Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
               komissiya yig‘ilishining bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p20.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00020-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p21.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00021-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p22.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00022-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p23.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00023-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p24.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00024-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p25.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00025-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p26.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00026-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p27.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00027-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p28.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00028-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p29.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00029-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p30.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00030-son bayoni
+            </a>
+          </li>
+          <li className="list-group-item">
+            <MdOutlinePictureAsPdf
+              className="mb-1"
+              style={{ fontSize: 24, color: "#f40f02" }}
+            />{" "}
+            <a href="/docs/info/file_p31.pdf" className="text-decoration-none">
+              Davlat xaridlari sohasidagi shikoyatlarni ko‘rib chiqish bo‘yicha
+              komissiya yig‘ilishining P00031-son bayoni
             </a>
           </li>
         </ul>

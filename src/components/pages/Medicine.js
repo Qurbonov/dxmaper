@@ -4,8 +4,8 @@ import { SiMicrosoftexcel } from "react-icons/si";
 function Med() {
   return (
     <>
-      <div className="container shadow-sm px-5 py-4 rounded-5">
-        <h2 className="m-5 border-bottom text-center">
+      <div className="container shadow-sm px-5 rounded-5">
+        <h2 className="m-5 p-3 border-bottom text-center">
           Yangilash uchun Davlat zaxirasidan chiqarilgan dori vositalari
         </h2>
         <ul className="list-group  list-group-flush">
