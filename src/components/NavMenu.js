@@ -243,11 +243,15 @@ function NavMenu() {
                   </>
                 ) : (
                   <>
-                    {/*<LinkContainer to="/cabinet">*/}
-                    {/*    <Nav.Link href='#cabinet' className='text-light'>*/}
-                    {/*        <AiOutlineLogin className='mb-1' style={{fontSize: 24}}/> Tizimga kirish*/}
-                    {/*    </Nav.Link>*/}
-                    {/*</LinkContainer>*/}
+                    <LinkContainer to="/cabinet">
+                      <Nav.Link href="#cabinet" className="text-light">
+                        {/* <AiOutlineLogin
+                          className="mb-1"
+                          style={{ fontSize: 24 }}
+                        />{" "} */}
+                        Tizimga kirish
+                      </Nav.Link>
+                    </LinkContainer>
                   </>
                 )}
               </Nav>
