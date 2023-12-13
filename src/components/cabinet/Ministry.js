@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
-import { FcSearch } from 'react-icons/fc';
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab';
-import Blacklist from './Blacklist';
+import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
+import { FcSearch } from "react-icons/fc";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
+import Blacklist from "./Blacklist";
 
 const Ministry = () => {
   const headers = {
-    Authorization: 'Bearer ' + localStorage.getItem('token'),
+    Authorization: "Bearer " + localStorage.getItem("token"),
   };
 
   /* -------------Yakka tartibdagi tadbirkor ---------------- */
@@ -50,7 +50,7 @@ const Ministry = () => {
           </tr>
           <tr>
             <td>STIR raqami</td>
-            <td>{dataIn.body.tin ? dataIn.body.tin : '--'}</td>
+            <td>{dataIn.body.tin ? dataIn.body.tin : "--"}</td>
           </tr>
           <tr>
             <td>Ro'yhatga olingan san</td>
@@ -103,7 +103,7 @@ const Ministry = () => {
         <table className="table table-hover table-striped">
           <tr>
             <th colSpan="2" className="bg-light">
-              {' '}
+              {" "}
               Tashkilot
             </th>
           </tr>
@@ -121,7 +121,7 @@ const Ministry = () => {
             <td>
               {YuridikData.body.company.tin
                 ? YuridikData.body.company.tin
-                : '-'}
+                : "-"}
             </td>
           </tr>
           <tr>
@@ -142,15 +142,15 @@ const Ministry = () => {
           </tr>
           <tr>
             <th colSpan="2" className="bg-light">
-              {' '}
+              {" "}
               Rahbar
             </th>
           </tr>
           <tr>
             <td>F.I.O</td>
             <td>
-              {YuridikData.body.director.lastName}{' '}
-              {YuridikData.body.director.firstName}{' '}
+              {YuridikData.body.director.lastName}{" "}
+              {YuridikData.body.director.firstName}{" "}
               {YuridikData.body.director.middleName}
             </td>
           </tr>
@@ -158,10 +158,10 @@ const Ministry = () => {
             <td>Jinsi</td>
             <td>
               {YuridikData.body.director.gender === 1
-                ? 'Erkak'
+                ? "Erkak"
                 : YuridikData.body.director.gender === 2
-                ? 'Ayol'
-                : '-'}
+                ? "Ayol"
+                : "-"}
             </td>
           </tr>
         </table>
@@ -174,18 +174,18 @@ const Ministry = () => {
   /* -------------- total table ------------------ */
   const optionsOfYear = [
     // {value: '', text: '--'},
-    { value: 2020, text: '2020 yil' },
-    { value: 2021, text: '2021 yil' },
-    { value: 2022, text: '2022 yil' },
-    { value: 2023, text: '2022 yil' },
-    { value: 2024, text: '2022 yil' },
+    { value: 2020, text: "2020 yil" },
+    { value: 2021, text: "2021 yil" },
+    { value: 2022, text: "2022 yil" },
+    { value: 2023, text: "2023 yil" },
+    { value: 2024, text: "2024 yil" },
   ];
   const optionsOfQuarter = [
     // {value: '', text: '--'},
-    { value: 1, text: '1 chorak' },
-    { value: 2, text: '2 chorak' },
-    { value: 3, text: '3 chorak' },
-    { value: 4, text: '4 chorak' },
+    { value: 1, text: "1 chorak" },
+    { value: 2, text: "2 chorak" },
+    { value: 3, text: "3 chorak" },
+    { value: 4, text: "4 chorak" },
   ];
   const [selectedYear, setSelectedYear] = useState(optionsOfYear[0].value);
   const [selectedQuarter, setSelectedQuarter] = useState(
@@ -223,19 +223,19 @@ const Ministry = () => {
   };
 
   const getUzbData = (resData) => {
-    if (resData === 'LOW') {
+    if (resData === "LOW") {
       return (
         <div className="bg-success text-white px-3 py-1 rounded">PAST</div>
       );
-    } else if (resData === 'MEDIUM') {
+    } else if (resData === "MEDIUM") {
       return (
         <div className="bg-primary text-white px-3 py-1 rounded">O`RTA</div>
       );
-    } else if (resData === 'HIGH') {
+    } else if (resData === "HIGH") {
       return (
         <div className="bg-warning text-white px-3 py-1 rounded">YUQORI</div>
       );
-    } else if (resData === 'VERY_HIGH') {
+    } else if (resData === "VERY_HIGH") {
       return (
         <div className="bg-danger text-white px-3 py-1 rounded">
           O`TA YUQORI
@@ -271,7 +271,7 @@ const Ministry = () => {
                 Xatarlar darajasi
               </th>
               <th rowSpan="2" colSpan="2" className=" text-center align-middle">
-                {' '}
+                {" "}
                 Yakuniy
               </th>
             </tr>
@@ -297,29 +297,29 @@ const Ministry = () => {
                 <td>{r.orgName}</td>
                 <td>
                   {r.likvidlikDarajasi?.amount === null
-                    ? '---'
+                    ? "---"
                     : r.likvidlikDarajasi?.amount}
                 </td>
                 <td>{getUzbData(r.likvidlikDarajasi?.status)}</td>
                 <td>
                   {r.kunlikKreditorQarzlarAylanmasi?.amount === null
-                    ? '---'
+                    ? "---"
                     : r.kunlikKreditorQarzlarAylanmasi?.amount}
                 </td>
                 <td>{getUzbData(r.kunlikKreditorQarzlarAylanmasi.status)}</td>
                 <td>
                   {r.xarajatlarningQoplanishi?.amount === null
-                    ? '---'
+                    ? "---"
                     : r.xarajatlarningQoplanishi?.amount}
                 </td>
                 <td>{getUzbData(r.xarajatlarningQoplanishi.status)}</td>
-                <td>{r.total?.amount === null ? '---' : r.total?.amount}</td>
+                <td>{r.total?.amount === null ? "---" : r.total?.amount}</td>
                 <td>{getUzbData(r.total.status)}</td>
               </tr>
             ))}
             <tr>
               <td colSpan="9" className="text-end bg-light">
-                {' '}
+                {" "}
                 --- - DSQda ma'lumot mavjud emas.
               </td>
             </tr>
@@ -421,7 +421,7 @@ const Ministry = () => {
                 className="btn btn-light form-control-sm  rounded-3 ms-2 text-secondary px-4"
                 onClick={get_report_year_quarter}
               >
-                {' '}
+                {" "}
                 Ma'lumot olish
               </button>
             </div>
