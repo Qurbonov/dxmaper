@@ -177,6 +177,8 @@ const Ministry = () => {
     { value: 2020, text: '2020 yil' },
     { value: 2021, text: '2021 yil' },
     { value: 2022, text: '2022 yil' },
+    { value: 2023, text: '2022 yil' },
+    { value: 2024, text: '2022 yil' },
   ];
   const optionsOfQuarter = [
     // {value: '', text: '--'},
